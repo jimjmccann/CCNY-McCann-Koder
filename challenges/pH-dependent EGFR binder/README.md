@@ -1,6 +1,9 @@
 # pH-dependent EGFR binder
 
-Anthropic × Adaptyv 2026, Challenge 1 (Sep 28 – Oct 4 2026).
+Anthropic × Adaptyv 2026, Challenge 1. Design work ran **2026-09-28 to 2026-10-06**; the
+competition's own submission window closed **2026-10-04**. ⭐ Both dates appear in this deposit on
+purpose and they are not the same thing — where a document gives a date range it is the **work**,
+not the competition window.
 The brief: design a de novo binder to the human EGFR extracellular region that binds at
 **pH 6.5** and shows **no detectable binding at pH 7.4**, with mouse cross-reactivity.
 De novo designs only.
@@ -64,12 +67,14 @@ license, and §5 carries the per-sequence flags.
 
 | file | what it is |
 |---|---|
-| `submitted_sequences.fasta` | the submitted sequences, generated from the submission CSV |
+| `submission_challenge1_SUBMITTED_20261007.csv` | ⭐ **the 16 sequences actually submitted**, byte-for-byte as uploaded |
+| `submission_challenge1_NOVELTY_PASSED_20261007.csv` | the **11** of those 16 that passed the competition's novelty filter |
+| `submitted_sequences.fasta` | the **ten** sequences of the 2026-10-06 file, generated from that CSV. ⛔ Superseded — see the two files above and `SEQUENCE_SET_CORRECTION_20261006.md` |
 | `submission_challenge1_20261006.csv` | the submission file |
 | `SEQUENCE_SET_CORRECTION_20261006.md` | ⛔ which sequences were submitted and how that set changed during the day — read before any other sequence claim |
 | `SUBMITTED_SEQUENCES.md` | the deposit record, and what in it is **not** verified |
 | `DESIGN_CHOICES.md` | **why** these molecules: the arm structure, the selection, the flags, the negatives |
-| `structures/` | the representative predicted complex for three designs (`id85`, `id2015`, `id89`), plus the receptor model, with provenance |
+| `structures/` | all eleven novelty-passed designs in one predicted complex with the receptor (`.pdb` + a PyMOL `.pse` whose eleven designs toggle independently + a one-panel-per-design figure), the same twelve molecules as separate files in `structures/per_molecule/`, the single-design complexes for `id2015` and `id89`, and the receptor model, with provenance |
 | `methods/` | the pipeline, every metric defined, every threshold traced, every script described, every input listed |
 | `scripts/` | the code that produced and ranked the designs |
 | `ideas_that_didnt_work.txt` | what we tried that failed, with the measurement — including things that worked mechanically and were retracted on their meaning |

@@ -1,8 +1,11 @@
 # Sequence-half novelty measurement — Adaptyv/Proteinbase Level-3 gate
 **Measured 2026-10-06, on local CPU.**
 
-The structural half is already measured by us: every one of the 16 designs has **at least
-moderate** structural similarity to a known protein. So the Proteinbase level turns entirely
+The structural half is already measured by us: every one of the **16 queries** has **at least
+moderate** structural similarity to a known protein. ⛔ **"16" here counts QUERIES, not submitted
+designs** — it is the 12-design verdict cohort plus 4 additional candidates, so it is neither the
+submitted set nor the 12. The word "designs" was used loosely in an earlier draft and is corrected
+throughout this file to "queries". So the Proteinbase level turns entirely
 on one number per design:
 
 | sequence similarity | + moderate structure | level | gate (>= 3) |
@@ -10,10 +13,24 @@ on one number per design:
 | <= 30% | moderate | **3** | PASS |
 | > 30% | moderate | **2** | FAIL |
 
-## ⇒ THE ANSWER — the 9 PASS_L3* designs
+## ⇒ THE ANSWER — the 9 **novelty-screened site-A candidates** (the "PASS_L3*" set)
 
-**All 9 are BELOW the 30% threshold and all 9 still pass the Level-3 gate on the sequence
-axis.** None of them has a single statistically significant hit in Swiss-Prot or the PDB, by
+⛔ **This nine is NOT the same nine site-A designs that were submitted.** The two sets differ by
+exactly one member and are easy to confuse, because both are naturally described as "nine site-A
+designs". Enumerated here so no reader has to infer which is meant:
+
+| set | members |
+|---|---|
+| **PASS_L3\* set** — what this table screens | `id2015` `id3017` `id3020` `id3035` `id3036` `id89` `id2046` **`cand-siteA-id2`** `id86` |
+| **submitted site-A nine** — what was actually sent | `id2015` `id3017` `id3020` `id3035` `id3036` `id89` `id2046` **`id2048`** `id86` |
+
+⇒ `cand-siteA-id2` was screened here but **never submitted**; `id2048` **was** submitted but is
+not in this table. ⛔ **A claim that "the nine site-A designs passed" is therefore true of the
+screening cohort and NOT of the submitted set.** Wherever this document says "the 9", it means the
+PASS_L3* set above.
+
+**All 9 of the PASS_L3\* set are BELOW the 30% threshold and all 9 still pass the Level-3 gate on
+the sequence axis.** None of them has a single statistically significant hit in Swiss-Prot or the PDB, by
 either of two independent search tools, at any sensitivity we could push.
 
 | design | struct_tier | significant hits (MMseqs2 SP/PDB, phmmer) | max GLOBAL id among significant hits | sequence axis |
@@ -337,7 +354,7 @@ identity. E-values run 0.6 to 2.4e4.
 
 This matters only if Proteinbase applies **no** E-value threshold. No sane pipeline does, and
 MMseqs2's own default is 1e-3 — six to seven orders of magnitude tighter than these hits. But
-it is the honest worst case and it is the reason I will not describe the margin as comfortable.
+it is the honest worst case and it is the reason the margin is not described here as comfortable.
 The single most significant of these is `egfr-siteA-id89` at **33.3% global vs `A4SPN7`
 (CmoA)**, phmmer full E = **0.61**, domE = 1.6 — still insignificant, but closer to the line
 than anything else in the cohort.
@@ -401,9 +418,9 @@ stakes are low — but the `_both` half of its tag is not reproduced here.
   uncertainty. On our numbers the PASS designs land at 25.3% (best significant-tier hit),
   30.7% (Caveat 1), or up to 40.0% (no filter at all) — the convention is worth up to ~15
   points and the gate is at 30.
-- **What "moderate" vs "high" structural similarity means numerically** to Proteinbase. I took
-  the brief's statement that all 16 have at least moderate structure as given and did not
-  re-derive it.
+- **What "moderate" vs "high" structural similarity means numerically** to Proteinbase. The
+  brief's statement that all 16 queries have at least moderate structure was taken as given and
+  not re-derived.
 - Whether Proteinbase deduplicates near-identical submissions (Caveat 3) or scores each
   independently.
 
@@ -411,7 +428,7 @@ stakes are low — but the `_both` half of its tag is not reproduced here.
 
 ## 6. Limitations — databases searched vs not searched
 
-Proteinbase runs MMseqs2 against **five** databases. I reproduced two.
+Proteinbase runs MMseqs2 against **five** databases. Two were reproduced here.
 
 | database | searched? | notes |
 |---|---|---|
@@ -424,7 +441,7 @@ Proteinbase runs MMseqs2 against **five** databases. I reproduced two.
 **Direction of the bias: every number in this report is a LOWER bound on the maximum identity
 Proteinbase will find, and therefore an UPPER bound on novelty.** Adding databases can only
 raise the maximum identity, never lower it. A design that passes here could still fail on a
-database I did not search; a design that fails here cannot be rescued by one.
+database not searched here; a design that fails here cannot be rescued by one.
 
 Assessment of the residual risk from the three unsearched databases:
 
@@ -435,9 +452,9 @@ Assessment of the residual risk from the three unsearched databases:
 - **Patent sequences are the real unsearched risk.** Patent corpora are large, redundant, and
   contain a great many *designed* and engineered proteins — including scaffold patents covering
   consensus TPRs, DARPins and designed helical repeat proteins. Given that our nearest
-  neighbours in the two databases I *did* search are already other people's designed proteins
-  (CTPR, DHR, DARPin, "de novo designed protein K12"), the patent set is where I would expect
-  an additional hit to come from. I cannot bound it from here.
+  neighbours in the two databases that *were* searched are already other people's designed
+  proteins (CTPR, DHR, DARPin, "de novo designed protein K12"), the patent set is where an
+  additional hit would be most likely. It cannot be bounded from this work.
 - Also not searched: **TrEMBL** (unreviewed UniProt). Proteinbase specifies Swiss-Prot, so this
   is a match to their stated method rather than a gap — but it means a design could have a
   close unreviewed relative that neither they nor we would see.

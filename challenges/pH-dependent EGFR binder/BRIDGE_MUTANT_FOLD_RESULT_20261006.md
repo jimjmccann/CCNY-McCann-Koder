@@ -64,7 +64,7 @@ route to Level 3 or 4 for a molecule whose fold is a known one.
 
 ## 4. What this means
 
-- **The nine site-A designs need none of this.** They are Level 3 on both halves already: structure
+- **The nine submitted site-A designs need none of this.** They are Level 3 on both halves already: structure
   moderate rather than high, and sequence clear — see `SEQUENCE_NOVELTY_SWISSPROT_20261006.md`, which
   reports zero significant hits in Swiss-Prot or the PDB.
   - **The range "TM 0.62–0.76" is retracted, corrected on the monomer fold.** It is supported by
@@ -73,7 +73,8 @@ route to Level 3 or 4 for a molecule whose fold is a known one.
     monomer medians span **0.574–0.713**. See `NOVELTY_CORRECTION_MONOMER_20261006.md`. The
     **conclusion** that the designs are moderate rather than high survives; only the range used to
     state it was never measured.
-- **The three bridges are Level 2 both before and after mutation.** Before, they failed both halves
+- **The three bridges (`egfr-bridge-id85`, `egfr-bridge-id1104`, `egfr-bridge-id47`) are Level 2
+  both before and after mutation.** Before, they failed both halves
   (`id85` against `1na0_A`, CTPR3, at E = 4.4e-33); after, they fail only the structural half. That is
   a real improvement in the honest description of the molecule, and it is **not** a level change.
 - The mutants are worth keeping as designs regardless: a bridge at 19–30% identity to the CTPR series

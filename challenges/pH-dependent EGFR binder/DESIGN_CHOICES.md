@@ -2,7 +2,10 @@
 
 ⛔⛔ **READ `SEQUENCE_SET_CORRECTION_20261006.md` FIRST.** Where this file speaks of **four**
 deposited sequences including `id15` — §5, and the closing summary — it describes the set as it
-stood earlier on 2026-10-06. **Ten** were submitted, `id15` was **deliberately dropped** and
+stood earlier on 2026-10-06. The 2026-10-06 file held **ten** (16 were finally submitted, 11 passing novelty); `id15` was **deliberately dropped** and
+⛔ **its sequence and structure are not deposited anywhere in this repository** — every mention of
+`id15` below is a record of a design that was considered and rejected, not of a deposited one —
+and
 `id86` added. The reasoning in those sections is unchanged and still the reasoning behind the
 submitted set; only the count and the membership moved.
 
@@ -180,7 +183,7 @@ They are **one molecule with point mutations**. Nothing separates them because
 | added | minimum Hamming distance to the set so far |
 |---|---|
 | `id2015` | — (seed; highest site-A deep label, **0.857** over 70 draws) |
-| ⭐ `id15` | **25 / 75** |
+| ⭐ `id15` (⛔ not deposited — see the banner) | **25 / 75** |
 | ⭐ `id89` | **17 / 75** |
 | next candidate | ⛔ **4 / 75** — diversity is exhausted after three |
 
@@ -222,7 +225,7 @@ why the deposit is three site-A molecules and not a seventh cycle.
 
 ## 5. The four deposited sequences, with the flags on two of them
 
-⛔ **SUPERSEDED, 2026-10-06.** Ten sequences were submitted, not four. `id15`, ranked 3 below, was **deliberately
+⛔ **SUPERSEDED, 2026-10-06.** The set grew past the four below — the 2026-10-06 file held ten, and **16 were finally submitted, 11 passing novelty** (`SEQUENCE_SET_CORRECTION_20261006.md`). `id15`, ranked 3 below, was **deliberately
 dropped** before submission, and `id86` was added. See
 `SEQUENCE_SET_CORRECTION_20261006.md`, which is authoritative and gives the submitted ten in
 order. The per-design reasoning and the flags below are unchanged and are why the surviving

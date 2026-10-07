@@ -8,6 +8,10 @@ scrambling can only fix ONE of the two halves of the novelty criterion, and it i
 is worst.**
 
 ## 1. ✅ THE DIAGNOSIS IS CONFIRMED, AND LOCALISED TO TWO REPEATS
+⛔ **Observed, script not deposited.** The self-identity scan below was run in the lab's own working
+repository; neither it nor `accidental_ctpr_homology.txt`'s scan is part of this archive. The
+finding is real and is ours — it is simply **not reproducible from this repository**.
+
 Self-identity scan over periods 20-60 aa on each 145 aa bridge ⇒ **best period 34 aa at 82-85%**.
 34 aa is exactly the TPR repeat length. Splitting at 34:
 
@@ -21,7 +25,7 @@ Self-identity scan over periods 20-60 aa on each 145 aa bridge ⇒ **best period
 (r2, r3), which are 76-82% identical to each other.** r1 and r4 are the N/C caps and are already
 divergent (9% to each other). ⇒ **the scrambling target is r2 and r3, ~68 of 145 residues.**
 For contrast `egfr-siteA-id2015` (75 aa, site A) has **no internal repeat** — best period 21 aa at
-23.8%. ⇒ **this is a bridge-only problem.** The nine site-A rows are unaffected.
+23.8%. ⇒ **this is a bridge-only problem.** The nine **submitted** site-A rows are unaffected.
 
 ## 2. THE NEAREST NEIGHBOURS ARE OTHER PEOPLE'S *DESIGNED* CTPRs — titles from the PDB itself
 Not a guess from the motif this time; fetched per entry.
@@ -77,8 +81,8 @@ cleanly, and the organizers synthesise what we submit. ⇒ worth knowing, wrong 
 
 ### (d) Negative / multistate design. Standard framing (*"design against competing alternatives"*),
 and there is a 2025 result on *fold reproducibility in computational design of proteins
-non-homologous to wild-type sequences* — i.e. low-identity redesign can keep the fold. I could not
-read that paper's numbers (PubMed returned only a cookie page), so I am not quoting a threshold.
+non-homologous to wild-type sequences* — i.e. low-identity redesign can keep the fold. That
+paper's numbers were not retrievable, so no threshold is quoted from it.
 
 ## 4. THE CEILING, AND IT IS THE WHOLE ANSWER: SEQUENCE NOVELTY ≠ STRUCTURAL NOVELTY
 Level 4 requires **BOTH** halves: identity ≤30% **AND** less than moderate structural similarity.
@@ -94,7 +98,7 @@ with structural refinement *"could create novel protein sequences but the struct
 generally close to PDB structures (average TM-score = 0.78)"* — **sequence novelty does not translate
 to structural novelty.** Ours is 0.97, far worse than that example.
 ⇒ **Scrambling moves the bridges from "fails BOTH halves" to "fails ONE half" — i.e. into the same
-class as the nine site-A binders. It does NOT make the bridge de novo.** Whether that is worth
+class as the nine submitted site-A binders. It does NOT make the bridge de novo.** Whether that is worth
 anything depends entirely on whether levels 2-3 are graded, which this repo does not know (⇒
 `NOVELTY_MEASURED_20261006.md` §5.1). **The only fix for the structural half is a NON-REPEAT bridge
 backbone**, which is a design job, not a sequence job.
@@ -132,6 +136,6 @@ at 27.5% and 29.5%.
 - Repeat sequence space / ~25% inter-module identity: arXiv 1905.04493; Structure `S0969-2126(15)00369-X`
 - ProteinMPNN temperature/diversity: Dauparas et al., Science 2022
 - Sequence novelty ≠ structural novelty (avg TM 0.78): PNAS `10.1073/pnas.2208275120`
-- Non-homologous redesign keeping the fold: PubMed 40432486 (abstract NOT read — cookie wall)
+- Non-homologous redesign keeping the fold: PubMed 40432486 (abstract NOT read — not retrievable)
 - PDB titles: RCSB entries 7obi, 2avp, 1na3, 2wqh, 3kd7, 2hyz, 5a01, 5hgv
 

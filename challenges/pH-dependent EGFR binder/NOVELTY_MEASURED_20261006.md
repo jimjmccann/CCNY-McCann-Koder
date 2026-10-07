@@ -83,7 +83,8 @@ those entries were not independently confirmed.
 for a TPR backbone, so a sequence designer run on a repeat backbone converges toward it. It remains a
 novelty liability, and it is measured rather than inferred.
 
-All three bridges share the backbone `arm_shard11_shard11_41_model_5` — **one scaffold, one novelty
+All three bridges (`egfr-bridge-id85`, `egfr-bridge-id1104`, `egfr-bridge-id47`) share the backbone
+`arm_shard11_shard11_41_model_5` — **one scaffold, one novelty
 verdict.** Adding bridge molecules cannot diversify away from it.
 
 ## 4. Four further candidates, where the binding-evidence ordering inverts on novelty

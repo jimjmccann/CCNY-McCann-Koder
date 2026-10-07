@@ -1,7 +1,30 @@
-# ⛔⛔ Which sequences were submitted — and how that set changed on 2026-10-06
+# ⛔⛔ Which sequences were submitted — and how that set changed
 
-Read this before any other sequence claim in this directory. **Ten** sequences were submitted,
-not four, and one sequence that appears in earlier files was **deliberately dropped**.
+Read this before any other sequence claim in this directory.
+
+**Where this stands: we submitted designs, some did not pass the competition's novelty filter, and
+we are waiting for results.**
+
+⛔ **The final submission was 16 sequences, of which 11 passed the novelty filter.**
+⭐ **Both files are deposited here**, so every count in this document is checkable:
+
+| file | n | what it is |
+|---|---|---|
+| **`submission_challenge1_SUBMITTED_20261007.csv`** | **16** | ⭐ **the file actually submitted**, byte-for-byte (md5 `a2bd128ab18dc69a80495a997470657a`) |
+| **`submission_challenge1_NOVELTY_PASSED_20261007.csv`** | **11** | the subset that passed the competition's novelty filter |
+| `submission_challenge1_20261006.csv` | 10 | ⛔ **superseded.** The file prepared on 2026-10-06, an earlier state of the set — kept as the record of that day |
+| `submitted_sequences.fasta` | 10 | generated from the 10-row file above, and therefore also superseded |
+
+The set changed between 2026-10-06 and submission on 2026-10-07.
+
+| set | n | members |
+|---|---|---|
+| **submitted** | **16** | the 11 below, plus `egfr-bridge-id85`, `egfr-bridge-id1104`, `egfr-bridge-id47`, `egfr-bridge-id85-mutB`, `egfr-siteA-id19sh09` |
+| **passed novelty** | **11** | `egfr-siteA-id2015` `id86` `id89` `id3035` `id3036` `id2046` `id3020` `id2048` `id3017` `id2` `id73` |
+| **did not pass** | **5** | all four bridges and `egfr-siteA-id19sh09` |
+
+The 2026-10-06 ten-sequence file described below was a different, earlier set, and one sequence
+that appears in earlier files than that was **deliberately dropped**.
 
 ## The submitted set
 
@@ -65,8 +88,9 @@ because it exists only in that arm's input file and was not re-parsed.
 
 ## What this means for the structures
 
-`structures/` holds a representative predicted complex for **three** of the ten — `id85`,
-`id2015` and `id89`. ⛔ **There is no deposited structure for
-`id86` or for ranks 5–10.** `structures/STRUCTURES.md` says exactly which prediction each
-file is and how it was chosen. Do not read the absence of a structure as a
-statement about a sequence.
+`structures/` holds one combined predicted complex containing **every** design that passed the
+organisers' novelty check, each as its own chain, against the receptor — plus
+single-design complexes for `id2015` and `id89`. `structures/STRUCTURES.md` says exactly which
+prediction each chain and each file is, and how each frame was chosen. ⛔ Designs that did **not**
+pass novelty, the bridge `id85` among them, have no deposited structure; do not read the absence of
+a structure as a statement about a sequence.

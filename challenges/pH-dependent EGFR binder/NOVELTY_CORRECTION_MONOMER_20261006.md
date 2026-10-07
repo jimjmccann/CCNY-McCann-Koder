@@ -16,6 +16,11 @@ measured the one that is actually evaluated.
 
 So we folded all eleven single-site molecules alone and re-ran the structural search.
 
+⚠️ **Nine and eleven are both right and they count different things.** The **nine** are the site-A
+designs in the 2026-10-06 submission file; the **eleven** are the single-site molecules folded here,
+which add two candidates that were not in that file. ⇒ Wherever this document says "eleven", it
+means the folded set, not the submitted set.
+
 ## 2. What we measured
 
 Eleven molecules x 3 seeds x 21 samples = **693 predicted monomer structures**, all 693 accounted
@@ -81,7 +86,8 @@ had been compared against the wrong reference, and nothing in the earlier run lo
   homology described in `accidental_ctpr_homology.txt` stands exactly as written.
 - **The `high_struct` flags in `data/novelty_20261006/verdict_submitted12.json` are not edited.**
   That file is a raw output of the complex-derived run and is kept as produced. Four of its entries
-  carry `"high_struct": true`: `egfr-siteA-id2015` and the three bridges. **The `id2015` flag is
+  carry `"high_struct": true`: `egfr-siteA-id2015` and the three bridges (`egfr-bridge-id85`,
+  `egfr-bridge-id1104`, `egfr-bridge-id47`). **The `id2015` flag is
   the one corrected here. The three bridge flags stand.** See
   `data/novelty_20261006/VERDICT_SUBMITTED12_CORRECTION_20261006.md`.
 

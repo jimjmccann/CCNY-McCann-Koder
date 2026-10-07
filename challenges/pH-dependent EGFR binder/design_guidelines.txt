@@ -476,7 +476,7 @@ F11. PIN WHAT MUST NOT MOVE, AND FIND IT PER STRUCTURE.
      chain, so the model sees the interface it is designing against.
 
 F12. DO NOT IMPORT A SCREEN FROM A DIFFERENT PROBLEM.
-     A sphericity screen was built for a project that needed a globular protein
+     A sphericity screen was built for a problem that needed a globular protein
      to hold a cofactor in an interior. A binder has the opposite requirement: it
      must present a complementary face. A highly spherical binder is if anything
      worse — it minimises contact area per residue. The rest of that project's
@@ -611,7 +611,7 @@ H3. SPEND BOUNDS ARE ARBITRARY; RE-DERIVE THEM, DO NOT INHERIT THEM. One
 H4. REAP WHAT YOU LAUNCH, AND TREAT IT AS PART OF THE COST MODEL.
     Rented workers do not stop themselves: on finish the container re-runs its
     start command, fails, and restart-loops at full rate. Measured incidents
-    here: ~8 workers idle 4.9 h; five left running past a deadline; five that ran
+    here: a batch of workers left idle for hours; five left running past a deadline; five that ran
     ~9.7 h on a 71-minute job after already writing a fatal error.
     => Pair every launch with a verifying terminator armed BEFORE you look away,
     and verify the terminator is alive with a check that cannot match itself —

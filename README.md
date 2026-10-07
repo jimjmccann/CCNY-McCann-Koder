@@ -5,11 +5,23 @@ the [Anthropic × Adaptyv 2026 Protein Design Competition](https://proteinbase.c
 
 This repository holds the designs, the reasoning behind them, and the code used to produce them.
 
+![The eleven novelty-passed designs, one per panel, each shown against the EGFR ectodomain in a shared orientation. Site A is marked in red and site B in blue.](challenges/pH-dependent%20EGFR%20binder/structures/CCNY_challenge1_grid_20261007.png)
+
+*The eleven deposited designs, one per panel, each bound to the same EGFR ectodomain model in a
+shared camera orientation. Red marks the site-A footprint, blue the site-B footprint. Every
+coordinate shown is predicted, not measured.*
+
 ## Status
 
-Challenge 1 is deposited: the submitted sequences, the submission file itself, four predicted
-complexes, the full method, the scripts that produced and ranked the designs, and a written record of
-what the designs do **not** address.
+Challenge 1 has been submitted — some designs did not pass the competition's novelty filter, and we
+are waiting for results. **16 sequences were submitted and 11 passed novelty**
+(`challenges/pH-dependent EGFR binder/SEQUENCE_SET_CORRECTION_20261006.md` enumerates every set).
+
+Deposited here: the sequence files, the submission file itself, a combined
+structure file holding all eleven novelty-passed designs against the receptor, with a per-design
+figure (plus
+two single-design complexes and the receptor model), the full method, the scripts that produced and
+ranked the designs, and a written record of what the designs do **not** address.
 
 Start at `challenges/pH-dependent EGFR binder/README.md`, which states the limitations before
 anything else. `challenges/pH-dependent EGFR binder/SEQUENCE_SET_CORRECTION_20261006.md` is

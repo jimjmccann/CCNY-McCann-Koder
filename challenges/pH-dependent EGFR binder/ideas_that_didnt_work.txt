@@ -1,5 +1,5 @@
 IDEAS THAT DIDN'T WORK
-Things we tried on the de novo EGFR binder campaign (2026-09-28 .. 2026-10-06)
+Things we tried on the de novo EGFR binder campaign (design work 2026-09-28 .. 2026-10-06)
 that did not work, and why.
 James McCann and the Koder Group, The City College of New York.
 
@@ -235,10 +235,10 @@ p=0.0055 raw; 0.676, p=0.0157 after regressing out engagement).
 LESSON: never optimise a metric that correlates with a variable you choose.
 Regress the design-time variable out first, or keep the metric as a rank.
 
-RELATED, same failure class, from another project in this lab: a design loss that
-optimised POSE and contained no affinity term at all, and a confidence term that
-turned out to be a reward channel for low-confidence poses (non-zero only in the
-least-confident 0.3% of designs) and was dropped.
+RELATED, same failure class, seen before: a design loss that optimised POSE and
+contained no affinity term at all, and a confidence term that turned out to be a
+reward channel for low-confidence poses (non-zero only in the least-confident
+0.3% of designs) and was dropped.
 
 
 =====================================================================
@@ -485,12 +485,12 @@ bridge after this.
 
 
 =====================================================================
-16. IMPORTING A SPHERICITY SCREEN FROM ANOTHER PROJECT. Wrong metric for
-    the problem.
+16. IMPORTING A SPHERICITY SCREEN BUILT FOR A DIFFERENT PROBLEM. Wrong metric
+    for this one.
 =====================================================================
 TRIED: reuse an existing shape-triage screen that ranks designs by sphericity.
 
-WHY IT IS WRONG: that screen was built for a project needing a GLOBULAR protein
+WHY IT IS WRONG: that screen was built for a problem needing a GLOBULAR protein
 to hold a cofactor in an interior. A binder has the opposite requirement — it
 must present a complementary face to a flat epitope. A highly spherical binder is
 if anything worse: it minimises contact area per residue.
@@ -744,7 +744,7 @@ WHAT HAPPENS: our workers do not self-terminate. On finish the container re-runs
 its start command, the second run refuses, and it restart-loops at full billing
 rate.
 
-MEASURED INCIDENTS: ~8 workers idle 4.9 h with no terminator armed; five left
+MEASURED INCIDENTS: a batch of workers left idle for hours with no terminator armed; five left
 billing past a deadline; failed optimizer workers billing until caught by hand;
 five that ran ~9.7 h on a 71-minute job after already writing a fatal error.
 

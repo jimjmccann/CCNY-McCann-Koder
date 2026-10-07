@@ -1,15 +1,20 @@
 # Deposited sequences — the record
 
 ⛔⛔ **READ `SEQUENCE_SET_CORRECTION_20261006.md` FIRST.** This file's tables and counts describe
-the **four**-sequence set as it stood earlier on 2026-10-06. **Ten** sequences were submitted;
-`id15`, which appears below, was **deliberately dropped**, and `id86` was added. Nothing below is
-deleted — it is the record of how the set stood — but the correction file is the authority.
+the **four**-sequence set as it stood earlier on 2026-10-06. `id15`, which appears below, was
+**deliberately dropped**, and `id86` was added. Nothing below is deleted — it is the record of how
+the set stood — but the correction file is the authority.
+
+⛔ **The final submission was 16 sequences, 11 of which passed the novelty filter.** Neither the
+four below nor the ten in `submission_challenge1_20261006.csv` is that set; both are earlier states
+of it. ⇒ `SEQUENCE_SET_CORRECTION_20261006.md` enumerates all three.
 
 James McCann and the Koder Group, The City College of New York. **2026-10-06.**
 
 Four sequences, two backbones, against the **monomeric tethered EGFR extracellular
-region**. ⛔ Superseded: see the banner above. The deposited sequence file is
-`submitted_sequences.fasta` and holds **ten**.
+region**. ⛔ Superseded: see the banner above. The deposited sequence file
+`submitted_sequences.fasta` holds the **ten** of the 2026-10-06 file — not the 16 finally
+submitted.
 
 Why the sequences are these: **`DESIGN_CHOICES.md`**.
 How they were made: **`methods/README.md`** (pipeline), `methods/OBJECTIVES.md`
@@ -91,7 +96,7 @@ argument in `DESIGN_CHOICES.md` §4.
 2. ⛔ **Two novelty checks HAVE been run, and their headline is the opposite of what an
    earlier version of this item implied.**
    - **Sequence half:** MMseqs2 and phmmer, independently, against Swiss-Prot 2026_03
-     and PDB seqres. The nine site-A designs returned **zero statistically significant
+     and PDB seqres. The nine **submitted** site-A designs returned **zero statistically significant
      hits** by either tool.
    - **Structural half:** a foldseek search against a local PDB structure set, first on
      a chain extracted from a predicted complex and then re-measured on 693 predicted

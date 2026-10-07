@@ -591,9 +591,18 @@ exhaustively with the model ensemble. No genetic algorithm, so the ranking is
 measured the surrogate out.
 
 ⚠️ **Packaging problem, flagged not fixed:** it inserts a path and imports a
-module belonging to a **different, unrelated campaign**. Everything is imported
-rather than retyped, so drift shows up as a diff — but publishing this script
-means publishing that module too, or stubbing the import.
+module that is not part of this deposit. Everything is imported rather than
+retyped, so drift shows up as a diff — but publishing this script means
+publishing that module too, or stubbing the import.
+
+---
+
+⚠️ **Worker-absolute paths.** Several scripts here hard-code `/workspace/msa/target.a3m`
+(`build_ecto621_bundle.py`, `build_ecto621_yamls.py`, `build_yamls_from_skeleton.py`). That path is
+the layout **inside the compute worker's container**, not a path on any local machine, and the
+bundle builder asserts on it deliberately so a YAML that would not resolve on the worker fails
+early. ⇒ An outside reader re-running these must substitute their own worker path; the scripts are
+deposited as they ran, not rewritten to be portable.
 
 ---
 

@@ -2,8 +2,11 @@
 
 Site-A EGFR binder campaign. Companion to `README.md` and `SCRIPTS.md`.
 
-⛔ **None of the data files below are in the code tree.** They live on a local
-bulk volume. This file says exactly what each one is, which stage consumes it,
+⛔ **None of the data files below are deposited in this repository.** They live on
+a local bulk volume in the lab. ⚠️ **"the code tree" below always means the lab's own
+working repository, NOT this deposit** — a file described as "mirrored in the code tree"
+is mirrored *there*, and is still **not present here**. Nothing in this section is
+retrievable from this archive. This file says exactly what each one is, which stage consumes it,
 whether it is site-specific, and what an outside reader has to substitute. Sizes
 and record counts were **MEASURED on 2026-10-05** so a substitute can be
 sanity-checked against them.
@@ -79,20 +82,22 @@ Counting it inflates every statistic, and the QC script skips it deliberately.
 
 | table | MEASURED size | note |
 |---|---|---|
-| `training_c1.csv` | 11,942 B | mirrored in the code tree |
-| `training_c2.csv` | 17,895 B | mirrored in the code tree |
+| `training_c1.csv` | 11,942 B | mirrored in the lab repository; ⛔ not deposited here |
+| `training_c2.csv` | 17,895 B | mirrored in the lab repository; ⛔ not deposited here |
 | `training_c3.csv` | 23,889 B | ⛔ **bulk volume only** |
 | `training_c4.csv` | 28,435 B | 240 sequences |
 | `training_c5.csv` | 30,575 B | 258 sequences, newest at the time of writing |
 | `cycle90_map.csv` | 516 B | the first replicate round's map, `replicate_id → source_id` plus prior values |
 
-⭐ **What IS in the code tree**, so the trail is followable without the bulk
-volume: cycles 0–2 — `cycle0/1/2.tsv`, `cycle1/2_map.csv`, `contacts_c0/c1.csv`,
+⭐ **What IS in the lab's working repository** (⛔ **not in this deposit** — listed so an
+outside reader knows the trail exists and what to ask for, not so they can open it here):
+cycles 0–2 — `cycle0/1/2.tsv`, `cycle1/2_map.csv`, `contacts_c0/c1.csv`,
 `sc_c0/c1.csv`, `training_c1/c2.csv`, `parent_c1/c2.txt`, the proposal CSVs — plus
 the burn-in and single-backbone scoring tables.
 
 ⛔ **Cycle 3 onward and the replicate rounds exist only on the bulk volume.** That
-is the reproducibility gap in the data, not in the code.
+is the reproducibility gap in the data, not in the code. ⛔ **Restated plainly for an
+outside reader: none of the tables in this section ship with this archive.**
 
 ---
 

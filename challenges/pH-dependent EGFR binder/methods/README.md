@@ -1,7 +1,8 @@
 # De novo EGFR binder — method, in reader order
 
 James McCann and the Koder Group, The City College of New York.
-Site-A binder campaign, 2026-09-28 .. 2026-10-05.
+Site-A binder campaign, design work **2026-09-28 .. 2026-10-06** (see the date note in
+`../README.md`).
 
 This directory holds the documentation needed to reproduce the **design criteria** —
 what we optimised, what the numbers mean, where every threshold came from, and in
@@ -168,6 +169,12 @@ Scripts: `setup_rfd3_sphere_campaign.py` (campaign + arm JSONs),
 ## 4. Stage 3 — sequence design (SolubleMPNN)
 
 Model: **SolubleMPNN, checkpoint `solublempnn_v_48_020.pt`**.
+
+⭐ **On the two names, because the deposit uses both and they are not a contradiction:**
+**SolubleMPNN is the MODEL** — the weights in `solublempnn_v_48_020.pt`, trained to avoid the
+surface hydrophobics that a membrane-protein-containing training set otherwise encourages.
+**LigandMPNN is the CODEBASE** those weights are run through. So a command line that invokes
+LigandMPNN while loading a SolubleMPNN checkpoint is doing exactly one thing, not two.
 
 Three flags, each closing a measured hole:
 
@@ -450,4 +457,7 @@ stripped because they are the **provenance of a threshold**, and a threshold wit
 removed reads as an arbitrary constant. ⇒ Read `decisions/NNNN` as "this value was settled
 deliberately, on a stated date, and the record exists" — and read `THRESHOLDS.md`, which traces
 every constant that governs a result and says so explicitly where a number could not be traced.
-The same applies to the handful of `[[slug]]`-style references: those were an internal note index.
+⛔ **Corrected:** an earlier draft of this paragraph said the same applied to "the handful of
+`[[slug]]`-style references". **No such references remain in this deposit** — they were an internal
+note index and were removed during the public-release pass. This sentence is kept only so a reader
+who saw the earlier text knows they are gone, not missing.
