@@ -1,0 +1,49 @@
+# ⛔ This repo is PUBLIC. Default to excluding; add deliberately.
+
+# --- credentials and secrets (belt and braces; these should never be in the tree) ---
+*.key
+*.pem
+*_env
+.env
+.env.*
+*credentials*
+*secret*
+*token*
+.lab_creds/
+
+# --- large / generated artefacts ---
+*.pdb.gz
+*.tar
+*.tar.gz
+*.zip
+*.npz
+*.pkl
+*.pt
+*.ckpt
+params/
+weights/
+trajectories/
+outputs/
+results_raw/
+
+# --- python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# --- editors / os ---
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# --- agent / local tooling state ---
+.claude/
+.state/
+*.log
+
+# --- editing backups (never deposit) ---
+*.pre-*

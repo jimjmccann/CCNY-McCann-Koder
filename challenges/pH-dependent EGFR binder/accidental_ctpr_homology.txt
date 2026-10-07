@@ -1,0 +1,141 @@
+HOW WE FOUND OUT, BY ACCIDENT, THAT OUR DE NOVO BRIDGE DESIGNS ARE
+CONSENSUS TETRATRICOPEPTIDE REPEAT PROTEINS
+
+McCann and Koder groups, The City College of New York
+Lab note, 2026-10-06 (NYC local). Measured on a local CPU.
+
+
+WHAT WE WERE DOING
+
+For challenge 1 we designed de novo binders to the human EGFR extracellular
+region. Most of them are 75-80 aa single-site binders. Three of them -- we call
+them "bridges", ids 85, 1104 and 47 -- are 145 aa and were built to span two
+separate epitopes on the receptor at once. They came out of the ordinary
+pipeline: a backbone generator run against the receptor surface, then a neural
+sequence designer (SolubleMPNN) on the resulting backbone, then structure
+prediction to check the fold. No existing protein was used as a template, no
+sequence was copied, and no homolog of anything was searched for at design
+time. We did not know what they resembled because we never asked.
+
+Before submitting we ran the novelty check that the competition's annotation
+pipeline runs, because we wanted to know what label our own designs would come
+back with. That is the only reason we looked. The
+homology below is what the check returned.
+
+
+WHAT WE FOUND
+
+All three bridges are close structural and sequence relatives of the published
+consensus tetratricopeptide repeat (CTPR) proteins.
+
+  structure   TM-score 0.967-0.977 to the nearest known structure, over
+              0.77-0.81 of the design (foldseek, local PDB structure set)
+  sequence    59.0-64.2% local identity (foldseek, aligned region, query
+              coverage >= 0.50); 41-46% identity over the full query by
+              MMseqs2 against Swiss-Prot and PDB sequences
+
+The nearest neighbours, by both halves, are the CTPR series: 7OBI ("Consensus
+tetratricopeptide repeat protein type RV4"), 2AVP ("Crystal structure of an 8
+repeat consensus TPR superhelix"), 1NA0/1NA3 ("Design of Stable alpha-Helical
+Arrays from an Idealized TPR Motif"), 2WQH ("CTPR3Y3"), 3KD7 ("Designed TPR
+module (CTPR390)...") and 2HYZ. Titles are verbatim from the PDB entries. The
+single strongest sequence hit is id85 against 1na0_A at E = 4.4e-33.
+
+The point worth recording is what those neighbours are. They are not natural
+proteins that our designs happen to echo. They are themselves designed
+proteins -- their own PDB titles say "consensus", "designed" and "idealized" --
+built as biophysical model systems rather than as binders. 7OBI's primary
+citation is Synakewicz et al., ACS Nano 2022, on the mechanics of
+repeat-protein nanosprings. So the nearest neighbour of our de novo design is
+somebody else's de novo design. (One natural protein does appear in the list:
+5A01, the TPR superhelix domain of O-GlcNAc transferase.)
+
+
+WHY WE THINK IT HAPPENED -- A HYPOTHESIS, NOT A RESULT
+
+The bridges contain an internal repeat. A self-identity scan over periods of
+20-60 aa finds the best period at 34 residues at 82-85% self-identity; 34
+residues is exactly the TPR period. Split at 34, the two internal repeats are
+76-82% identical to each other, while the N- and C-terminal caps are already
+divergent (9% to each other). The canonical CTPR consensus is
+AEAWYNLGNAYYKQGDYDEAIEYYQKALELDP; our internal repeats carry
+A.AGKYEEAIEYY.KAIELDPNN, and the AIEYY.KA.ELDP core is near-identical.
+
+Our reading -- and we state it as a hypothesis, because we have not tested it
+-- is that the consensus TPR sequence is close to the optimum a sequence
+designer finds for a TPR-like backbone. Given a repeat backbone, the designer
+appears to have converged on the published consensus independently rather than
+retrieved it from anywhere. That is consistent with why the CTPR series exists
+at all: consensus design is used precisely because the consensus is the
+stability optimum of that fold.
+
+We have not shown this. An alternative we cannot exclude from here is that the
+backbone generator itself produced a TPR-like backbone because TPRs are well
+represented in its training data, in which case the convergence happens one
+stage earlier than we are describing.
+
+
+THE FOLLOW-UP, WHICH IS THE PART WE THINK IS USEFUL TO OTHERS
+
+We then tried to move the sequence off the consensus without touching the
+binding surface. Using the same sequence designer with the reference residue
+explicitly forbidden at each chosen position, we redesigned 35-44 non-interface
+positions per bridge and refolded the mutants and their parents under identical
+settings, 3 seeds x 21 diffusion samples = 63 draws per molecule.
+
+  sequence identity   fell from 59-64% to 19-31%
+  interface residues  zero changed
+  fold                delta TM = +0.002 / -0.005 / -0.030
+                      all 189 mutant draws still at or above TM 0.80
+
+The sequence half moved by 30-45 points and the structural half did not move at
+all. Sequence novelty and structural novelty are separable properties here, and
+changing one of them did not change the other. We asked the designer to change
+the sequence while keeping the fold, and it did exactly that.
+
+This is a negative result for what we were trying to achieve -- the novelty
+classification is unchanged, because high structural similarity is on its own
+sufficient to cap it -- and it is a clean positive measurement of the
+separability. Anyone trying to make a repeat-scaffold design "more novel" by
+diversifying its sequence should expect the same outcome.
+
+
+SCOPE, AND WHAT THIS IS NOT
+
+- This affects the three 145 aa bridges only. The nine 75-80 aa single-site
+  designs have no internal repeat (best period 21 aa at 23.8% self-identity)
+  and returned zero statistically significant hits in Swiss-Prot or PDB
+  sequences by either of two independent search tools.
+
+- Nothing here is a binding measurement. No design in this repository has been
+  tested at the bench, and no number anywhere in it is an affinity.
+
+- Our searches covered the local PDB structure set, Swiss-Prot (release
+  2026_03, 575,748 sequences) and PDB sequences (1,103,516 protein chains). We
+  did not search patent sequences or antibody-specific databases. Additional
+  databases can only raise the maximum identity found, never lower it, so every
+  similarity figure above is a lower bound and every novelty figure an upper
+  bound.
+
+- We make no claim about what the competition's annotation will report. Its
+  identity convention, E-value threshold and domain-segmentation method are not
+  known to us, and on our own numbers the convention alone is worth up to about
+  15 percentage points.
+
+
+WHY WE ARE WRITING IT DOWN
+
+We found this while doing due diligence on our own submission, not while
+looking for homologs, and it would have been easy not to find at all: nothing
+in the design or the fold check flags it, and the designs look novel right up
+until somebody searches. Anyone running a backbone generator plus a neural
+sequence designer on a repeat-like or symmetric backbone can land on a
+published consensus sequence without any step of their pipeline reading that
+sequence. It is worth searching before submitting, publishing or filing, and it
+is worth searching the de novo design literature specifically -- our designs
+are novel against nature and markedly less novel against other people's
+designs. As structure databases keep accumulating deposited designed proteins,
+that margin should be expected to erode.
+
+Supporting measurements, scripts and raw hit tables are in this directory:
+NOVELTY_20261006.md is the index.

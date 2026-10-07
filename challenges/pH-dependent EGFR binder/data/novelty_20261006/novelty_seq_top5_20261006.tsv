@@ -1,0 +1,161 @@
+db	query	rank	local_id_pct	global_id_pct	nident	alnlen	qlen	qcov_pct	evalue	bits	target	protein_name
+swissprot	cand-siteA-id19-sh09	1	50.0	18.7	14	28	75	37.3	2.61	30	Q58743	Uncharacterized protein MJ1348
+swissprot	cand-siteA-id19-sh09	2	48.1	17.3	13	27	75	36.0	33.5	27	Q9USI5	Heat shock protein sti1 homolog
+swissprot	cand-siteA-id19-sh09	3	35.3	16.0	12	34	75	45.3	164	25	P15705	Heat shock protein STI1
+swissprot	cand-siteA-id19-sh09	4	48.1	17.3	13	27	75	36.0	310	24	P23231	Mitochondrial import receptor subunit tom70
+swissprot	cand-siteA-id19-sh09	5	62.5	13.3	10	16	75	21.3	310	24	P10505	Anaphase-promoting complex subunit 3
+swissprot	cand-bridge-id76	1	42.2	24.1	35	83	145	57.2	7.9e-12	66	P56558	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	cand-bridge-id76	2	42.2	24.1	35	83	145	57.2	7.9e-12	66	Q8CGY8	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	cand-bridge-id76	3	42.2	24.1	35	83	145	57.2	7.9e-12	66	Q27HV0	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	cand-bridge-id76	4	42.2	24.1	35	83	145	57.2	7.9e-12	66	P81436	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	cand-bridge-id76	5	42.2	24.1	35	83	145	57.2	7.9e-12	66	O15294	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id1104	1	43.4	31.7	46	106	145	73.1	5.34e-17	81	P56558	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id1104	2	43.4	31.7	46	106	145	73.1	5.34e-17	81	Q8CGY8	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id1104	3	43.4	31.7	46	106	145	73.1	5.34e-17	81	Q27HV0	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id1104	4	43.4	31.7	46	106	145	73.1	5.34e-17	81	P81436	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id1104	5	43.4	31.7	46	106	145	73.1	5.34e-17	81	O15294	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id47	1	39.0	28.3	41	105	145	72.4	1.48e-11	65	Q58208	TPR repeat-containing protein MJ0798
+swissprot	egfr-bridge-id47	2	37.5	26.9	39	104	145	71.7	2.76e-11	64	P56558	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id47	3	37.5	26.9	39	104	145	71.7	2.76e-11	64	Q8CGY8	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id47	4	37.5	26.9	39	104	145	71.7	2.76e-11	64	Q27HV0	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id47	5	37.5	26.9	39	104	145	71.7	2.76e-11	64	P81436	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id85	1	41.5	30.3	44	106	145	73.1	3.87e-14	73	P56558	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id85	2	41.5	30.3	44	106	145	73.1	3.87e-14	73	Q8CGY8	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id85	3	41.5	30.3	44	106	145	73.1	3.87e-14	73	Q27HV0	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id85	4	41.5	30.3	44	106	145	73.1	3.87e-14	73	P81436	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	egfr-bridge-id85	5	41.5	30.3	44	106	145	73.1	3.87e-14	73	O15294	UDP-N-acetylglucosamine--peptide N-acetylglucosaminyltransferase 110 kDa subunit
+swissprot	cand-siteA-id73	1	43.2	20.0	16	37	80	46.2	0.339	33	O32156	Uncharacterized ABC transporter extracellular-binding protein YurO
+swissprot	cand-siteA-id73	2	29.2	26.2	21	72	80	90.0	28.9	27	Q5UQ72	Putative replication factor C small subunit L510
+swissprot	cand-siteA-id73	3	40.7	13.8	11	27	80	33.8	102	25	P74745	Serine/threonine-protein kinase C
+swissprot	cand-siteA-id73	4	60.0	15.0	12	20	80	25.0	102	25	A3MV63	Glutamyl-tRNA(Gln) amidotransferase subunit E
+swissprot	cand-siteA-id73	5	34.5	25.0	20	58	80	72.5	140	25	O57880	Uncharacterized HTH-type transcriptional regulator PH0140
+swissprot	egfr-siteA-id2048	1	37.3	25.3	19	51	75	68.0	6.8	29	Q4QLP6	Magnesium transport protein CorA
+swissprot	egfr-siteA-id2048	2	37.3	25.3	19	51	75	68.0	6.8	29	P44998	Magnesium transport protein CorA
+swissprot	egfr-siteA-id2048	3	40.9	24.0	18	44	75	58.7	12.9	28	Q15NL2	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id2048	4	58.6	22.7	17	29	75	38.7	46	26	Q0ZQ41	CMP-5'-(3-aminopropyl)phosphonate synthase
+swissprot	egfr-siteA-id2048	5	45.2	18.7	14	31	75	41.3	63.2	26	A4SPN7	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id2015	1	43.2	25.3	19	44	75	58.7	6.8	29	Q15NL2	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id2015	2	38.0	25.3	19	50	75	66.7	12.9	28	Q4QLP6	Magnesium transport protein CorA
+swissprot	egfr-siteA-id2015	3	38.0	25.3	19	50	75	66.7	12.9	28	P44998	Magnesium transport protein CorA
+swissprot	egfr-siteA-id2015	4	48.4	20.0	15	31	75	41.3	24.3	27	A4SPN7	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id2015	5	39.1	24.0	18	46	75	61.3	46	26	Q8UKK2	Error-prone DNA polymerase 2
+swissprot	egfr-siteA-id3017	1	37.3	25.3	19	51	75	68.0	1.9	30	Q4QLP6	Magnesium transport protein CorA
+swissprot	egfr-siteA-id3017	2	37.3	25.3	19	51	75	68.0	1.9	30	P44998	Magnesium transport protein CorA
+swissprot	egfr-siteA-id3017	3	58.6	22.7	17	29	75	38.7	33.5	27	Q0ZQ41	CMP-5'-(3-aminopropyl)phosphonate synthase
+swissprot	egfr-siteA-id3017	4	38.7	16.0	12	31	75	41.3	164	25	Q839T6	Holliday junction branch migration complex subunit RuvA
+swissprot	egfr-siteA-id3017	5	38.6	22.7	17	44	75	58.7	164	25	Q12N04	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id3020	1	38.0	25.3	19	50	75	66.7	4.95	29	Q4QLP6	Magnesium transport protein CorA
+swissprot	egfr-siteA-id3020	2	38.0	25.3	19	50	75	66.7	4.95	29	P44998	Magnesium transport protein CorA
+swissprot	egfr-siteA-id3020	3	40.9	24.0	18	44	75	58.7	12.9	28	Q15NL2	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id3020	4	45.2	18.7	14	31	75	41.3	46	26	A4SPN7	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id3020	5	58.6	22.7	17	29	75	38.7	46	26	Q0ZQ41	CMP-5'-(3-aminopropyl)phosphonate synthase
+swissprot	egfr-siteA-id3035	1	37.3	25.3	19	51	75	68.0	1.9	30	Q4QLP6	Magnesium transport protein CorA
+swissprot	egfr-siteA-id3035	2	37.3	25.3	19	51	75	68.0	1.9	30	P44998	Magnesium transport protein CorA
+swissprot	egfr-siteA-id3035	3	58.6	22.7	17	29	75	38.7	33.5	27	Q0ZQ41	CMP-5'-(3-aminopropyl)phosphonate synthase
+swissprot	egfr-siteA-id3035	4	46.7	18.7	14	30	75	40.0	46	26	B1HVA4	Holliday junction branch migration complex subunit RuvA
+swissprot	egfr-siteA-id3035	5	38.7	16.0	12	31	75	41.3	164	25	Q839T6	Holliday junction branch migration complex subunit RuvA
+swissprot	egfr-siteA-id3036	1	37.3	25.3	19	51	75	68.0	2.61	30	Q4QLP6	Magnesium transport protein CorA
+swissprot	egfr-siteA-id3036	2	37.3	25.3	19	51	75	68.0	2.61	30	P44998	Magnesium transport protein CorA
+swissprot	egfr-siteA-id3036	3	38.6	22.7	17	44	75	58.7	33.5	27	Q15NL2	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id3036	4	58.6	22.7	17	29	75	38.7	33.5	27	Q0ZQ41	CMP-5'-(3-aminopropyl)phosphonate synthase
+swissprot	egfr-siteA-id3036	5	46.7	18.7	14	30	75	40.0	86.9	25	B1HVA4	Holliday junction branch migration complex subunit RuvA
+swissprot	egfr-siteA-id89	1	51.4	25.3	19	37	75	49.3	2.61	30	Q31JJ7	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id89	2	43.2	25.3	19	44	75	58.7	3.6	29	A0KIF6	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id89	3	53.6	20.0	15	28	75	37.3	9.36	28	A4SPN7	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id89	4	51.9	18.7	14	27	75	36.0	17.7	27	Q8EEE7	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id89	5	42.3	29.3	22	52	75	69.3	17.7	27	Q5R0Q6	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id2046	1	38.0	25.3	19	50	75	66.7	9.36	28	Q4QLP6	Magnesium transport protein CorA
+swissprot	egfr-siteA-id2046	2	38.0	25.3	19	50	75	66.7	9.36	28	P44998	Magnesium transport protein CorA
+swissprot	egfr-siteA-id2046	3	40.9	24.0	18	44	75	58.7	12.9	28	Q15NL2	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id2046	4	45.2	18.7	14	31	75	41.3	46	26	A4SPN7	Carboxy-S-adenosyl-L-methionine synthase
+swissprot	egfr-siteA-id2046	5	58.6	22.7	17	29	75	38.7	46	26	Q0ZQ41	CMP-5'-(3-aminopropyl)phosphonate synthase
+swissprot	cand-siteA-id2	1	41.9	17.3	13	31	75	41.3	24.3	27	P13445	RNA polymerase sigma factor RpoS
+swissprot	cand-siteA-id2	2	41.9	17.3	13	31	75	41.3	24.3	27	P0A2E7	RNA polymerase sigma factor RpoS
+swissprot	cand-siteA-id2	3	41.9	17.3	13	31	75	41.3	24.3	27	D0ZVL4	RNA polymerase sigma factor RpoS
+swissprot	cand-siteA-id2	4	41.9	17.3	13	31	75	41.3	24.3	27	P0A2E6	RNA polymerase sigma factor RpoS
+swissprot	cand-siteA-id2	5	41.9	17.3	13	31	75	41.3	24.3	27	F5ZTT9	RNA polymerase sigma factor RpoS
+swissprot	egfr-siteA-id86	1	35.7	25.0	20	56	80	70.0	28.9	27	O67118	Chaperone protein DnaK
+swissprot	egfr-siteA-id86	2	50.0	17.5	14	28	80	35.0	39.6	27	O58969	Uncharacterized ABC transporter extracellular-binding protein PH1214
+swissprot	egfr-siteA-id86	3	45.5	18.8	15	33	80	41.2	39.6	27	A0A509AL23	Surface phospholipase
+swissprot	egfr-siteA-id86	4	68.8	13.8	11	16	80	20.0	74.7	26	O32156	Uncharacterized ABC transporter extracellular-binding protein YurO
+swissprot	egfr-siteA-id86	5	68.8	13.8	11	16	80	20.0	102	25	O58758	Uncharacterized ABC transporter extracellular-binding protein PH1039
+pdbseqres	cand-siteA-id19-sh09	1	34.9	38.7	29	83	75	110.7	10.5	29	7obi_A	CTPR-rv4
+pdbseqres	cand-siteA-id19-sh09	2	34.9	38.7	29	83	75	110.7	10.5	29	7obi_B	CTPR-rv4
+pdbseqres	cand-siteA-id19-sh09	3	84.6	14.7	11	13	75	17.3	134	25	6deh_A	TPR repeat protein, protein-protein interaction
+pdbseqres	cand-siteA-id19-sh09	4	84.6	14.7	11	13	75	17.3	134	25	6deh_B	TPR repeat protein, protein-protein interaction
+pdbseqres	cand-siteA-id19-sh09	5	45.7	21.3	16	35	75	46.7	134	25	2ooe_A	Cleavage stimulation factor 77 kDa subunit
+pdbseqres	cand-bridge-id76	1	46.9	41.4	60	128	145	88.3	3.64e-31	123	8chy_A	Crystal structure of an 8-repeat consensus TPR superhelix with Zinc.
+pdbseqres	cand-bridge-id76	2	46.9	41.4	60	128	145	88.3	3.64e-31	123	8bu0_A	Consensus tetratricopeptide repeat protein
+pdbseqres	cand-bridge-id76	3	46.9	41.4	60	128	145	88.3	3.64e-31	123	8cig_A	Consensus tetratricopeptide repeat protein
+pdbseqres	cand-bridge-id76	4	46.9	41.4	60	128	145	88.3	3.64e-31	123	8cmq_A	Consensus tetratricopeptide repeat protein
+pdbseqres	cand-bridge-id76	5	46.9	41.4	60	128	145	88.3	3.64e-31	123	8ot7_A	Consensus tetratricopeptide repeat protein
+pdbseqres	egfr-bridge-id1104	1	55.8	43.4	63	113	145	77.9	1.71e-33	129	2fo7_A	SYNTHETIC CONSENSUS TPR PROTEIN
+pdbseqres	egfr-bridge-id1104	2	55.8	43.4	63	113	145	77.9	1.71e-33	129	2hyz_A	SYNTHETIC CONSENSUS TPR PROTEIN
+pdbseqres	egfr-bridge-id1104	3	55.8	43.4	63	113	145	77.9	1.71e-33	129	8ch0_A	Consensus tetratricopeptide repeat protein
+pdbseqres	egfr-bridge-id1104	4	55.8	43.4	63	113	145	77.9	1.71e-33	129	8chy_A	Crystal structure of an 8-repeat consensus TPR superhelix with Zinc.
+pdbseqres	egfr-bridge-id1104	5	55.8	43.4	63	113	145	77.9	1.71e-33	129	8bu0_A	Consensus tetratricopeptide repeat protein
+pdbseqres	egfr-bridge-id47	1	57.7	41.4	60	104	145	71.7	5.12e-28	113	1na0_A	designed protein CTPR3
+pdbseqres	egfr-bridge-id47	2	57.7	41.4	60	104	145	71.7	5.12e-28	113	1na0_B	designed protein CTPR3
+pdbseqres	egfr-bridge-id47	3	56.1	41.4	60	107	145	73.8	9.62e-28	113	7obi_A	CTPR-rv4
+pdbseqres	egfr-bridge-id47	4	56.1	41.4	60	107	145	73.8	9.62e-28	113	7obi_B	CTPR-rv4
+pdbseqres	egfr-bridge-id47	5	49.6	38.6	56	113	145	77.9	5.78e-26	108	2fo7_A	SYNTHETIC CONSENSUS TPR PROTEIN
+pdbseqres	egfr-bridge-id85	1	63.5	45.5	66	104	145	71.7	4.4e-33	128	1na0_A	designed protein CTPR3
+pdbseqres	egfr-bridge-id85	2	63.5	45.5	66	104	145	71.7	4.4e-33	128	1na0_B	designed protein CTPR3
+pdbseqres	egfr-bridge-id85	3	55.2	44.1	64	116	145	80.0	1.13e-32	127	2fo7_A	SYNTHETIC CONSENSUS TPR PROTEIN
+pdbseqres	egfr-bridge-id85	4	55.2	44.1	64	116	145	80.0	1.13e-32	127	2hyz_A	SYNTHETIC CONSENSUS TPR PROTEIN
+pdbseqres	egfr-bridge-id85	5	55.2	44.1	64	116	145	80.0	1.13e-32	127	8ch0_A	Consensus tetratricopeptide repeat protein
+pdbseqres	cand-siteA-id73	1	52.6	12.5	10	19	80	23.8	44.5	27	5f7v_A	Lmo0181 protein
+pdbseqres	cand-siteA-id73	2	66.7	12.5	10	15	80	18.8	115	26	4zza_A	Sugar binding protein of ABC transporter system
+pdbseqres	cand-siteA-id73	3	66.7	12.5	10	15	80	18.8	115	26	4zza_B	Sugar binding protein of ABC transporter system
+pdbseqres	cand-siteA-id73	4	66.7	12.5	10	15	80	18.8	115	26	4zze_A	Sugar binding protein of ABC transporter system
+pdbseqres	cand-siteA-id73	5	66.7	12.5	10	15	80	18.8	115	26	4zze_B	Sugar binding protein of ABC transporter system
+pdbseqres	egfr-siteA-id2048	1	48.1	17.3	13	27	75	36.0	70.9	26	9dtd_A	C2-01018
+pdbseqres	egfr-siteA-id2048	2	48.1	17.3	13	27	75	36.0	70.9	26	9dtd_B	C2-01018
+pdbseqres	egfr-siteA-id2048	3	58.8	13.3	10	17	75	22.7	253	25	4iwn_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id2048	4	58.8	13.3	10	17	75	22.7	253	25	4iwn_B	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id2048	5	58.8	13.3	10	17	75	22.7	253	25	4gek_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id2015	1	48.1	17.3	13	27	75	36.0	134	25	9dtd_A	C2-01018
+pdbseqres	egfr-siteA-id2015	2	48.1	17.3	13	27	75	36.0	134	25	9dtd_B	C2-01018
+pdbseqres	egfr-siteA-id2015	3	58.8	13.3	10	17	75	22.7	348	24	4iwn_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id2015	4	58.8	13.3	10	17	75	22.7	348	24	4iwn_B	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id2015	5	58.8	13.3	10	17	75	22.7	348	24	4gek_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3017	1	58.8	13.3	10	17	75	22.7	253	25	4iwn_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3017	2	58.8	13.3	10	17	75	22.7	253	25	4iwn_B	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3017	3	56.0	18.7	14	25	75	33.3	253	25	3t6g_B	Breast cancer anti-estrogen resistance protein 1
+pdbseqres	egfr-siteA-id3017	4	56.0	18.7	14	25	75	33.3	253	25	3t6g_D	Breast cancer anti-estrogen resistance protein 1
+pdbseqres	egfr-siteA-id3017	5	58.8	13.3	10	17	75	22.7	253	25	4gek_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3020	1	51.9	18.7	14	27	75	36.0	51.6	27	9dtd_A	C2-01018
+pdbseqres	egfr-siteA-id3020	2	51.9	18.7	14	27	75	36.0	51.6	27	9dtd_B	C2-01018
+pdbseqres	egfr-siteA-id3020	3	58.8	13.3	10	17	75	22.7	253	25	4iwn_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3020	4	58.8	13.3	10	17	75	22.7	253	25	4iwn_B	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3020	5	58.8	13.3	10	17	75	22.7	253	25	4gek_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3035	1	58.8	13.3	10	17	75	22.7	253	25	4iwn_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3035	2	58.8	13.3	10	17	75	22.7	253	25	4iwn_B	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3035	3	56.0	18.7	14	25	75	33.3	253	25	3t6g_B	Breast cancer anti-estrogen resistance protein 1
+pdbseqres	egfr-siteA-id3035	4	56.0	18.7	14	25	75	33.3	253	25	3t6g_D	Breast cancer anti-estrogen resistance protein 1
+pdbseqres	egfr-siteA-id3035	5	58.8	13.3	10	17	75	22.7	253	25	4gek_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3036	1	51.9	18.7	14	27	75	36.0	27.3	27	9dtd_A	C2-01018
+pdbseqres	egfr-siteA-id3036	2	51.9	18.7	14	27	75	36.0	27.3	27	9dtd_B	C2-01018
+pdbseqres	egfr-siteA-id3036	3	58.8	13.3	10	17	75	22.7	253	25	4iwn_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3036	4	58.8	13.3	10	17	75	22.7	253	25	4iwn_B	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id3036	5	58.8	13.3	10	17	75	22.7	253	25	4gek_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id89	1	47.5	25.3	19	40	75	53.3	0.818	32	9k7w_F	C3-Ni1-HH*3-18
+pdbseqres	egfr-siteA-id89	2	47.5	25.3	19	40	75	53.3	0.818	32	9k7w_A	C3-Ni1-HH*3-18
+pdbseqres	egfr-siteA-id89	3	47.5	25.3	19	40	75	53.3	0.818	32	9k7w_B	C3-Ni1-HH*3-18
+pdbseqres	egfr-siteA-id89	4	47.5	25.3	19	40	75	53.3	0.818	32	9k7w_C	C3-Ni1-HH*3-18
+pdbseqres	egfr-siteA-id89	5	47.5	25.3	19	40	75	53.3	0.818	32	9k7w_D	C3-Ni1-HH*3-18
+pdbseqres	egfr-siteA-id2046	1	51.9	18.7	14	27	75	36.0	51.6	27	9dtd_A	C2-01018
+pdbseqres	egfr-siteA-id2046	2	51.9	18.7	14	27	75	36.0	51.6	27	9dtd_B	C2-01018
+pdbseqres	egfr-siteA-id2046	3	58.8	13.3	10	17	75	22.7	253	25	4iwn_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id2046	4	58.8	13.3	10	17	75	22.7	253	25	4iwn_B	tRNA (cmo5U34)-methyltransferase
+pdbseqres	egfr-siteA-id2046	5	58.8	13.3	10	17	75	22.7	253	25	4gek_A	tRNA (cmo5U34)-methyltransferase
+pdbseqres	cand-siteA-id2	1	41.9	17.3	13	31	75	41.3	37.5	27	6omf_F	RNA polymerase sigma factor RpoS
+pdbseqres	cand-siteA-id2	2	41.9	17.3	13	31	75	41.3	37.5	27	6kj6_F	RNA polymerase sigma factor RpoS
+pdbseqres	cand-siteA-id2	3	41.9	17.3	13	31	75	41.3	37.5	27	6uu4_FFF	RNA polymerase sigma factor RpoS
+pdbseqres	cand-siteA-id2	4	41.9	17.3	13	31	75	41.3	37.5	27	6utz_FFF	RNA polymerase sigma factor RpoS
+pdbseqres	cand-siteA-id2	5	41.9	17.3	13	31	75	41.3	37.5	27	6uua_FFF	RNA polymerase sigma factor RpoS
+pdbseqres	egfr-siteA-id86	1	57.1	15.0	12	21	80	26.2	32.4	27	8bfy_A	Putative secreted cellobiose-binding (Transport system associated)
+pdbseqres	egfr-siteA-id86	2	68.8	13.8	11	16	80	20.0	61.1	27	4zza_A	Sugar binding protein of ABC transporter system
+pdbseqres	egfr-siteA-id86	3	68.8	13.8	11	16	80	20.0	61.1	27	4zza_B	Sugar binding protein of ABC transporter system
+pdbseqres	egfr-siteA-id86	4	68.8	13.8	11	16	80	20.0	61.1	27	4zze_A	Sugar binding protein of ABC transporter system
+pdbseqres	egfr-siteA-id86	5	68.8	13.8	11	16	80	20.0	61.1	27	4zze_B	Sugar binding protein of ABC transporter system

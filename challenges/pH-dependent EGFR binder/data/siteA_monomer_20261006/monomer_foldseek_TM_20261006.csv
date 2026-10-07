@@ -1,0 +1,12 @@
+design,n_draws,TM_median,TM_max,TM_min,TM_sd,draws_ge_0.80,complex_TM_prior,nearest_modal
+cand-siteA-id2,63,0.6437,0.7343,0.6328,0.0417,0,,8jo3-assembly1_A
+cand-siteA-id73,63,0.6038,0.6939,0.5467,0.0328,0,,2crq-assembly1_A
+egfr-siteA-id2015,63,0.5902,0.6729,0.5249,0.0294,0,0.885,2lse-assembly1_A
+egfr-siteA-id2046,63,0.5865,0.6692,0.5168,0.0295,0,0.682,2lse-assembly1_A
+egfr-siteA-id2048,63,0.5879,0.6717,0.509,0.0281,0,0.757,2lse-assembly1_A
+egfr-siteA-id3017,63,0.5909,0.6434,0.5472,0.0187,0,0.745,9c8w-assembly1_A
+egfr-siteA-id3020,63,0.5907,0.6431,0.5214,0.0275,0,0.791,2lse-assembly1_A
+egfr-siteA-id3035,63,0.5917,0.6454,0.5486,0.02,0,0.567,9c8w-assembly1_A
+egfr-siteA-id3036,63,0.5917,0.6679,0.5162,0.0289,0,0.646,2lse-assembly1_A
+egfr-siteA-id86,63,0.5741,0.6259,0.5275,0.0243,0,0.723,3key-assembly1_A
+egfr-siteA-id89,63,0.7127,0.7377,0.6336,0.027,0,0.745,8jo3-assembly1_A

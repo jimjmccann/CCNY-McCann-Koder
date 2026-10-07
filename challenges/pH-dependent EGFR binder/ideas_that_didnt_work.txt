@@ -1,0 +1,949 @@
+IDEAS THAT DIDN'T WORK
+Things we tried on the de novo EGFR binder campaign (2026-09-28 .. 2026-10-06)
+that did not work, and why.
+McCann / Koder groups, The City College of New York.
+
+Ordered roughly by how much they cost us. Every entry has a measurement behind
+it; where it does not, the entry says so. Several entries are things that worked
+mechanically and were retracted on their MEANING — those are the expensive ones,
+because they read exactly like the true results.
+
+A note on the record: several entries below correct or retract earlier entries
+of our own. Those retractions are kept, not tidied away. A retraction is a
+finding.
+
+
+=====================================================================
+1. A CONTIGUOUS CROP OF THE TARGET. Voided an entire round.
+=====================================================================
+TRIED: generate and fold binders against a 106-residue window of the receptor
+(and a 77-residue window for the second site) instead of the whole thing, because
+the generator needs a smaller target than 621 residues.
+
+WHAT HAPPENED: the window was validated as "all 11 footprint residues are
+present" and never as "nothing important is absent". Measured afterwards:
+
+  site A  kept WT 370-475 (106 aa), omitted 204 residues
+          70% of designs within 2 A of omitted receptor (median 1.14 A, n=300)
+  site B  kept WT 4-80 (77 aa), omitted 527 residues
+          100% of designs within 2 A of omitted receptor (median 0.34 A, n=300)
+
+Worked example, the best-scoring site-A model of 48,981: receptor residue 346's
+BACKBONE sat 0.66-1.01 A from binder heavy atoms (N 1.01, CA 0.66, C 0.98,
+O 0.74, CB 0.93). Backbone, not side chain — no rotamer relieves it.
+Superposition was 0.52 A over all 106 shared CA, so this is not a fitting
+artifact. Residue 346 was in the file the crop was cut FROM, the whole time.
+
+Not moot: the assay construct is the complete 621-residue ectodomain, read out of
+the organiser's own data, and position 346 is present in it.
+
+HOW IT GOT THROUGH, three compounding causes:
+  - the crop was CHANGED (WT 310-416 -> 370-475) to recover three footprint
+    residues at one end. It was a SHIFT, not an extension, and silently deleted
+    WT 310-369 at the other end. The old crop contained residue 346.
+  - the omission WAS noticed two days later and filed under a heading about
+    numbering being verified. The tick went to the arithmetic; the residue's
+    absence was the evidence rather than the subject.
+  - no script in the pipeline could detect it. Every downstream stage treated
+    the crop AS the target, so the omission was unfalsifiable from inside.
+
+LESSON: validate a truncated target by EXCLUSION, not inclusion. A check that
+cannot fail is not a check. We now superpose each design back onto the whole
+receptor and measure overlap with what the generation target did not contain.
+That gate is the single most publishable thing in this project.
+
+STATUS: everything from the generation stage onward was VOIDED and quarantined.
+It may be read for METHOD questions only, with every number marked, and never
+plotted on the same axes as later data.
+
+
+=====================================================================
+2. INHERITING THE SAMPLE COUNT FROM ANOTHER CAMPAIGN. A whole arm for nothing.
+=====================================================================
+TRIED: 21 structure-prediction draws per sequence, carried over from an unrelated
+campaign where a pose statistic needed 21.
+
+WHAT HAPPENED: 21 draws had succeeded only on small crops (127-176 tokens). On
+the full 696-token construct with 10 glycans, glycan bond constraints, a forced
+template and potentials enabled, it had never been tried. Six workers launched;
+FIVE PRODUCED NOTHING in ~9.7 h on a 71-minute job. The sixth landed only because
+the container's restart loop gave it a second attempt.
+
+Failure signature, from the one shard that kept a log:
+  "WARNING: ran out of memory, skipping batch"  x4
+  "Number of failed examples: 4"
+  "boltz rc=0  predictions 1/5"
+
+Two traps inside the failure:
+  - rc=0. The predictor catches its own OOM, skips the batch, writes no
+    structure, returns success.
+  - non-deterministic. The re-run reported zero failures. One worker of six
+    surviving is NOT evidence the configuration works.
+  - the worker's own fatal-error file blamed a missing MSA. The MSA was present.
+
+Also recorded: this was flagged IN ADVANCE in the project log ("choose it
+deliberately, do not inherit it") and inherited anyway.
+
+LESSON: the sample count is a function of construct size. Justify it per campaign
+and canary an unmeasured count on one shard first.
+
+STATUS: 3 is the only count ever proven on that construct; 10 was chosen as an
+interpolation and then separately proven (0 failures over 1,040 structures).
+
+
+=====================================================================
+3. A SURROGATE MODEL IN THE OPTIMIZATION LOOP. Measured out, twice.
+=====================================================================
+TRIED: the standard active-learning shape — fit a model to the landed cycle, rank
+candidates with upper-confidence-bound acquisition, fold the top ones.
+
+WHAT HAPPENED, site A: out-of-bag RMSE / sd(y) was 1.14 on one label and 1.04 on
+the other. Both >= 1.0, i.e. at or worse than predicting the mean. Trained on the
+saturated label it predicted 11.696 and 12.101 against a physical ceiling of 11.
+UCB did not beat random: +0.394 +/- 0.634, t=+0.62, Fisher p=1.000.
+
+WHAT HAPPENED, the two-site bridge arm: the gate failed at n=50 (ratio 1.056),
+failed at n=60 (1.028 +/- 0.019, Spearman +0.136, AUROC 0.579). We then measured
+the learning curve by subsampling, 3 repeats per size:
+
+  n=20  1.077 +/- 0.080     n=50  1.077 +/- 0.024
+  n=30  1.031 +/- 0.122     n=60  1.028
+  n=40  1.064 +/- 0.133
+
+FLAT across a 3x range, and n=60 sat inside n=30's scatter. The apparent gain
+from pooling an earlier campaign's sequences was noise.
+
+OUR OWN CORRECTION: an earlier conclusion that "n is the constraint" is
+WITHDRAWN by that curve. n is not the binding constraint either — a 3-draw label
+is not learnable from sequence at any n we can reach on one backbone. The fix is
+more DRAWS per sequence, not more sequences. A large part of the label is simply
+whether the predictor folds the design at all (sc_rmsd rho -0.506), and
+predicting that from sequence is the hard part.
+
+LESSON: a surrogate must be shown to beat predicting the mean before it is
+allowed to rank anything, and the gate must be re-run every cycle. State it with
+its standard error: a ratio of 0.999 once printed as "1.00" and was read as a
+pass. Require ratio + 1 s.e. < 1.0.
+
+STATUS: no model in either loop. Site A ran exhaustive enumeration instead, which
+needs no ranking, so nothing was lost. The bridge is a model-free screen with
+replication.
+
+
+=====================================================================
+4. RANKING BACKBONES ON INTERFACE CONTACT ALONE. Four of six picks were
+   fold artifacts.
+=====================================================================
+TRIED: rank candidate backbones by how many footprint residues their designs
+contact. It is the quantity we actually want.
+
+WHAT HAPPENED: a first version of that ranking named six backbones. FOUR OF THE
+SIX FAIL THE FOLD GATE. Measured, after self-consistency was run over 3,246
+models:
+
+  backbone (contact-only rank)   median sc_rmsd   gate   seqs pass   full-A kept
+  #1  arm_shard09_..._model_7         8.45 A      FAIL      0/9        11 -> 0
+      arm_shard05_..._model_4         3.06 A      FAIL      0/9        12 -> 0
+      arm_shard07_..._model_3         1.80 A      FAIL      1/10       14 -> 3
+      arm_shard13_..._model_0         1.38 A      pass      6/9         5 -> 2
+      arm_shard10_..._model_4         0.98 A      pass      7/9        11 -> 7
+      arm_shard00_..._model_0         0.64 A      pass      9/9        10 -> 10
+
+The contact-only leader had a median Ca fold error of 8.45 A. The predictor did
+not build that backbone's designed shape, so every one of its 11
+"full-footprint" draws was contact against a different structure.
+
+Arm-wide: the fold gate removes 53% of full-footprint contact, 422 draws -> 200.
+31 of 118 backbones fail the median gate, and 16 of those 31 had >=5
+full-footprint draws — the contact metric was actively PROMOTING unbuildable
+backbones.
+
+LESSON: gate on fold quality first, then rank on contacts. Keep fold fidelity and
+placement fidelity as two separate numbers.
+
+STATUS: the contact-only list is RETRACTED in its own document, with the
+retracted table left in place so the comparison stays visible. The funnel now
+runs designability first.
+
+
+=====================================================================
+5. "OUR EPITOPE IS THE RIGHT ONE" FROM A SINGLE-CROP AUROC. Retracted by
+   its own pre-registered control.
+=====================================================================
+TRIED: fold 402 prior competition designs with published binding outcomes against
+our chosen face, measure how well footprint engagement predicts measured binding.
+AUROC 0.633, CI excluding 0.5, p=0.0055 — and it beat all 21 confidence metrics
+we had.
+
+WHAT HAPPENED: every design had been folded against our face ALONE, so a design
+whose real epitope is elsewhere had nowhere else to dock. The control — the same
+402 designs folded against a face almost nobody had targeted — scored HIGHER.
+
+  matched 248-design cohort, one script, one bootstrap recipe:
+    our site     0.633 [0.546, 0.717]  p=0.0055
+    control      0.656 [0.576, 0.730]  p=0.0012
+    paired A-B  -0.022, 95% CI [-0.135, +0.094]
+
+Indistinguishable, with the point estimate favouring the control.
+
+THEN THE CORRECTION WAS ITSELF CORRECTED. Stratifying revealed the pool is a
+MIXTURE: 99 cysteine-rich ligand-mimic designs (binding rate 29.3%) and 149
+genuinely designed interfaces (11.4%). The mimics engage the control face MORE
+and our face LESS, so pooling inflated the control and suppressed ours —
+Simpson's paradox. In the designed stratum:
+
+                     our site | length        control | length
+    designed n=149   0.715 [0.582,0.827] p=0.0045    0.557 [0.400,0.707] p=0.45
+
+Our site survives a length control among designed interfaces; the control face
+does not. Dose-response across quartiles in that stratum: 2.7% -> 5.4% -> 15.8%
+-> 21.6%, an 8x spread.
+
+BUT THE DIRECT CONTRAST STILL FAILS: paired difference within the designed
+stratum = +0.087, 95% CI [-0.097, +0.264]. "A passes its own test and B fails its
+own" is WEAKER than "A beats B". Two underpowered tests with opposite verdicts
+are not a measured difference, and 17 binders cannot make them one.
+
+LESSONS, three:
+  - any epitope-quality claim ships with a decoy arm, and the retracting
+    threshold is written down before the number is computed. That is why this was
+    a two-hour correction instead of a premise in the next three documents.
+  - quote that class of metric STRATIFIED or not at all. Quoting the pooled value
+    is quoting the paradox.
+  - the metric is kept under the weaker name "docks tightly to the face it is
+    handed". It still ranks. It sets no threshold.
+
+STATUS: the epitope-specific claim is RETRACTED, with a banner in the source
+document's own bytes that is never to be removed. The AUROC itself stands and
+reproduces byte-for-byte; what was withdrawn is what it MEANT. The site choice
+rests on its original structural rationale, which this never supported.
+
+
+=====================================================================
+6. OPTIMISING ENGAGEMENT AS A DESIGN OBJECTIVE. Blocked before it ran.
+=====================================================================
+TRIED (proposed, not run): since footprint engagement predicts measured binding,
+make it the thing we optimise.
+
+WHY IT WAS BLOCKED: measured, binder LENGTH alone scores AUROC 0.575 and
+correlates with engagement (+0.249 at our site, +0.379 at the control). Length is
+a variable we set at design time. Optimising engagement directly would partly
+optimise "make it longer" — Goodhart, not affinity. The amendment made it worse,
+not better: length is an INDEPENDENT predictor in the designed stratum (0.700,
+p=0.0055 raw; 0.676, p=0.0157 after regressing out engagement).
+
+LESSON: never optimise a metric that correlates with a variable you choose.
+Regress the design-time variable out first, or keep the metric as a rank.
+
+RELATED, same failure class, from another project in this lab: a design loss that
+optimised POSE and contained no affinity term at all, and a confidence term that
+turned out to be a reward channel for low-confidence poses (non-zero only in the
+least-confident 0.3% of designs) and was dropped.
+
+
+=====================================================================
+7. GATE ON ONE SITE, GRADE ON THE OTHER. Selects on the outcome.
+=====================================================================
+TRIED, for the two-site bridge: keep only draws that fold AND reach >=9 of 11
+residues at site A, then score the mean site-B contact over those draws. Plus a
+">=50% of draws must qualify" floor.
+
+WHAT HAPPENED, measured on 50 sequences x 3 draws:
+  - the two sites are correlated, +0.590 (p=1.9e-15) over 150 fold-passing
+    draws. Mean site-B contact is 4.15 when site A >= 9 and 2.81 when it is not.
+    So dropping non-qualifying draws preferentially deletes the LOW site-B
+    measurements. The label became an average over a sample chosen by the thing
+    being averaged.
+  - the inflation lands exactly where it does damage. One sequence scored 7.00
+    from a single qualifying draw while its three draws were [7, 6, 0] — true
+    mean 4.33, inflation +2.67. 10 of 36 labels rested on one draw; 4 of the top
+    10. Kendall tau between the biased and fixed rules is +0.714 and that
+    sequence falls from 1st to outside the top 5.
+  - the gate discarded data it should have scored: 14 of 50 sequences got no
+    label at all, including one that reached site B 7/7 in a draw.
+
+LESSON: scoring zero is different from not reporting a score. A misfolded or
+mispositioned draw is still a data point. The only admissible missing value is a
+draw where the predictor produced no structure at all — which here never
+happened (1200/1200 structures, 10/10 manifests rc=0). Every exclusion we had
+made was discarding a real measurement.
+
+STATUS: replaced by a per-draw floor, min(site A / 11, site B / 7), zero if the
+draw misfolds, averaged over EVERY draw. The ">=50%" floor became redundant: the
+12 sequences it would have rejected score exactly 0.00 anyway. Gate, floor and
+label collapsed into one honest number.
+
+
+=====================================================================
+8. COUNTING THE DRAWS THAT SATISFY EVERYTHING. Arithmetically impossible
+   at 3 draws.
+=====================================================================
+TRIED: the cleanest statement of the objective — count, per sequence, how many
+draws satisfy both sites completely.
+
+WHAT HAPPENED, measured on 50 sequences at 3 draws:
+
+  candidate objective                      usable seqs  distinct values  zeros
+  gate-and-grade (entry 7)                     36            17           -
+  mean site-B over folded draws                50            20           -
+  count of strict both-site draws              50             1          50
+  count, relaxed                               50             4          28
+  per-draw min floor (adopted)                 50            33           7
+
+A count over 3 draws can take at most 4 values. That is a hard ceiling on
+resolution, not a tuning problem.
+
+LESSON: check the resolution arithmetic of a candidate objective on real data —
+distinct values, zeros, median, max — before adopting it. A metric with fewer
+distinct values than you have sequences cannot rank them.
+
+STATUS: the strict criterion is WATCHED as its own column and never regressed on.
+It is non-zero on exactly one backbone.
+
+
+=====================================================================
+9. AVERAGING EACH REQUIREMENT SEPARATELY. Rewards designs that never once
+   do the thing we want.
+=====================================================================
+TRIED: score each requirement (footprint coverage, the key residue, the second
+site) as its own average and combine the averages.
+
+WHAT HAPPENED, measured on real draws:
+  - one design held every one of the 11 footprint residues in >=50% of its draws
+    and covered all 11 together in 1 draw in 10.
+  - on the bridge, one sequence scored 0.857 with each site averaged separately
+    — near the top of the table — and had ZERO both-site draws. The per-draw min
+    gives it 0.571.
+  - Kendall tau between the two rankings is +0.783. This changes the ORDER, not
+    just the scale.
+
+LESSON: marginal coverage overstates same-draw coverage. Average the per-draw
+conjunction; never conjoin the per-draw averages. Never a sum — a near-best term
+cancels a near-worst one.
+
+RELATED EXPECTATION THAT WAS ALSO WRONG, in the other direction: the expectation
+going in was that a HARD requirement would zero ~36% of draws and recreate the
+resolution collapse of entry 8. Measured over 98 sequences at 10 draws, the hard
+floor gave 31 distinct values and NO zeros at all, against the old metric's 11 —
+roughly 3x the resolution. The first recommendation was reversed by the
+measurement. Scope matters though: that no-zeros property depends on averaging
+over enough draws, and at 3 draws the same shape of metric leaves 21 of 50
+sequences at exactly 0.
+
+
+=====================================================================
+10. BOTH OF OUR RANKING METRICS. Saturated.
+=====================================================================
+TRIED: rank designs on mean footprint contact per draw, then on the fraction of
+draws achieving full footprint contact.
+
+WHAT HAPPENED: the first metric has a hard ceiling of 11 — the footprint size.
+By cycle 1 the top three sat at IDENTICAL means (dmean +0.00, Fisher
+p=0.628-1.000). The fallback then also hit its ceiling of 1.000 on two designs,
+which both passed the fold gate 10/10 and were not separable by anything we had.
+A single design's fraction carries standard error ~0.16 at 10 draws, so
+1.000 vs 1.000 vs 0.900 is inside the noise, and draws could not be raised to fix
+it (97.6% GPU memory already, and OOM exits rc=0).
+
+LESSON: saturation is foreseeable from the definition. Check for a ceiling before
+building the loop. When a metric saturates, only REPLICATION separates the
+leaders — a new metric does not, if it reduces to the same thing at the top.
+
+MEASURED CONFIRMATION OF THAT LAST POINT: the replacement objective, at the top
+of the table, reduces EXACTLY to the key-residue contact rate (63 of 98
+sequences, and all ten re-measured top designs). It improves resolution in the
+middle — 53 distinct values vs 14 over 142 designs / 1,520 draws, Kendall tau
+0.707, and it moved one design from rank 63 to rank 7 — but it does NOT
+unsaturate the leaders.
+
+
+=====================================================================
+11. THE COMBINATION WALK. Enumerated out, beat nothing.
+=====================================================================
+TRIED: find the single mutations that beat the reference on both metrics (the
+"accepted set"), then enumerate untried combinations of them, lowest order first.
+
+WHAT HAPPENED: cycles 1-3 enumerated all 88 combinations (50 at orders 2-3, 38 at
+orders 4-6; no order 7 exists). The driver's own line on the last of them:
+"cycle sequences beating the previous best: 0". Enumeration is now exhausted, so
+the proposer has no derivable content and the next cycle is a science decision,
+not a scheduling one.
+
+WHY, MEASURED: the accepted set contained NO position that reaches the
+rate-limiting contact (see entry 12). The walk was optimising the eight residues
+it could already reach.
+
+LESSON: enumeration ends, and an exhausted enumeration is a finding about the
+reference, not about the method. Know what your accepted set can and cannot
+reach before you spend three cycles on it.
+
+
+=====================================================================
+12. POSITION IDENTITY AS THE LEVER ON THE LIMITING CONTACT. A clean null.
+=====================================================================
+BACKGROUND, measured: one footprint residue is contacted in 63.8% of 600 draws
+and 63.7% of a later 380 fresh draws — the weakest of the 11 by ~13 points
+(the strongest is 98.8%). Of draws missing the ceiling by exactly ONE residue, it
+is that residue in 89.8% and 81.9% of cases. So it is the RATE-LIMITING contact.
+The rate did not move when the mutation order went 1-3 -> 4-6, which makes it
+ARCHITECTURAL rather than a property of the substitutions explored. One binder
+position is effectively the only handle on it: within 5 A of it in 248 of the 310
+draws that contact it (80%); the next position is second at 7.7%.
+
+Causal evidence that the position governs it: substituting it to glycine takes
+the score 0.40 -> 0.00 while FOLDING BETTER than the parent (median fold 0.587 vs
+0.612, gate 10/10, floor PASS). 18 of 19 substitutions there are unfolded.
+
+TRIED: a saturation scan at that position — 18 substitutions plus 6 replicates,
+24 folds, 240 structures.
+
+WHAT HAPPENED: NO substitution beats the champions. Best scan design 0.609
+against the leading champion's 1.000. Against its OWN parent, 0.609 vs 0.600 —
+inside the 0.158 noise floor measured in the same cycle, so NOT a difference.
+
+  rank  seq      new metric   old metric   fold    note
+    1   id2007     1.000        1.00       10/10   replicate of a champion
+    3   id2015     0.800        0.80       10/10   replicate of a champion
+    6   id4004     0.609        0.40       10/10   BEST SCAN DESIGN
+   11   id41       0.600        0.60       10/10   the scan's own parent
+
+LESSON: distinguish a residue that is NECESSARY from one that is RATE-LIMITING,
+and then distinguish a position that GOVERNS a quantity from one that can IMPROVE
+it. All three are different claims. The identity at that position was not the
+lever; the pose was.
+
+Also note id4004's metric split — 0.609 on the new objective, 0.400 on the old,
+rank 6 vs rank 12. That is the tau 0.707 disagreement doing real work on the one
+design a reader would care about. Label the metric.
+
+WHAT IT WAS WORTH: this was launched as a MECHANISM cycle, chosen deliberately
+over a submission cycle, and the lower scores were PREDICTED IN WRITING before
+launch (the parent's own score is 0.400, so its descendants score lower by
+construction). A predicted null is not a regression.
+
+
+=====================================================================
+13. CLASSIFIER-FREE GUIDANCE AND EXTRA RECYCLING ON THE GENERATOR. Refuted.
+=====================================================================
+TRIED: turn on classifier-free guidance (scale 1.5) because the authors had built
+it specifically for the conditioning channels our design depends on, and left it
+off by default. And raise the recycle count.
+
+WHAT HAPPENED, measured against a null: guidance 2.76x the null. Recycling 2.55x
+null-to-worse. Both expensive sampler knobs were turned OFF for production.
+
+LESSON: an argument from "the authors built this for exactly our case" is a reason
+to TEST a knob, not to ship it. Both of these had good stories.
+
+WORTH KEEPING: the test that refuted the generator choice itself was specified in
+advance as a 32-minute, 3-arm run with the gate written down — if the conditioned
+arm matched the control arm, the whole generator was to be dropped for an
+alternative. Decisions built to be refutable in 32 minutes are cheap to hold.
+
+
+=====================================================================
+14. CONDITIONING THE GENERATOR ON BURIAL / EXPOSURE. Not expressible.
+=====================================================================
+TRIED: tell the generator to keep a titratable residue at the rim of the
+interface rather than buried — the natural way to express a pH-switch
+requirement.
+
+WHAT HAPPENED, measured by reading the installed package rather than the docs:
+the burial/exposure channels have ~0% training share for the protein-only case,
+and the channel dies in a transform that early-returns when there is no ligand,
+on BOTH pipeline branches. The instruction is not sayable at all.
+
+More generally: the generator can be told WHAT TO TOUCH and cannot be told WHAT
+TO AVOID. The previous version exposed an anti-hotspot parameter; that capability
+is gone. Every "avoid" requirement therefore lives in the filter.
+
+A RELATED CLAIM OF OURS THAT WAS ALSO WRONG: an earlier note said an external
+hydrogen-bond program was REQUIRED by the pipeline. It is mapped to an identity
+operation at inference. Believing it had suppressed the one channel that
+expresses the switch.
+
+LESSON: read the trained capability in the source before planning a campaign
+around it. Generate wide, filter hard, and recognise that the filter is where the
+design actually happens — it is not QC.
+
+
+=====================================================================
+15. A SPREAD HOTSPOT SET. Unsatisfiable, and we measured why.
+=====================================================================
+TRIED: ask the generator for all six hotspots across a site.
+
+WHAT HAPPENED, measured: orientation is inferred from the hotspot CENTROID. One
+requested hotspot 12.2 A from the centroid of the others was reached by 0 of 336
+designs, and the correlation between a hotspot's distance from the centroid and
+its contact rate was +0.967.
+
+LESSON: a spread constraint set may be geometrically unsatisfiable. Run the
+"everything" arm and a "minimal anchors only" arm together; if the first returns
+nothing and the second returns designs, the spread is the problem and you learned
+it for one shard instead of a campaign. We did exactly that for the two-site
+bridge after this.
+
+
+=====================================================================
+16. IMPORTING A SPHERICITY SCREEN FROM ANOTHER PROJECT. Wrong metric for
+    the problem.
+=====================================================================
+TRIED: reuse an existing shape-triage screen that ranks designs by sphericity.
+
+WHY IT IS WRONG: that screen was built for a project needing a GLOBULAR protein
+to hold a cofactor in an interior. A binder has the opposite requirement — it
+must present a complementary face to a flat epitope. A highly spherical binder is
+if anything worse: it minimises contact area per residue.
+
+AND THE REST OF THAT TOOLING DID NOT TRANSFER EITHER, checked: one component was
+a control experiment that states it pre-registers no gate; another is descriptive
+(secondary-structure composition and novelty) rather than a thresholded filter;
+and it depends on a system library that is broken on this machine. There was no
+ready-made filter to reuse at all.
+
+LESSON: ask what a borrowed metric was FOR before reusing it. "We already have a
+screen" is not a reason.
+
+
+=====================================================================
+17. PERMITTING CYSTEINE AND OMITTING PROLINE. The inverse error, live in
+    this same repository.
+=====================================================================
+WHAT HAPPENED on an earlier arm of this lab: the sequence step permitted cysteine
+and excluded proline. Measured consequence: 2-3 cysteines per design in a protein
+whose wild type has ZERO, and they NEVER form a disulfide — partners 12-15 A
+apart. Those are free thiols: an oxidation and aggregation liability with no
+compensating structure. It confounded the design pool, and the question had to be
+deferred by a formal decision rather than resolved, because the campaign was
+already running on them.
+
+Omitting proline is the second half of the same mistake where caps and turns are
+load-bearing: free backbone NH and C=O exist only at helix caps and in loops —
+mid-helix amides are consumed by the helix's own i->i+4 bonds — and proline is
+the capping residue. Omitting it forces caps out of residues that cap badly.
+
+LESSON: both settings existed in this repository at the same time and only one was
+right for a single-chain binder. Audit your own flags per campaign. Cysteine out,
+proline in, plus an N-glycosylation sequon grep, is a free filter and is routine
+practice at frontier labs.
+
+
+=====================================================================
+18. THE ACIDIC SEQUENCE BIAS. Decided, then measured to zero.
+=====================================================================
+TRIED, in two steps. First: let the generator's own sequence head write
+sequences, then filter for the acidic net charge the brief requires. Measured on
+8 smoke designs, 3 of 8 passed and ALL FIVE failures were on the acidity bound —
+the sequence head writes near-neutral binders. At the handful of designs
+ultimately tested experimentally, discarding ~62% of the pool for a property we
+could request is unaffordable. So the decision was to BIAS IT IN at the sequence
+step, with the magnitude deliberately left to a tuning batch.
+
+WHAT HAPPENED WHEN THE BATCH WAS MEASURED, n = 3,320 sequences
+(332 backbones x 10, both sites):
+
+              NCPR median   in band    too POSITIVE   too NEGATIVE
+  site A         -0.100     77.6%           44            283
+  site B        -0.0909     74.6%          138            335
+
+⛔ THE POOL ALREADY OVERSHOOTS ON ACIDITY ABOUT 6:1. A D/E bias would have pushed
+MORE sequences out the BOTTOM of the band. The n=8 smoke test was wrong about the
+DIRECTION, not just the size.
+
+⇒ THE BIAS SHIPPED AT ZERO. The rest of the sequence-step decision stood:
+cysteine omitted (measured cysteine-free 3,320 / 3,320), proline permitted.
+
+LESSONS, two, and the second is the bigger one:
+  (a) measure-then-commit earned its keep — a magnitude set from n=8 would have
+      hurt, and the only reason it did not is that the decision refused to fix
+      the number;
+  (b) a decision can be RIGHT about which property to control and WRONG about
+      which way. An n=8 pilot can establish that a property needs attention; it
+      cannot establish the sign.
+
+ALSO LEARNED HERE: the filter step SPLITS, because its inputs do. Net charge and
+surface-patch metrics need a SEQUENCE, so they cannot run on backbones at all.
+
+AND THE SEQUON FILTER WAS NOT FREE, measured on the same pass: 322 sequences
+(9.7%) carried an N-X-[ST] sequon IN THE BINDER and were filtered out. Combined
+with the charge band and the cysteine check, the fold set came to 2,260 sequences
+over 317 of 332 backbones — the filters cost 15 backbones, not 15%.
+
+
+=====================================================================
+19. A CONSTANT RESIDUE-NUMBER OFFSET. Three scorers read the wrong residue.
+=====================================================================
+TRIED: map our numbering to the generator's output with a constant offset. Valid
+for a contiguous window, and it was correct for one.
+
+WHAT HAPPENED: the replacement sphere cut is MULTI-SEGMENT — 15 segments at one
+site, 26 at the other — and the generator renumbers the target 1..N contiguous,
+discarding both the original numbers and every gap. No constant offset exists.
+Three scorers had one hardcoded. Measured: the key histidine is output residue
+B141; the offset formula gives B40, which is a CYSTEINE. One site failed loudly
+on a residue-type assertion. The other site's offset "worked" by luck, because
+all eight of its footprint residues fell in the sphere's FIRST segment.
+
+Worse, nothing had persisted the real map: the builder computed it and threw it
+away, so it was recoverable only by re-running the cut at the identical radius.
+
+A SECOND, RELATED FAILURE: a guidepost-excision step took the binder's nearest
+aspartate to the key histidine and REMOVED it from the binder before measuring
+footprint contact. On hotspot-only arms there is no guidepost, so that deleted a
+real, designed residue — and it fired precisely on the designs that place an
+aspartate at the imidazole, i.e. on the interaction the arm existed to make. It
+was deleted, not bypassed.
+
+LESSON: persist the map at cut time, ship it with the target, have every consumer
+load it, and verify it against real generator output by RESIDUE TYPE (231/231 and
+230/230 here), not by count. An anchor-only check cannot catch a wrong map. And
+assert residue identity rather than a number range: the design target is numbered
+1..231 and the assay construct 1..621, so the integer overlap is a coincidence.
+
+
+=====================================================================
+20. "RELAX THE SCORER'S CHECK SO IT ACCEPTS THE NEW FOLDS."
+=====================================================================
+TRIED (proposed, not done): the existing self-consistency scorer refused the new
+folds with "target residues differ: design 231 vs pred 621 (shared 231)". The
+obvious move is to loosen the count check.
+
+WHY IT WAS NOT DONE: the scorer was RIGHT to refuse. Design residue 1 is WT 8;
+fold residue 1 is WT 1. Relaxing the check would have superposed MISMATCHED
+residues and returned a confident, meaningless placement number. A second scorer
+was written instead, routing the target leg through the persisted map and
+asserting identity after mapping.
+
+LESSON: a tool that refuses your input may be right. Read the refusal before
+removing it.
+
+
+=====================================================================
+21. THE TRAINING-TABLE MERGE PATH. Never worked at all.
+=====================================================================
+TRIED: a merge script to fold each cycle's results into the training table.
+
+WHAT HAPPENED: it POOLS sequences already present in the base table and SKIPS new
+ones — "is new but has NO SEQUENCE in the base table" — which is every sequence in
+a mutant cycle. So the first real cycle had no working merge path. Cycle 0's rows
+had been built by an inline heredoc that was not kept.
+
+LESSON: a path that is never exercised on the real case is not a path. This is
+why the cycle scorer exists as a file.
+
+STATUS: dead end, excluded from everything. Not published.
+
+
+=====================================================================
+22. TREATING REPEATS AS NEW DATA. Would have corrupted the table.
+=====================================================================
+WHAT WOULD HAVE HAPPENED: a repeat is a duplicate SEQUENCE. Merging it into the
+training table puts one sequence in twice, double-weights it in anything fitted
+on the table, corrupts the reference detection (which counts Hamming-1
+neighbours), and lets a repeat become the parent of the next cycle.
+
+AND THE OBVIOUS SHORTCUT IS ALSO WRONG: identifying repeats by id prefix. "id9"
+as a prefix already matched ten genuine designs (id9, id90, id91..id99, id901,
+id902), so prefix matching would have held out real data. Repeats are identified
+from their own declared file only; if that file is absent the scorer behaves
+exactly as it did before repeats existed, which is what makes the earlier cycles
+reproduce byte-for-byte.
+
+LESSON: declare repeats in a file, never infer them from a name.
+
+
+=====================================================================
+23. ASSUMING THE CAMPAIGN HAD REPLICATES BECAUSE SOME ROWS LOOKED LIKE THEM.
+=====================================================================
+WHAT HAPPENED: two rows carried a doubled draw count and looked like replicates.
+Measured: they are BYTE-IDENTICAL across three successive training tables —
+carried forward, never re-measured. Every design in the campaign had exactly ONE
+measurement, through four cycles, so there was no noise estimate at all.
+
+The concept had been raised twice and never became a plan. One report warned in
+writing that two byte-identical draw vectors must not be read "as two independent
+confirmations" — a caution about the absence, not a remedy. An earlier decision
+left a replicate-agreement criterion explicitly open, with its motivating
+failure: a control whose between-replicate spread was 0.33 kcal/mol against a
+per-replicate error of ~0.06 — replicas disagreeing ~5x more than their own
+statistics permitted, invisible while a single replicate was quoted. A third
+document recorded a standing unfixed objection that our submission set contains
+no replicates at all, against measured assay replicate scatter of 2.8x at the
+90th percentile.
+
+LESSON: "we have replicates" is a claim about the filesystem. Check it. A warning
+written down three times is not a plan.
+
+STATUS: replication is now standing — top ~5 per cycle refolded with fresh draws,
+riding in the cycle's own slots at zero extra cost, with a known LOW anchor
+included so regression to the mean is measurable. First in-cycle run: n=6, mean
+|delta| 0.158, slope of fresh-on-prior +0.343. Both champions at 1.000 came back
+0.700 and 0.800; the low anchor came UP 0.400 -> 0.600. Part of every cycle's
+apparent gain was SELECTION.
+
+
+=====================================================================
+24. ANCHORING ON THE TOP OF THE TABLE. Flattered everything downstream.
+=====================================================================
+WHAT HAPPENED: one design topped the table at 10.333 on a gate of 3 passing draws
+in 10, with a median fold error of 1.871 A — it fails the fold gate 7 draws in
+10. Anchoring the next cycle on a thin-data outlier redefines every mutation in
+that cycle relative to a design that does not fold.
+
+LESSON: apply every quality floor to the REFERENCE as well as to the candidates.
+And apply the noise floor to the BASELINE too: the honest baseline here is the
+hub design at 10.05 on 20 draws, not its single best reading.
+
+
+=====================================================================
+25. SEQUENCE-MODEL CONFIDENCE AS A WITHIN-BACKBONE RANKER.
+=====================================================================
+TRIED: pick which 50 of 90 sequences to fold using the sequence model's own
+overall confidence. Justified campaign-wide on 1,082 scored sequences,
+rho = -0.299 against median fold error.
+
+WHAT HAPPENED: on a single backbone at n=60 that signal is ABSENT.
+
+LESSON: a between-group predictor used as a within-group ranker is a new,
+untested claim. Measure it at the level you intend to use it.
+
+
+=====================================================================
+26. BELIEVING AN EXIT CODE, A MANIFEST RATE, OR A FILE SEARCH.
+=====================================================================
+Four separate instances, each of which read exactly like success:
+
+  - rc=0 WITH NO OUTPUT. The predictor catches its own out-of-memory, skips the
+    batch, writes no structure, exits 0. Reproduced deliberately on a probe: the
+    heaviest glycan mode OOMed with rc=0 and ZERO structures written, while the
+    lighter mode peaked at 94% of a 16 GB card and succeeded.
+    ⛔⛔ AND THE OBVIOUS GUARD ALSO PASSES: the run's working directory came back
+    FULLY POPULATED, so a file-EXISTENCE check reported success too. Only the
+    output COUNT against the input count catches it.
+  - COUNTING THE WRONG THING. Outputs live INSIDE the per-run archives, so
+    searching for loose structure files returns 0 on a perfectly good round.
+  - A MANIFEST'S OWN THROUGHPUT FIGURE. It divides cumulative outputs by the
+    LAST attempt's elapsed time. 17% wrong on the shard we needed, and ~300x
+    wrong on four other shards of the same campaign.
+  - THE TOOL'S OWN ERROR TEXT. A fatal-error file blamed a missing MSA; the MSA
+    was present and the cause was memory. A separate "ran out of memory" line in
+    the same logs refers to the de novo binder chain's empty alignment and is
+    EXPECTED, not a fault.
+
+LESSON: verify the output COUNT per unit of work. Never rc, never a reported
+rate, never the absence of loose files, and never the tool's own diagnosis.
+
+AND ARCHIVE THE DIAGNOSTICS: five of six failed shards here kept a fatal-error
+file and NO log, so their cause is not proven and never will be.
+
+
+=====================================================================
+27. LETTING RENTED WORKERS FINISH ON THEIR OWN. Four incidents.
+=====================================================================
+WHAT HAPPENS: our workers do not self-terminate. On finish the container re-runs
+its start command, the second run refuses, and it restart-loops at full billing
+rate.
+
+MEASURED INCIDENTS: ~8 workers idle 4.9 h with no terminator armed; five left
+billing past a deadline; failed optimizer workers billing until caught by hand;
+five that ran ~9.7 h on a 71-minute job after already writing a fatal error.
+
+AND THE GUARD ITSELF FAILED TWICE, in different ways:
+  - a process check for the terminator's own name MATCHES THE SHELL CARRYING THE
+    PATTERN and reports healthy with zero terminators running. Measured against
+    ground truth. The pattern must be anchored.
+  - the terminator was ALIVE, blocked in a local copy on a full disk, logged
+    nothing for 6 h 21 min, and every liveness check passed throughout.
+
+LESSON: creating spend and ending it are two obligations. Arm the terminator
+before you look away, verify it with a check that cannot match itself, and
+measure whether it WORKS rather than whether it EXISTS. Treat termination as part
+of the cost model — a published cost figure that assumes workers stop is wrong.
+
+RELATED: never loop a create (a launcher holds shared state and is not
+idempotent; a retry loop once nearly put a second worker onto the same output
+prefix, which is the condition that lets one manifest bless two workers), and
+never put two workers on one output prefix. A looping worker can also re-upload
+over its own verified data until the remote copy stops matching its manifest,
+leaving the local pull as the only good copy.
+
+
+=====================================================================
+28. QUOTING A LENGTH OUT OF THE MERGED PUBLIC TABLE.
+=====================================================================
+WHAT HAPPENED: the prior-designs table's "length" column is the FULL construct —
+binder plus a CONSTANT 621-residue target. Verified for all 400 rows. Rank
+orderings are safe (Spearman between binder length and full length = 1.00); every
+ABSOLUTE value is +621 too large. The median binder is 88.5 residues, not 709.
+
+LESSON: check what a merged column actually measures before quoting an absolute
+number from it. The rank-safe case is the dangerous one, because everything
+downstream looks fine.
+
+
+=====================================================================
+29. LENGTH AS A WAY TO BUY INTERFACE. Measured: it buys helices.
+=====================================================================
+WHAT HAPPENED, measured on single-site designs: extra length buys HELICES, not
+interface. Designs were 87% helix / 0% median strand and already spanned 37-57 A,
+so additional length bought no reach.
+
+LESSON WITH ITS OWN SCOPE LIMIT, recorded because it was nearly misapplied: that
+measurement is about SINGLE-SITE binders. For a two-site bridge that must
+physically cover a 45.6 A span, length IS load-bearing, and the single-site result
+does not transfer. A measured rule carries the population it was measured on.
+
+
+=====================================================================
+30. SMALLER THINGS, EACH WITH A MEASUREMENT
+=====================================================================
+- A TEMPLATES BLOCK THAT IS SILENTLY IGNORED. The forced-template flag only takes
+  effect when potentials are on, and the runner turns potentials on by GREPPING
+  for a templates block. Without it the flag is silently ignored: measured target
+  fit 17.5 A versus 0.69 A.
+- A RELATIVE MSA PATH. Makes the predictor SKIP the design and exit 0. The
+  builder now asserts a worker-absolute path rather than trusting it.
+- THE PREDICTOR BUILDING THE WRONG RECEPTOR STATE. Measured on this target: the
+  predictor builds the extended conformation, not the tethered one — a key
+  distance came out 10.4 A against 29.0 A in the crystal. The assay target is
+  tethered. Any prediction of a conformation-selective binder inherits that.
+- THE PREDICTOR GETTING A SIDE CHAIN WRONG WHILE GETTING EVERYTHING ELSE RIGHT.
+  On a refold of a known complex, fold and pocket were right and one rotamer was
+  wrong, so the defining 2.84 A hydrogen bond was absent in 21 of 21 draws. A
+  correct backbone is not a correct interaction.
+- A SCRIPT GUARDED ON __main__ UNDER A HEADLESS VIEWER exits 0 writing nothing.
+- A DIRECTORY LISTING COUNTING DIRECTORIES AS FILES, and a process-count pipeline
+  counting its own shell. A count is not a measurement.
+- A STRING-COMPARE WHERE A NUMERIC COMPARE WAS MEANT. Reads as a result.
+- A REPORTED "RETRY OF MISSING SHARDS" STRING that appears on every round,
+  because the test is "not yet landed" rather than "is a relaunch". It carries no
+  information; it was chased once. Left unpatched deliberately — a live process
+  shares the code path, and editing a running script does not fix it.
+- A DUPLICATE PRE-LAUNCH LEDGER LINE per resume, because the ledger write runs
+  unconditionally before the launch branch. Count distinct worker ids for spend,
+  never ledger lines.
+- A COLLISION THAT WOULD HAVE EXITED THE SCORER AFTER THE MONEY WAS SPENT: one
+  substitution in a planned scan already existed as an earlier design. Caught
+  before launch by hand AND against the scorer's own guard; excluded.
+
+
+=====================================================================
+31. READING "SEVEN TIED LEADERS" AS A NOISE PROBLEM. They were one
+    molecule, and one free measurement said so.
+=====================================================================
+TRIED: after six optimisation cycles, seven designs sat tied at the top of the
+table with no statistical test separating any pair of them. The conclusion on
+the record was "0 of 15 pairs among the top six separate" -- i.e. the metric is
+too noisy to tell them apart. The implied next step was to replicate harder.
+
+WHAT HAPPENED: all seven are the same length, so Hamming distance is exact and
+costs nothing to compute. Measured 2026-10-06:
+
+  the seven leaders differ from each other by 1-4 of 75 residues, mean 2.2
+  the next two candidates were 25/75 and 17/75 away
+  the eighth candidate was 4/75 away -- diversity exhausted after three
+
+They are ONE MOLECULE with point mutations. Nothing separated them because
+there was nothing there to separate.
+
+WHY IT MATTERS, two ways:
+  - The action is opposite. "Too noisy" says replicate more; "identical" says
+    stop optimising this family and change premise. We would have spent another
+    cycle on the first reading.
+  - It changes what the tie means for a deposit. Submitting several members of
+    a tied family buys no diversity, and we were about to treat seven leaders
+    as seven options.
+
+STATUS: fixed as a habit -- a Hamming (or equivalent distance) matrix over the
+top candidates, before any claim about separability. It is free. The general
+form is design_guidelines.txt J1 and J2.
+
+=====================================================================
+32. DIVIDING A REPRODUCIBILITY DELTA BY THE NEW ROUND'S STANDARD ERROR
+    ALONE. Declared a valid round VOID, and punished the better round.
+=====================================================================
+TRIED: a decisive round carried an anchor sequence whose value from the
+previous round was known, so that a batch shift could be detected. The test
+written was: delta between the anchor's new and old values, divided by the new
+round's standard error.
+
+WHAT HAPPENED: the anchor came back +0.037. The new round had s.e. 0.010, so
+that test read 3.55 s.e. and the code declared the round VOID -- discarding a
+comparison in which the two challengers lost by 9.30 and 11.61 s.e.
+
+The arithmetic is wrong. Comparing two ESTIMATES combines both standard errors:
+sqrt(0.010^2 + 0.018^2) = 0.0210, giving 1.75 s.e. -- within tolerance, and the
+round holds.
+
+THE PERVERSE PART: the prior value's s.e. was 0.018 because that round was
+heavily replicated (90 draws). Ignoring it means the BETTER-replicated the
+previous round was, the more likely the new round is to be declared a batch
+shift. The error punishes exactly the rounds that did the right thing.
+
+CAUGHT BY: the verdict being implausible -- a round whose margins were 8-16x
+the anchor's drift should not be void -- and then by checking the denominator.
+
+STATUS: fixed. The corrected test is the committed one; the pre-fix version is
+kept as a backup, and the superseded summary file is kept rather than
+overwritten, because a retraction is a finding. General form: design_guidelines
+J5.
+
+=====================================================================
+33. TAKING LOW LABEL VARIANCE AS EVIDENCE OF QUALITY. The most stable
+    design in the cohort was the worst one.
+=====================================================================
+TRIED: among eight site-A designs, one was carried into the deposit partly
+because it had the best label STABILITY of the eight (sd 0.038) with a mid-pack
+average. Stability read as trustworthiness.
+
+WHAT HAPPENED: three unrelated measurements then flagged that one design and
+no other.
+
+  axis                                      this design     the others
+  strict fold-AND-full-footprint rate       0.178           0.80-0.86
+  interface packing (LIS family)            0.000, 10/10    0.486 (best)
+  backbone geometry vs the crystal target
+    in the SAME file: tau ratio             4.29x           0.13x
+    heavy-atom clash ratio                  1.98x           1.80x
+
+It was the only candidate above its own in-file crystal control on BOTH
+geometry measures. Its low variance was measuring that it sat CONSISTENTLY
+near-but-not-at the thing we wanted.
+
+AND IT MAKES THE MOST CONTACTS OF THE THREE -- mean 107, up to 172 in one
+sample -- while scoring zero on packing, with the scorer confirming it FOUND
+the interface and scored it zero. A high contact count with no packing is a
+spread, non-specific interface, and a metric that COUNTS footprint contacts is
+blind to it by construction.
+
+HONEST LIMITS, because this is a flag and not a verdict: all three axes read
+the same predicted structures, so they are not fully independent -- a
+systematic predictor artefact would move them together. And the geometry ratio
+rests on 10 models, where the best candidate has 70.
+
+NOT RETRACTED, NOT DROPPED: the design is still in the deposit, as the only
+real sequence diversity available (25 of 75 residues from the leader), with all
+three flags stated in the accompanying documentation. That is a deliberate
+diversity bet, not a co-equal pick, and it is labelled as one.
+
+A SECOND DESIGN in the same deposit scores zero on packing but is BETTER than
+its own crystal control on both geometry measures with zero buried unsatisfied
+charges -- so its zero is a PLACEMENT risk, not a foldability one. Two zeros
+with different causes; the geometry panel is what told them apart.
+
+STATUS: the general forms are design_guidelines J3, J4 and J7. The specific
+hole it exposes in our own pipeline: six cycles optimised a contact COUNT and
+never once measured interface packing or expression-associated geometry.
+
+=====================================================================
+WHAT IS STILL OPEN, honestly
+=====================================================================
+- The optimizer works as machinery and has not been shown to produce a better
+  binder. The aggregate progression is real (between-design variance 3.02x and
+  2.42x the binomial null, chi2 p=2.5e-11 and p=1.3e-06); no individual design is
+  resolvable above the 0.158 noise floor; part of the apparent gain is measured
+  selection.
+- Nothing here has been tested experimentally. Assay replicate scatter is 2.8x at
+  the 90th percentile, which no computational precision above approaches.
+- The current objective had not been applied to any landed table when this was
+  written. Every landed number is on its predecessor. Label the metric.

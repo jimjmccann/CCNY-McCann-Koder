@@ -1,0 +1,42 @@
+{
+ "cand-siteA-id19-sh09": {
+  "len": 75,
+  "moderate_struct": true,
+  "high_struct": true,
+  "best_tm_cov70": 0.9527,
+  "max_seqid_cov50_pct": 37.1,
+  "nearest": "9f8w-assembly2_B",
+  "n_hits": 1069,
+  "source": "$LS/egfrP14_land_20261003/shard05/boltz_results_shard05/predictions/A_arm_shard09_shard09_0_model_3_id19/A_arm_shard09_shard09_0_model_3_id19_model_0.pdb"
+ },
+ "cand-siteA-id2": {
+  "len": 75,
+  "moderate_struct": true,
+  "high_struct": false,
+  "best_tm_cov70": 0.7141,
+  "max_seqid_cov50_pct": 27.500000000000004,
+  "nearest": "8jo3-assembly1_A",
+  "n_hits": 44,
+  "source": "$LS/egfrP14_land_20261003/shard04/boltz_results_shard04/predictions/A_arm_shard11_shard11_24_model_2_id2/A_arm_shard11_shard11_24_model_2_id2_model_0.pdb"
+ },
+ "cand-siteA-id73": {
+  "len": 80,
+  "moderate_struct": true,
+  "high_struct": false,
+  "best_tm_cov70": 0.7506,
+  "max_seqid_cov50_pct": 29.5,
+  "nearest": "8uce-assembly1_B-2",
+  "n_hits": 1064,
+  "source": "$LS/egfrP14_land_20261003/shard06/boltz_results_shard06/predictions/A_arm_shard14_shard14_35_model_5_id73/A_arm_shard14_shard14_35_model_5_id73_model_0.pdb"
+ },
+ "cand-bridge-id76": {
+  "len": 145,
+  "moderate_struct": true,
+  "high_struct": true,
+  "best_tm_cov70": 0.9637,
+  "max_seqid_cov50_pct": 58.9,
+  "nearest": "5hgv-assembly2_C",
+  "n_hits": 1367,
+  "source": "$LS/tether_ab_20261005/bridge/boltz_results_shard09/predictions/BR_arm_shard11_shard11_41_model_5_id76/BR_arm_shard11_shard11_41_model_5_id76_model_0.pdb"
+ }
+}
