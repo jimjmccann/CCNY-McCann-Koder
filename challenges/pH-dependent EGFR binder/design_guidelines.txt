@@ -1,6 +1,6 @@
 DESIGN GUIDELINES
 Take-away messages for future de novo design projects.
-McCann / Koder groups, The City College of New York.
+James McCann and the Koder Group, The City College of New York.
 Drawn from the 2026-09/10 EGFR binder campaign. Deliberately not EGFR-specific.
 
 Every item below has a measurement behind it. Where the measurement is on one

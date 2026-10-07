@@ -1,7 +1,7 @@
 HOW WE FOUND OUT, BY ACCIDENT, THAT OUR DE NOVO BRIDGE DESIGNS ARE
 CONSENSUS TETRATRICOPEPTIDE REPEAT PROTEINS
 
-McCann and Koder groups, The City College of New York
+James McCann and the Koder Group, The City College of New York
 Lab note, 2026-10-06 (NYC local). Measured on a local CPU.
 
 

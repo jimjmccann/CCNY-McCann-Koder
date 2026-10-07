@@ -5,7 +5,7 @@ the **four**-sequence set as it stood earlier on 2026-10-06. **Ten** sequences w
 `id15`, which appears below, was **deliberately dropped**, and `id86` was added. Nothing below is
 deleted — it is the record of how the set stood — but the correction file is the authority.
 
-McCann / Koder groups, The City College of New York. **2026-10-06.**
+James McCann and the Koder Group, The City College of New York. **2026-10-06.**
 
 Four sequences, two backbones, against the **monomeric tethered EGFR extracellular
 region**. ⛔ Superseded: see the banner above. The deposited sequence file is

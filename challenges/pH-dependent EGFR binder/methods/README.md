@@ -1,6 +1,6 @@
 # De novo EGFR binder — method, in reader order
 
-McCann / Koder groups, The City College of New York.
+James McCann and the Koder Group, The City College of New York.
 Site-A binder campaign, 2026-09-28 .. 2026-10-05.
 
 This directory holds the documentation needed to reproduce the **design criteria** —

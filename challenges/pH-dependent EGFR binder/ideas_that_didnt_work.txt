@@ -1,7 +1,7 @@
 IDEAS THAT DIDN'T WORK
 Things we tried on the de novo EGFR binder campaign (2026-09-28 .. 2026-10-06)
 that did not work, and why.
-McCann / Koder groups, The City College of New York.
+James McCann and the Koder Group, The City College of New York.
 
 Ordered roughly by how much they cost us. Every entry has a measurement behind
 it; where it does not, the entry says so. Several entries are things that worked

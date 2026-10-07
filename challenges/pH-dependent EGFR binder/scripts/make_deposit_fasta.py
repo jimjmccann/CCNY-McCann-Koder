@@ -55,7 +55,7 @@ def main() -> int:
         sys.exit(f"⛔ {len(rows)} sequences exceeds the organizer's 20-per-submission cap")
 
     lines = [
-        "; Challenge-1 submitted sequences, McCann / Koder groups, The City College of New York.",
+        "; Challenge-1 submitted sequences, James McCann and the Koder Group, The City College of New York.",
         "; GENERATED from the submitted CSV by scripts/make_deposit_fasta.py -- do not hand-edit.",
         f"; source CSV: {os.path.basename(a.csv)}   sequences: {len(rows)}",
         "; Order is the ranking we believe, best first. Why these molecules: DESIGN_CHOICES.md.",

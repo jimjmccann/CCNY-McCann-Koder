@@ -6,7 +6,7 @@ stood earlier on 2026-10-06. **Ten** were submitted, `id15` was **deliberately d
 `id86` added. The reasoning in those sections is unchanged and still the reasoning behind the
 submitted set; only the count and the membership moved.
 
-McCann / Koder groups, The City College of New York.
+James McCann and the Koder Group, The City College of New York.
 De novo binders against the monomeric tethered EGFR extracellular region.
 
 `methods/README.md` is the **pipeline** — the eight stages in run order, and every

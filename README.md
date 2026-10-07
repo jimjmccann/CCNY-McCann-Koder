@@ -1,6 +1,6 @@
 # CCNY-McCann-Koder
 
-Protein design work from the McCann and Koder groups at **The City College of New York**, entered in
+Protein design work from James McCann and the Koder Group at **The City College of New York**, entered in
 the [Anthropic × Adaptyv 2026 Protein Design Competition](https://proteinbase.com/competitions/anthropic-adaptyv-2026).
 
 This repository holds the designs, the reasoning behind them, and the code used to produce them.

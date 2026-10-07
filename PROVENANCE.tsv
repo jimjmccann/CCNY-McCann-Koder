@@ -5,9 +5,9 @@
 #	asserts hashes that no longer match, which is worse than shipping none.
 #archive_path	bytes	md5
 .gitignore	629	7143e7865eab08187ef795d5b004765a
-README.md	4510	4d175d175b6b1fde56f2531835842d8f
+README.md	4515	8ccd56543476c4eef8f0e14b428471b1
 challenges/pH-dependent EGFR binder/BRIDGE_MUTANT_FOLD_RESULT_20261006.md	5452	2f724644c96cd75f433ec2152ddfa1c3
-challenges/pH-dependent EGFR binder/DESIGN_CHOICES.md	21103	f1ee064bc3f5b3bc0b906a1ac74f496d
+challenges/pH-dependent EGFR binder/DESIGN_CHOICES.md	21114	1df47528feff350701d7de2a54e8f23e
 challenges/pH-dependent EGFR binder/NOVELTY_20261006.md	11286	0869dc6bf66ffa373d8fb38f70cc9492
 challenges/pH-dependent EGFR binder/NOVELTY_CORRECTION_MONOMER_20261006.md	6323	4cd2bfe157c0d171081e83f2dd3606be
 challenges/pH-dependent EGFR binder/NOVELTY_MEASURED_20261006.md	8699	ae85bbfb22178ba9bc2d452a42a1a729
@@ -15,8 +15,8 @@ challenges/pH-dependent EGFR binder/README.md	8241	af78d1c7f0fc4d89d767e996d949e
 challenges/pH-dependent EGFR binder/REPEAT_SCRAMBLING_LITERATURE_20261006.md	9725	21854cd2c561ee5981e39a9dfd1fdbcf
 challenges/pH-dependent EGFR binder/SEQUENCE_NOVELTY_SWISSPROT_20261006.md	35190	1bf32ede5d0c6564e28512021485c8de
 challenges/pH-dependent EGFR binder/SEQUENCE_SET_CORRECTION_20261006.md	4678	235b9db6885a51d29528887aeb9266e4
-challenges/pH-dependent EGFR binder/SUBMITTED_SEQUENCES.md	7401	fbbe82d683ae8d260bcedd4379b2f2f9
-challenges/pH-dependent EGFR binder/accidental_ctpr_homology.txt	7407	8cefd9fad91401f7a34c8ec9c7bf535d
+challenges/pH-dependent EGFR binder/SUBMITTED_SEQUENCES.md	7412	f6035dd9275e50a2c2c4d0fd9f6583cf
+challenges/pH-dependent EGFR binder/accidental_ctpr_homology.txt	7416	a53fa8a1aab628296a60e68cca68f50e
 challenges/pH-dependent EGFR binder/data/bridge_vs_ctpr_20261006/01_all_bridges_vs_7obi.png	482907	993d38f3fea2d157c63e3b043ef12150
 challenges/pH-dependent EGFR binder/data/bridge_vs_ctpr_20261006/02_bridge_id1104_identity.png	380629	6f1d1554f7119bb71e34e4c3d785e574
 challenges/pH-dependent EGFR binder/data/bridge_vs_ctpr_20261006/02_bridge_id47_identity.png	328054	6f06f43c8441869f8bd9fb30ca3b4df2
@@ -53,11 +53,11 @@ challenges/pH-dependent EGFR binder/data/siteA_monomer_20261006/egfr-siteA-id86.
 challenges/pH-dependent EGFR binder/data/siteA_monomer_20261006/egfr-siteA-id89.yaml	156	2dabf68b9bc79899e9ea03965c8eea02
 challenges/pH-dependent EGFR binder/data/siteA_monomer_20261006/monomer_foldseek_TM_20261006.csv	893	5a3f1550774b8ee6a6aab73a6230d339
 challenges/pH-dependent EGFR binder/data/siteA_monomer_20261006/monomer_plddt_20261006.csv	679	35536ed0eaa63e1e1db95bca25e99208
-challenges/pH-dependent EGFR binder/design_guidelines.txt	51017	c2762a7181355a951c17198e0b04dbee
-challenges/pH-dependent EGFR binder/ideas_that_didnt_work.txt	51901	d0697442756fcabb546fcfac03e206b4
+challenges/pH-dependent EGFR binder/design_guidelines.txt	51028	0e6f5779e8f9b0177461c919abb20acf
+challenges/pH-dependent EGFR binder/ideas_that_didnt_work.txt	51912	834e780d96a23f74f74b1384d5b8ecc3
 challenges/pH-dependent EGFR binder/methods/INPUTS.md	9588	eee31fdf16b1f8e09338c0972782fed2
 challenges/pH-dependent EGFR binder/methods/OBJECTIVES.md	19403	7988163c9fe256aa34ccec7a41170415
-challenges/pH-dependent EGFR binder/methods/README.md	24401	a553f56810dfe99c50cb9e94b99c1ea7
+challenges/pH-dependent EGFR binder/methods/README.md	24412	d30b0908e013b44f6c9b8942fd331f28
 challenges/pH-dependent EGFR binder/methods/SCRIPTS.md	33266	43aa44c2833003133e917761f2153c13
 challenges/pH-dependent EGFR binder/methods/THRESHOLDS.md	22674	20cad0289c64d55648221d7cfd82cfc5
 challenges/pH-dependent EGFR binder/scripts/analyze_stacking_egfrA1.py	10586	624aa38dc434e5f60e6df4da33f8283e
@@ -77,7 +77,7 @@ challenges/pH-dependent EGFR binder/scripts/contacts_bridge.py	7378	ba6a49ea9363
 challenges/pH-dependent EGFR binder/scripts/epitope_perresidue_egfrA1.py	5570	63d3b83603f1a727832906395944c32b
 challenges/pH-dependent EGFR binder/scripts/full_receptor_gate.py	13107	6b130b17507adf58195d2d4c732cf4d6
 challenges/pH-dependent EGFR binder/scripts/make_br50_tsv.py	6853	1b7bb8ae7106de48af1d0b1e8f37cb5b
-challenges/pH-dependent EGFR binder/scripts/make_deposit_fasta.py	3464	8b7d52f135208db7a14df9db0b28283e
+challenges/pH-dependent EGFR binder/scripts/make_deposit_fasta.py	3475	56508f89d1dec3fb892af8278a21b5ae
 challenges/pH-dependent EGFR binder/scripts/make_rfd3_shards.py	6014	bef6a19c4389a631a91b83a45eeca38a
 challenges/pH-dependent EGFR binder/scripts/make_w10_tsv.py	3723	ad43f1a01a2771d125967c117563fe86
 challenges/pH-dependent EGFR binder/scripts/make_wt2out_map.py	4369	5c2b33308a869c0103da07e7c0e89127
@@ -107,4 +107,4 @@ challenges/pH-dependent EGFR binder/structures/id2015_siteA_complex.pdb	461861	5
 challenges/pH-dependent EGFR binder/structures/id85_bridge_complex.pdb	506816	278e92734ff451dc8ccbd9f651005742
 challenges/pH-dependent EGFR binder/structures/id89_siteA_complex.pdb	461213	b80926b9bbb5fb0e36c9029cf3879aa7
 challenges/pH-dependent EGFR binder/submission_challenge1_20261006.csv	1180	c3a1dc4fe0e41a6f5b6cbaa23660510e
-challenges/pH-dependent EGFR binder/submitted_sequences.fasta	1784	8bcf9a06f4169ed71d4843b035f19a82
+challenges/pH-dependent EGFR binder/submitted_sequences.fasta	1795	a12058c3951a9046b77091aa491ad987
