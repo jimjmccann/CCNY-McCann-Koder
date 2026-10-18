@@ -29,6 +29,15 @@ authoritative on which sequences make up the set, and the deposited
 `challenges/pH-dependent EGFR binder/submission_challenge1_20261006.csv` is the authority on its own
 contents.
 
+Challenge 2 — the conditional TNF-α binder — is deposited as a **negative, unvalidated result, with
+nothing submitted**. The designs specify a salt bridge to Glu107 of a TNF-α protomer; re-folding the
+designed sequences against the whole trimer reproduces it in **0 of 69** predictions, and places the
+binder on a different face of the target. ⛔ That is one predictor's verdict and **not** a
+measurement of the designs — no positive control exists, so the test's sensitivity on a de novo
+interface is unmeasured. Two of the challenge's three requirements, mouse cross-reactivity and the
+pH switch, are not addressed in that cohort, and no novelty check was run. Start at
+`challenges/conditional TNF-alpha binder/README.md`, which states all of this before anything else.
+
 Nothing here has been tested at the bench. No number anywhere in this repository is an affinity.
 
 ## Novelty, and an accidental finding
@@ -73,6 +82,7 @@ another's. Directories are named after the target once it is announced.
 ```
 challenges/
   pH-dependent EGFR binder/     designs, methods and notes for challenge 1
+  conditional TNF-alpha binder/ designs, methods and notes for challenge 2
 ```
 
 The directory name is the challenge title as the organizers published it, so it contains spaces: in a

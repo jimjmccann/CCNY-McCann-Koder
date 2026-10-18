@@ -1,0 +1,12 @@
+source	design	backbone	arm	conf	ptm	iptm	cplx_plddt	icplddt
+probe_out	arm_shard10_c1core_v46_b2_s10_2_model_0_seq01_bound	s10_2	b2	0.7542	0.7495	0.6779	0.7732	0.8045
+stage1_out	arm_shard03_c1core_v46_b1_s03_2_model_0_seq01_bound	s03_2	b1	0.8012	0.7801	0.7187	0.8218	0.8412
+stage1_out	arm_shard04_c1core_v46_b2_s04_3_model_0_seq01_bound	s04_3	b2	0.7266	0.7720	0.7078	0.7313	0.7462
+stage1_out	arm_shard07_c1core_v46_b2_s07_11_model_0_seq01_bound	s07_11	b2	0.7894	0.8270	0.7797	0.7918	0.7988
+stage1_out	arm_shard07_c1core_v46_b2_s07_3_model_0_seq01_bound	s07_3	b2	0.7695	0.7541	0.6845	0.7907	0.8064
+stage1_out	arm_shard09_c1core_v46_b1_s09_8_model_0_seq01_bound	s09_8	b1	0.7985	0.7594	0.6906	0.8254	0.8371
+stage1_out	arm_shard12_c1core_v46_b1_s12_5_model_0_seq01_bound	s12_5	b1	0.7838	0.7351	0.6614	0.8144	0.8002
+stage1_out	arm_shard13_c1core_v46_b2_s13_8_model_0_seq01_bound	s13_8	b2	0.7750	0.8131	0.7629	0.7781	0.7865
+stage1_out	arm_shard18_c1core_v46_b1_s18_2_model_0_seq01_bound	s18_2	b1	0.7671	0.7285	0.6533	0.7955	0.8120
+stage1_out	arm_shard18_c1core_v46_b1_s18_8_model_0_seq01_bound	s18_8	b1	0.7717	0.7397	0.6669	0.7979	0.7983
+stage1_out	arm_shard22_c1core_v46_b2_s22_8_model_0_seq01_bound	s22_8	b2	0.7675	0.7657	0.6997	0.7844	0.7984

@@ -1,0 +1,13 @@
+{
+ "arm_shard03_c1core_v46_b1_s03_2_model_0.pdb": "A32 A75 A119 A169",
+ "arm_shard04_c1core_v46_b2_s04_3_model_0.pdb": "A30 A77 A117 A164",
+ "arm_shard07_c1core_v46_b2_s07_11_model_0.pdb": "A30 A74 A115 A167",
+ "arm_shard07_c1core_v46_b2_s07_3_model_0.pdb": "A30 A74 A118 A164",
+ "arm_shard09_c1core_v46_b1_s09_8_model_0.pdb": "A29 A75 A117 A168",
+ "arm_shard10_c1core_v46_b2_s10_2_model_0.pdb": "A29 A76 A116 A167",
+ "arm_shard12_c1core_v46_b1_s12_5_model_0.pdb": "A32 A77 A121 A177",
+ "arm_shard13_c1core_v46_b2_s13_8_model_0.pdb": "A33 A79 A120 A172",
+ "arm_shard18_c1core_v46_b1_s18_2_model_0.pdb": "A31 A78 A123 A175",
+ "arm_shard18_c1core_v46_b1_s18_8_model_0.pdb": "A35 A82 A122 A171",
+ "arm_shard22_c1core_v46_b2_s22_8_model_0.pdb": "A36 A76 A120 A166"
+}
