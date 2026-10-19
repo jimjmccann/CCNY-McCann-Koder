@@ -1,3 +1,5 @@
+# ⛔ COHORT: v46 joint11 (C1). These 11 backbones carry the 110 sequences that were NOT
+# submitted. The submitted set is ../../submission_challenge2_20261019.csv. See ../COHORTS.md.
 arm_shard18_c1core_v46_b1_s18_2_model_0.cif.gz
 arm_shard03_c1core_v46_b1_s03_2_model_0.cif.gz
 arm_shard18_c1core_v46_b1_s18_8_model_0.cif.gz

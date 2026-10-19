@@ -1,7 +1,9 @@
 # Conditional TNF-α binder — method, in reader order
 
 James McCann and the Koder Group, The City College of New York.
-Campaign `v46`, design work **2026-10-17 .. 2026-10-18**.
+Campaign `v46`, design work **2026-10-17 .. 2026-10-18**. ⚠️ The parallel **C3** arm (campaign
+`v50`) ran **2026-10-18 .. 10-19** and is documented in `C3_ARM.md`; the wider challenge-2 effort
+began 2026-10-07, as the challenge `README.md` states.
 
 ⚠️ **Read `../README.md` first.** It states the limitations, and on this challenge the limitations
 *are* the result. This file documents how the numbers were produced, not that they are good.
@@ -325,7 +327,9 @@ inter-protomer site that is expected, not a defect.
   the binder lands on a different face of the target. `../README.md` has the numbers.
 - ⭐ **A positive control was run and it passes.** A published de novo binder with measured affinity
   reproduces its own crystal pose to **0.89 Å** through this identical path, and a negative control
-  fails. ⇒ the fold-back check has demonstrated sensitivity on a de novo interface, so "the
+  produces no confident interface. ⛔ The negative does **not** fail on every metric — it scored
+  *higher* on epitope enrichment, which is why that metric ranks nothing here
+  (`../data/controls_20261018/CONTROLS.md`). ⇒ the fold-back check has demonstrated sensitivity on a de novo interface, so "the
   instrument is blind" is no longer an available explanation for the 0 of 110. ⛔ That still does
   not make "the designs are wrong" a measurement — only a bench assay does.
 - ⛔ **Backbone identity predicts only how well the predictor reproduces that backbone's own fold,
@@ -342,7 +346,10 @@ this competition than a design we never entered.**
 
 ## 9. Provenance of this documentation
 
-Written **2026-10-18**. Every count in §4, §5 and §7 was recomputed from the files deposited in
+Written **2026-10-18** for the C1 (`v46`) arm; **revised 2026-10-19** when the C3 (`v50`) arm and
+the submitted set were deposited — §0 and §8 changed then, and `C3_ARM.md` was added. ⚠️ A count in
+this file that is not marked otherwise was recomputed on **10-18 against the `v46 joint11` cohort**,
+which was **not** the submitted set. Every count in §4, §5 and §7 was recomputed from the files deposited in
 `../data/` when this was written; where a figure comes from a dated internal record that is not
 deposited, it is marked READ. Internal note and decision identifiers that remain in the deposited
 scripts are explained at the end of `../README.md`.

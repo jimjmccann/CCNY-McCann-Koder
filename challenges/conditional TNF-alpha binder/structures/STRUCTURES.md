@@ -63,7 +63,35 @@ superposed onto the target before any placement number was taken; see `../method
 
 ---
 
+## `designs_v50_c3/` — the 12 symmetric (C3) designed backbones
+
+Twelve gzipped mmCIF files, generator output from campaign `v50`, **unmodified**, same provenance
+and same guidepost-flag convention as `designs_v46_joint11/` above.
+
+⭐ **These are a different kind of object.** Each file holds **six** chains: **three binder copies
+`A,B,C`** plus the TNF-α trimer as **`a,b,c`** (lower case). The binder is designed as an obligate
+**homotrimer** on the target's own three-fold axis, so one designed protomer appears three times
+and the designed interaction is specified three times, once per copy.
+⛔ Do not read a single chain here as "the binder" — chain `A` alone is one third of it.
+
+**3 of the 20 submitted sequences come from these backbones.** The symmetric method, the scoring,
+and the negative result are in `../methods/C3_ARM.md`; the sequences are in
+`../data/submission_20261019/seqs_c3/`.
+
+---
+
 ## Counts stated here
 
-11 design files · 1 binder chain + 3 target chains each · 4 guideposts each. ⚠️ Any count in this
-file must be re-checked whenever a file is added or removed from this directory.
+**23 design files in this directory, in two subdirectories:**
+
+| subdirectory | files | chains per file | campaign |
+|---|---|---|---|
+| `designs_v46_joint11/` | **11** | 1 binder `A` + 3 target `B,C,D` | `v46` (C1) |
+| `designs_v50_c3/` | **12** | 3 binder `A,B,C` + 3 target `a,b,c` | `v50` (C3) |
+
+4 guideposts each in `designs_v46_joint11/`; in `designs_v50_c3/` the guidepost set is replicated
+into every binder copy and the per-backbone residue numbers differ — see
+`../data/submission_20261019/c3_design_plan.json`, which carries **12 backbones with 12 distinct
+pin sets**.
+⚠️ Any count in this file must be re-checked whenever a file is added or removed from this
+directory.

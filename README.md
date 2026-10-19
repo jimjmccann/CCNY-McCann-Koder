@@ -38,7 +38,8 @@ reproduce what the designs specify. For C1, **0 of 88** pass all five of the Bak
 silico criteria. For C3, the designed assembly is not recovered at all: **0 of 96** predicted
 trimers are arranged as designed. ⛔ That is one predictor's verdict, not a measurement — the test
 is calibrated (a published de novo binder with measured affinity reproduces its own crystal pose
-to **0.89 Å** through this identical path, and a negative control fails cleanly), but a prediction
+to **0.89 Å** through this identical path, and a negative control produces no confident
+interface), but a prediction
 is still not an affinity.
 
 Two of the challenge's three requirements — mouse cross-reactivity and the pH switch — are not

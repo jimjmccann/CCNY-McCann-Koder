@@ -1,0 +1,3 @@
+arm	label	binder_chain	target_chain	binder_len	n_ref	n_pred	n_overlap	recall	chance	enrichment	rmsd_binder_truth	iptm	ptm	complex_plddt
+pos_lcb1_denovo	POSITIVE de novo -- LCB1, designed, measured affinity	A	B	55	31	33	30	0.968	0.171	5.66	0.89	0.955	0.955	0.946
+neg_tnfa_vs_rbd	NEGATIVE -- TNFa protomer, folded, no RBD affinity	A	B	152	31	14	13	0.419	0.073	5.78		0.161	0.605	0.831

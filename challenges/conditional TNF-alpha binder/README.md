@@ -1,7 +1,7 @@
 # Conditional TNF-α binder — a negative, unvalidated result, submitted
 
 James McCann and the Koder Group, The City College of New York.
-Design work 2026-10-07 .. 2026-10-18. Challenge 2 of the Anthropic × Adaptyv 2026 competition:
+Design work 2026-10-07 .. 2026-10-19. Challenge 2 of the Anthropic × Adaptyv 2026 competition:
 *"Design a conditional TNF-α binder."*
 
 ---
@@ -35,8 +35,11 @@ Design work 2026-10-07 .. 2026-10-18. Challenge 2 of the Anthropic × Adaptyv 20
    predictor's verdict, and it is now a *calibrated* one. A **positive control** was run: a
    published de novo minibinder with measured affinity and no natural homologs, pushed through this
    identical path, recovers 30 of its 31 crystal epitope residues and its crystallographic pose to
-   **0.89 Å** CA RMSD. A **negative control** — an unrelated protein pair with no affinity — fails
-   cleanly. ⇒ the instrument is **not blind on a de novo interface**, which is the alternative this
+   **0.89 Å** CA RMSD. A **negative control** — an unrelated protein pair with no affinity — produces
+   **no confident interface** (ipTM 0.161 against 0.955). ⛔ It does **not** fail on every metric:
+   on *epitope enrichment* the non-binder scored **higher** than the real binder (5.78× vs 5.66×),
+   which is why enrichment is not used to rank anything here. ⇒ the instrument is **not blind on a
+   de novo interface**, which is the alternative this
    deposit previously could not exclude. What remains unexcluded is narrower and worth stating: the
    control's target has a deposited complex that may sit in the predictor's training data, so its
    success may partly reflect recall rather than generalisation. The same predictor is also on
@@ -106,6 +109,11 @@ third-party alignment. `methods/INPUTS.md` says what to obtain and from where.
 
 ## The result
 
+⛔⛔ **THIS SECTION IS THE `v46 joint11` COHORT (110), WHICH WAS NOT SUBMITTED.** It is the fullest
+characterisation we have and it is kept for that reason. ⇒ **For the cohorts that were actually
+submitted, see "The submitted cohorts' result" immediately below** — read both, and do not quote a
+number from this section as a property of the submission.
+
 All figures below were **recomputed from the deposited tables** for this README, not copied from a
 lab note. Reproduce them from `data/scoring_20261018/`.
 
@@ -165,11 +173,55 @@ Its interface `iptm` of 0.167 sits in the bottom tenth of the cohort (rank 11 of
 bottom; the cohort minimum is 0.140), and 35.7 Å is still a different face of the target. ⇒ it is
 the least-bad fold, not a hit.
 
+## The submitted cohorts' result
+
+⭐ These are the numbers for the sequences that **were** submitted. Recomputed for this README from
+`data/submission_20261019/scoring/`; the section above describes a different, unsubmitted cohort.
+
+### C1 — the `v46` rebias cohort, 88 folds, 17 of them submitted
+Same bridge definition as above (pinned Arg guanidinium N → that protomer's Glu107 carboxylate O,
+heavy atoms, best of three protomers). Placement is the binder's RMSD from its designed position
+once the predicted target is superposed on the designed target.
+
+| | n | prediction | under 9 Å | under 4 Å |
+|---|---|---|---|---|
+| **the pinned bridge** | 88 | median **21.87 Å** (2.08–51.40) | **10 / 88** | ⭐ **4 / 88** |
+| **placement** | 88 | median **47.64 Å** (5.14–73.37) | — | — |
+| Baker *et al.* five criteria | 88 | — | — | ⛔ **0 / 88 pass all five** |
+
+⭐ **The one real difference from the 110 cohort: 4 designs reach the designed bridge under 4 Å,
+where the unsubmitted cohort had 0 of 110.** ⛔ Everything else is unchanged — the median bridge
+(21.87 vs 21.45 Å) and the median placement (47.6 vs ~45 Å) are the same within noise, so the
+distribution did not move; a small number of designs now reach the specified geometry while the
+cohort as a whole does not. ⇒ the rebias produced **a few hits inside an unchanged distribution**,
+not a better cohort.
+⚠️ Placement near 48 Å means most binders are **not at the designed site at all**, on a trimer only
+~50–60 Å across. ⛔ That is the honest headline and it is the same one as above.
+⭐ The predicted **target** is rebuilt well — target-frame RMSD **1.20–1.83 Å** across all 88 — so
+the placement figure is a statement about the binder, not about a failed target fold.
+
+⛔⛔ **34 of these 88 were initially mis-scored.** The frame search enumerated three of the six ways
+to map three identical target chains onto each other, so a third of the cohort was voided for a
+bookkeeping reason. All 34 are recovered in the `_v2` columns of
+`scoring/c1_holo_selfconsistency_framefixed.tsv`, and the correction reproduces the original
+exactly where the original was right. ⚠️ The rescued designs are **not** better than the rest —
+the fix restores an unbiased pool, it does not add hits.
+
+### C3 — the `v50` symmetric cohort, 3 submitted
+Reported in full in `methods/C3_ARM.md`: assembly RMSD median **23.5 Å** with **0 of 96** arranged
+as designed, and the assembled trimer scoring **worse** than a lone protomer. Of 24 holo folds,
+**9 engage all three protomers under 9 Å and 3 under 4 Å**.
+
 ## What would decide it
 
-⭐ **The positive control has now been run.** A published de novo binder with measured affinity was
+⭐ **The positive control has now been run, and its evidence is deposited** —
+`data/controls_20261018/` (scored table, both inputs, both confidence outputs),
+`structures/controls_20261018/` (both predicted complexes), and the two scripts that built and
+scored it. ⛔ Read `data/controls_20261018/CONTROLS.md` for what it does **not** establish. A published de novo binder with measured affinity was
 pushed through the identical path and the predictor reproduced *its* interface — 30 of 31 crystal
-epitope residues, pose to **0.89 Å** CA RMSD — while an unrelated negative pair failed cleanly. So
+epitope residues, pose to **0.89 Å** CA RMSD — while an unrelated negative pair produced no
+confident interface (⛔ though it scored *higher* on epitope enrichment; see
+`data/controls_20261018/CONTROLS.md`). So
 the test has demonstrated sensitivity on a de novo interface, and "the instrument is blind" is no
 longer an available explanation for the 0 of 110.
 

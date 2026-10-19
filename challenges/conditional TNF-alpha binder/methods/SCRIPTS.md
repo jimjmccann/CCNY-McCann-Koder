@@ -147,6 +147,27 @@ comparable by construction. See `C3_ARM.md`.
 
 ---
 
+## Controls
+
+### `j505_make_denovo_control_inputs_20261018.py`
+Builds the two control inputs: the **positive** arm (LCB1, a published de novo minibinder with
+measured affinity, plus its own SARS-CoV-2 RBD target) and the **negative** arm (a TNFα protomer
+against the same RBD — a well-folded protein with no affinity for it). Both binder chains are given
+an **empty MSA**, which is what makes the comparison to our own designs fair. The negative arm's
+protein is read from the same target FASTA our own folds used, so it is byte-identical to the
+target chain elsewhere in this campaign.
+
+### `j506_score_denovo_control_20261018.py`
+Scores both arms against the crystal complex `7JZU`: superposes the **predicted target** onto the
+**crystal target** and then measures the binder's CA RMSD in that frame, and computes epitope
+recovery against the 31 RBD residues within 5.0 Å of LCB1 in the crystal.
+⭐ It carries a **built-in self-validation**: scoring the crystal against its own reference epitope
+must return recall 1.000, and the script asserts it rather than trusting the parse.
+⚠️ `7JZU` is **not redistributed** — fetch it from RCSB. Outputs
+`../data/controls_20261018/controls_scored.tsv`; read
+`../data/controls_20261018/CONTROLS.md` before quoting any number from it, because the negative
+control does **not** fail on every metric.
+
 ## Figures
 
 Each builder has a **separate verifier**, and that separation is itself a finding: an in-process
