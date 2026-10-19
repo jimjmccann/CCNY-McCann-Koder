@@ -60,9 +60,9 @@ import sys
 
 # PLACEHOLDER PATH -- not a working default; set it for your own tree.
 REPO = "/path/to/your/working/tree"
-BUN = os.path.join(REPO, "status/competition2/bundles")
+BUN = os.path.join(REPO, "bundles")
 SRC = os.path.join(BUN, "rfd3_tnf_c1recyc_v44")          # the bundle that already ran clean
-DATA = os.path.join(REPO, "status/competition2/data")
+DATA = os.path.join(REPO, "data")
 
 RUNNER = "prod_rfd3_tnf_multi.sh"
 RUNNER_SHA1 = "623b3c69924b4e0afb245330d5eb2b6f39df10de"

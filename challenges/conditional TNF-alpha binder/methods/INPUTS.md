@@ -80,8 +80,8 @@ sequence with any standard search.
 
 ## 5. Prediction outputs that are NOT distributed
 
-⛔ **The predicted complex structures are not deposited.** There are 69 scored and 110 intended, at
-roughly 35 MB for the first round alone, and the set is **incomplete**. What is deposited is the
+⛔ **The predicted complex structures are not deposited.** All **110 of 110** are scored, at
+roughly 35 MB for the first round alone. What is deposited is the
 **full scoring table**, 103 columns per prediction, which is what every number in `../README.md`
 rests on.
 

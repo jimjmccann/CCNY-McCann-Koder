@@ -55,7 +55,7 @@ superposed onto the target before any placement number was taken; see `../method
 
 | | why |
 |---|---|
-| the **predicted** complexes | ~35 MB for the first round alone and the set is **incomplete** (69 of 110). The full 103-column scoring table is deposited instead; `../methods/INPUTS.md` §5 states the consequence |
+| the **predicted** complexes | ~35 MB for the first round alone, across the complete **110-fold** cohort. The full 103-column scoring table is deposited instead; `../methods/INPUTS.md` §5 states the consequence |
 | the repaired target as a standalone file | the target as used is inside all 11 designs above and is byte-identical to residues 6–157 of the challenge's own human sequence — asserted, and re-checkable |
 | the other 373 generated backbones | the gate tables cover all 384 |
 | the session (`.pse`) figures | the builders and their verifiers are deposited in `../scripts/` |

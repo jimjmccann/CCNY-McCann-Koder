@@ -22,8 +22,13 @@ a deposited file, this document says so rather than supplying a rationale.
 
 ## 0. Scope, and what is NOT here
 
-This is the **C1** (single-binder) arm against the human TNF-α trimer. A second, C3-symmetric arm
-ran in parallel and is **not deposited**: it produced no scored design set within this round.
+This section documents the **C1** (single-binder) arm against the human TNF-α trimer, campaign
+`v46`. ⭐ A second, **C3-symmetric** arm ran in parallel and **is now deposited** — 12 `v50`
+homotrimeric-binder backbones, their sequences, and their scoring tables are in
+`../data/submission_20261019/`, and **3 of the 20 submitted sequences come from it**. See
+`C3_ARM.md` for the symmetric method, which differs from everything below in three ways that
+matter: a replicated motif, a multi-copy chain layout, and **conjunction** aggregation over the
+three copies rather than a mean.
 
 ⛔ **The launch and compute-orchestration layer is deliberately absent**, as in challenge 1. It
 carries account identifiers and cost figures, which are not published. §3 says exactly what has to
@@ -296,8 +301,8 @@ here and not a near miss.
    placement**, and a row whose target frame superposes badly is flagged `FRAME_SUSPECT` and its
    placement columns **must not be read**. MEASURED over the first round: trustworthy frames
    superpose at **1.48–1.72 Å** (n=9) against suspect rows at **21.83–21.93 Å** (n=2), meaning the
-   predictor built the trimer *assembly* differently for those. Over all 69 scored folds, **24 (35%)
-   are flagged**, and the flag is **per-sequence, not per-backbone**.
+   predictor built the trimer *assembly* differently for those. Over all 110 scored folds, **37
+   (34%) are flagged**, and the flag is **per-sequence, not per-backbone**.
 
 ⛔⛔ **Per-pair confidence, never the global number.** With 1 binder + 3 protomers there are 6 chain
 pairs and **3 are target–target**. `iptm`, `plddt` and `pae` are therefore all reported **per chain
@@ -316,18 +321,22 @@ inter-protomer site that is expected, not a defect.
   find them without being told where they are.
 - **The backbone gates are strict and they bite.** 23 of 384 continuous, 11 of 384 JOINT — **2.9%**.
   Continuity and topology are orthogonal, so both are needed and neither is sufficient.
-- ⛔⛔ **The designed interaction is not reproduced by the fold-back check in 0 of 69 cases**, and
+- ⛔⛔ **The designed interaction is not reproduced by the fold-back check in 0 of 110 cases**, and
   the binder lands on a different face of the target. `../README.md` has the numbers.
-- ⛔ **That is not the same as "the designs are wrong."** There is **no positive control**, so the
-  sensitivity of the fold-back check on a de novo interface is unmeasured. This is the limiting
-  instrument and it was not built.
+- ⭐ **A positive control was run and it passes.** A published de novo binder with measured affinity
+  reproduces its own crystal pose to **0.89 Å** through this identical path, and a negative control
+  fails. ⇒ the fold-back check has demonstrated sensitivity on a de novo interface, so "the
+  instrument is blind" is no longer an available explanation for the 0 of 110. ⛔ That still does
+  not make "the designs are wrong" a measurement — only a bench assay does.
 - ⛔ **Backbone identity predicts only how well the predictor reproduces that backbone's own fold,
   and predicts nothing about binding.** Within-backbone spread across sequences is about twice the
   between-backbone spread on the binding metrics.
-- ⚠️ **69 of 110 folds, unbalanced per backbone.** Nothing per-backbone here is settled.
+- ⭐ **The cohort is complete and balanced: 110 folds, exactly 10 per backbone across 11.**
 
 ⇒ **This is a working guidepost-conditioned generation and gating pipeline with a measured,
-strict backbone yield, and an unconfirmed interface. It is not a binder, and it was not submitted.**
+strict backbone yield, and an unconfirmed interface. It is not a binder. It was submitted anyway,
+as 20 sequences across two arms, because an untested design that is documented is worth more to
+this competition than a design we never entered.**
 
 ---
 

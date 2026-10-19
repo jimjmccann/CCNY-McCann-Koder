@@ -29,14 +29,21 @@ authoritative on which sequences make up the set, and the deposited
 `challenges/pH-dependent EGFR binder/submission_challenge1_20261006.csv` is the authority on its own
 contents.
 
-Challenge 2 — the conditional TNF-α binder — is deposited as a **negative, unvalidated result, with
-nothing submitted**. The designs specify a salt bridge to Glu107 of a TNF-α protomer; re-folding the
-designed sequences against the whole trimer reproduces it in **0 of 69** predictions, and places the
-binder on a different face of the target. ⛔ That is one predictor's verdict and **not** a
-measurement of the designs — no positive control exists, so the test's sensitivity on a de novo
-interface is unmeasured. Two of the challenge's three requirements, mouse cross-reactivity and the
-pH switch, are not addressed in that cohort, and no novelty check was run. Start at
-`challenges/conditional TNF-alpha binder/README.md`, which states all of this before anything else.
+Challenge 2 — the conditional TNF-α binder — has been submitted: **20 sequences, in two arms.**
+**17 are C1**, a single binder against the trimer. **3 are C3**, a *symmetric homotrimeric* binder
+for a homotrimeric target — one designed protomer, three copies, three equivalent sites.
+
+The result is negative and unvalidated, and we submitted it anyway. Our own predictor does not
+reproduce what the designs specify. For C1, **0 of 88** pass all five of the Baker *et al.* in
+silico criteria. For C3, the designed assembly is not recovered at all: **0 of 96** predicted
+trimers are arranged as designed. ⛔ That is one predictor's verdict, not a measurement — the test
+is calibrated (a published de novo binder with measured affinity reproduces its own crystal pose
+to **0.89 Å** through this identical path, and a negative control fails cleanly), but a prediction
+is still not an affinity.
+
+Two of the challenge's three requirements — mouse cross-reactivity and the pH switch — are not
+addressed. Start at `challenges/conditional TNF-alpha binder/README.md`, which states all of this
+before anything else.
 
 Nothing here has been tested at the bench. No number anywhere in this repository is an affinity.
 

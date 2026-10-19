@@ -11,7 +11,7 @@ pin metric, never after.
 `J219` had already measured this once (zero steps > 4.2 A: 9/24) and it was not carried forward.
 `j392_continuity_20261015.py` measured it again as a ONE-OFF with the chain hardcoded to "A", the
 path hardcoded to the v36 extract, and its output written to a temporary directory that is now
-gone. This is that measurement made REUSABLE, so the GLP1R arms and every later arm get it for
+gone. This is that measurement made REUSABLE, so later arms get it for
 free.
 
 ⛔ A SCORER MUST NEVER NAME A CHAIN (fourth incident -- a hardcoded

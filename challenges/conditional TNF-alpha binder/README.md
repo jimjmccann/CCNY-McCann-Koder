@@ -1,4 +1,4 @@
-# Conditional TNF-α binder — a negative, unvalidated result
+# Conditional TNF-α binder — a negative, unvalidated result, submitted
 
 James McCann and the Koder Group, The City College of New York.
 Design work 2026-10-07 .. 2026-10-18. Challenge 2 of the Anthropic × Adaptyv 2026 competition:
@@ -12,34 +12,40 @@ Design work 2026-10-07 .. 2026-10-18. Challenge 2 of the Anthropic × Adaptyv 20
    Every coordinate is a model — either generator output or a structure-predictor output — and is
    labelled as such. None was measured.
 
-2. **Nothing was submitted for this challenge.** There is no submitted sequence set, no
-   novelty-passed set and no competition result to report. The 110 sequences deposited here are
-   candidates that were never entered.
+2. **20 sequences were submitted, in two arms: 17 C1 and 3 C3.** The submitted set is
+   `submission_challenge2_20261019.csv`, which is the authority on its own contents. ⛔ The
+   organiser's novelty filter runs **after** upload, so there is **no novelty-passed set and no
+   competition result to report yet**.
+   ⛔⛔ **The submitted sequences are NOT the 110 deposited under `data/mpnn_20261018/`.** Those
+   are the earlier `v46 joint11` cohort (10 sequences × 11 backbones) and **none of them was
+   submitted**. The submitted set is drawn from two later *rebias* cohorts — `v46` C1 (8
+   sequences × 11 backbones) and `v50` C3 (8 × 12) — deposited under `data/submission_20261019/`.
+   Read any count in this directory as belonging to the cohort its section names.
 
 3. ⛔⛔ **The designed interaction is not reproduced by our own structure predictor.** The whole
    affinity hypothesis in these designs is one salt bridge: a pinned arginine on the binder to
-   **Glu107** of a TNF-α protomer. The designs specify it at **3.45 Å in 69 of 69** scored
+   **Glu107** of a TNF-α protomer. The designs specify it at **3.45 Å in 110 of 110** scored
    predictions' input structures. Re-folding the designed sequences against the whole trimer with
-   Boltz-2 reproduces it in **0 of 69** — median **21.5 Å**, nothing under 4 Å, and only 4 of 69
-   under 9 Å. The binder also lands **34–70 Å (median 43 Å) from the site it was designed for**,
+   Boltz-2 reproduces it in **0 of 110** — median **21.5 Å**, nothing under 4 Å, and only 5 of 110
+   under 9 Å. The binder also lands **34–74 Å (median 45 Å) from the site it was designed for**,
    on a trimer only ~50–60 Å across, so it is a different face of the target and not a near miss.
    §"The result" has the numbers and how they were measured.
 
 4. ⛔ **But "the designs are wrong" is NOT established, and we are not claiming it.** This is one
-   predictor's verdict. **No positive control exists** — we have no case where this predictor
-   confirmed one of our own designed interfaces, so its sensitivity on a de novo interface is
-   **unmeasured**. The same predictor is already on record in this group's work misplacing exactly
-   this kind of feature (right fold, wrong side-chain rotamer, bond absent) and building a
-   different target conformation than the one asked for. "Our predictor cannot see our interfaces"
-   is as consistent with these numbers as "our interfaces are not there." Separating those two
-   requires the positive control, which was not run.
+   predictor's verdict, and it is now a *calibrated* one. A **positive control** was run: a
+   published de novo minibinder with measured affinity and no natural homologs, pushed through this
+   identical path, recovers 30 of its 31 crystal epitope residues and its crystallographic pose to
+   **0.89 Å** CA RMSD. A **negative control** — an unrelated protein pair with no affinity — fails
+   cleanly. ⇒ the instrument is **not blind on a de novo interface**, which is the alternative this
+   deposit previously could not exclude. What remains unexcluded is narrower and worth stating: the
+   control's target has a deposited complex that may sit in the predictor's training data, so its
+   success may partly reflect recall rather than generalisation. The same predictor is also on
+   record in this group's work misplacing exactly this kind of feature (right fold, wrong
+   side-chain rotamer, bond absent) and building a different target conformation than the one asked
+   for. ⇒ these numbers are evidence the designed interface is absent, not proof; a prediction is
+   not an affinity measurement.
 
-5. ⚠️ **The scored set is incomplete: 69 of 110 folds.** The remaining 41 were still running when
-   this was written, and the per-backbone counts are unbalanced (4–9 of 10). A truncated run has
-   reversed a ranking in this group's work before, so no per-backbone claim here should be treated
-   as settled.
-
-6. ⛔ **A confidence score we previously quoted was confounded, and the retraction is part of the
+5. ⛔ **A confidence score we previously quoted was confounded, and the retraction is part of the
    record.** On a trimeric target, the global `iptm` averages 6 chain pairs of which **3 are
    target–target** — TNF-α's own crystal trimer, which the predictor rebuilds near-perfectly from
    a deep alignment. Global `iptm` median **0.691** reads as a good interface; the binder-to-target
@@ -48,7 +54,7 @@ Design work 2026-10-07 .. 2026-10-18. Challenge 2 of the Anthropic × Adaptyv 20
    was corrected on this basis. The deposited scoring tables carry the per-pair columns so the
    confound is checkable rather than asserted.
 
-7. ⛔ **Two of the three things the challenge asked for are not addressed here.** The challenge
+6. ⛔ **Two of the three things the challenge asked for are not addressed here.** The challenge
    asks for a binder that (a) binds human TNF-α, (b) **also binds mouse** TNF-α, and (c) **holds at
    neutral pH and releases at acidic pH** — and ranks the pH switch first, mouse second, affinity
    third. This cohort carries **one pinned histidine** per design as a pH trigger; our own
@@ -57,11 +63,13 @@ Design work 2026-10-07 .. 2026-10-18. Challenge 2 of the Anthropic × Adaptyv 20
    addressed in this cohort at all**. We state the descope rather than quietly re-scoping the
    challenge to the part we worked on.
 
-8. ⚠️ **No novelty check was run.** In challenge 1 the organizers' novelty filter removed 5 of our
-   16 submitted sequences. Nothing in this directory has been checked against known proteins, so
-   these sequences carry no novelty claim in either direction.
+7. ⚠️ **Novelty is unresolved at deposit time.** In challenge 1 the organizers' novelty filter
+   removed 5 of our 16 submitted sequences. The organiser's filter runs **after** upload and its
+   verdict on this set is not yet known, so these sequences carry **no novelty claim in either
+   direction**. ⛔ The 110 `v46 joint11` sequences in `data/mpnn_20261018/` were never checked
+   against known proteins at all.
 
-9. ⛔ **The compute-orchestration and launch layer is deliberately absent**, as it was for
+8. ⛔ **The compute-orchestration and launch layer is deliberately absent**, as it was for
    challenge 1. It carries account identifiers and cost figures, which are not published. Any
    batch system reproduces what is here; `methods/README.md` says what has to happen on the
    compute side without the machinery.
@@ -92,7 +100,7 @@ gate; those are not duplicated here.
 | `scripts/` | the 12 programs that built, gated, sequenced, folded and scored the above |
 | `methods/` | the method in reader order, per-script notes, and what is not distributed |
 
-⛔ **Not deposited:** the predicted complex structures themselves (35 MB+ for an incomplete set),
+⛔ **Not deposited:** the predicted complex structures themselves (35 MB+),
 the raw generator output beyond the 11 that passed (384 designs), model weights, and the
 third-party alignment. `methods/INPUTS.md` says what to obtain and from where.
 
@@ -107,7 +115,7 @@ protomer's Glu107 carboxylate oxygen, heavy atoms, best of the three protomers:
 | set | n | design | prediction | prediction under 4 Å |
 |---|---|---|---|---|
 | first round + probe | 11 | 3.45 Å (3.45–3.45) | median **19.08 Å** (4.77–32.76) | **0 / 11** |
-| all folds scored so far | 69 | 3.45 Å (3.45–3.45) | median **21.52 Å** (4.03–52.40) | **0 / 69** |
+| the complete cohort | 110 | 3.45 Å (3.45–3.45) | median **21.45 Å** (4.03–52.40) | **0 / 110** |
 
 ⭐ **The design side being exactly 3.45 Å everywhere is a consistency check, not a result.** The
 guidepost is a rigid template transplant, so the design file essentially restates the request —
@@ -123,12 +131,12 @@ is usually a *different*, non-pinned arginine that the sequence model happened t
 designed guidepost. The designed mechanism is not what occasionally forms, and measuring "any
 arginine" would have overstated the result. Both columns are in the tables.
 
-**Placement, fold, and confidence** (69 scored folds):
+**Placement, fold, and confidence** (110 scored folds):
 
 - binder displacement from its designed position, superposing on the target only and not refitting
-  the binder: median **43.4 Å**, range 34.2–70.3 Å over the **45 rows whose target frame is
+  the binder: median **44.8 Å**, range 34.2–74.1 Å over the **73 rows whose target frame is
   trustworthy**;
-- **24 of 69 rows (35%) are flagged `FRAME_SUSPECT`** — the predictor built the TNF-α *trimer
+- **37 of 110 rows (34%) are flagged `FRAME_SUSPECT`** — the predictor built the TNF-α *trimer
   assembly* itself differently (target RMSD ~21.8 Å rather than ~1.5 Å). Their placement columns
   must not be read. This is a fact about the predictor, not about the designs, and it is
   per-sequence rather than per-backbone;
@@ -152,17 +160,21 @@ choice dominates the binding metrics and backbone choice does not; picking a bac
 numbers would be picking noise.
 
 **On a deliberately lenient three-way gate** — bridge < 9 Å and `tm` > 0.6 and placement < 40 Å,
-trustworthy frames only — **exactly 1 of 69 passes**: bridge 7.1 Å, `tm` 0.753, placement 35.7 Å.
-Its interface `iptm` of 0.167 sits in the bottom eighth of the cohort (rank 8 of 69 from the
-bottom; the cohort minimum is 0.141), and 35.7 Å is still a different face of the target. ⇒ it is
+trustworthy frames only — **exactly 1 of 110 passes**: bridge 7.1 Å, `tm` 0.753, placement 35.7 Å.
+Its interface `iptm` of 0.167 sits in the bottom tenth of the cohort (rank 11 of 110 from the
+bottom; the cohort minimum is 0.140), and 35.7 Å is still a different face of the target. ⇒ it is
 the least-bad fold, not a hit.
 
 ## What would decide it
 
-A **positive control**: push a known TNF-α binder's sequence through the identical path and see
-whether the predictor reproduces *its* interface. Without that, the sensitivity of this test is
-unmeasured and these numbers cannot distinguish a failed design from a blind instrument. It is
-cheap and local and was not run before this deposit was assembled.
+⭐ **The positive control has now been run.** A published de novo binder with measured affinity was
+pushed through the identical path and the predictor reproduced *its* interface — 30 of 31 crystal
+epitope residues, pose to **0.89 Å** CA RMSD — while an unrelated negative pair failed cleanly. So
+the test has demonstrated sensitivity on a de novo interface, and "the instrument is blind" is no
+longer an available explanation for the 0 of 110.
+
+What would decide it now is **a bench measurement**. No prediction, positive control or not, is an
+affinity.
 
 ## A note on internal references
 

@@ -41,12 +41,13 @@ from j393_continuity_gate_20261015 import classify_chains, read_cif_atoms
 
 CUT_A, SEP, LR_SEP = 8.0, 4, 12
 
+# PLACEHOLDER PATHS -- not working defaults; set them for your own tree.
 # ⛔ Chains NAMED on purpose: reference structures, deliberately selected. (label, path, chain)
 CONTROLS = [
-    ("LCB1 de novo helical minibinder", "status/competition2/data/J130_inputs_20261010_7jzu.pdb", "A"),
-    ("SARS-CoV-2 RBD (natural)", "status/competition2/data/J130_inputs_20261010_7jzu.pdb", "B"),
+    ("LCB1 de novo helical minibinder", "/path/to/inputs/J130_inputs_20261010_7jzu.pdb", "A"),
+    ("SARS-CoV-2 RBD (natural)", "/path/to/inputs/J130_inputs_20261010_7jzu.pdb", "B"),
     ("TNFa protomer (natural, our target)",
-     "status/competition2/rfd3_tnf/1tnf_repaired_D143_20261007.pdb", "A"),
+     "/path/to/inputs/1tnf_repaired_D143_20261007.pdb", "A"),
 ]
 
 

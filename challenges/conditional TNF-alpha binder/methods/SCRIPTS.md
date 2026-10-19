@@ -134,11 +134,16 @@ control that **flags** a row rather than reporting an untrustworthy placement.
 - Echoes the resolved layout and configuration on every run.
 
 ### `j465_boltz_selfconsistency_20261017.py`
-⛔ **Deposited as a dependency, not as a runnable part of this pipeline.** It is the
-**C3-symmetric** sibling scorer; its own cohort and its own design file are *not* deposited, and
-its `DESIGN` constant is a **placeholder**. It is here because `j497` imports `kabsch_rmsd` and
-`tm_score` from it under the SHA1 pin, so removing it would make `j497` refuse to start. Read it for
-the shared geometry; do not expect it to run against this deposit.
+⛔ **Deposited as a dependency, not as a runnable part of this pipeline.** Its `DESIGN` constant is
+a **placeholder**, and it is here because `j497` imports `kabsch_rmsd` and `tm_score` from it under
+a SHA1 pin, so removing it would make `j497` refuse to start. Read it for the shared geometry; do
+not expect it to run against this deposit.
+⛔⛔ **It is NOT the C3 scorer.** `j465` reads only the **global `iptm`**, which on a trimeric
+target averages 6 chain pairs of which 3 are target–target — see limitation 5 in the challenge
+`README.md`. The C3 arm is scored by **`j521_c3_boltz_selfconsistency_20261018.py`**, which
+extracts `pair_chains_iptm` per binder↔target pair and aggregates over the three copies by
+**conjunction**. `j521` imports `j465`'s geometry under the same pin, so C1 and C3 numbers are
+comparable by construction. See `C3_ARM.md`.
 
 ---
 
