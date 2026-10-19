@@ -5,11 +5,13 @@ the [Anthropic × Adaptyv 2026 Protein Design Competition](https://proteinbase.c
 
 This repository holds the designs, the reasoning behind them, and the code used to produce them.
 
-![The eleven novelty-passed designs, one per panel, each shown against the EGFR ectodomain in a shared orientation. Site A is marked in red and site B in blue.](challenges/pH-dependent%20EGFR%20binder/structures/CCNY_challenge1_grid_20261007.png)
+![The twenty submitted challenge-2 designs against the TNF-alpha trimer. Left column: the designed backbones as the generator produced them. Right column: the same sequences re-folded by the structure predictor. Top row the 17 monomeric C1 designs, bottom row the 3 symmetric C3 designs. Glu107, the residue the designed salt bridge targets, is drawn in red.](challenges/conditional%20TNF-alpha%20binder/figures/CCNY_challenge2_designed_vs_predicted_20261019.png)
 
-*The eleven deposited designs, one per panel, each bound to the same EGFR ectodomain model in a
-shared camera orientation. Red marks the site-A footprint, blue the site-B footprint. Every
-coordinate shown is predicted, not measured.*
+*Challenge 2, the submitted twenty. **Left: what we designed** — generator output. **Right: what
+the structure predictor does with the same sequences.** Top row C1 (17 designs, one cell each,
+over 10 backbones); bottom row C3 (all 12 symmetric backbones, and the 3 that were submitted).
+The gap between the two columns **is the result**: the designed binders mostly are not rebuilt
+where they were designed to sit. ⛔ Every coordinate shown is a model. Nothing here was measured.*
 
 ## Status
 
@@ -29,9 +31,11 @@ authoritative on which sequences make up the set, and the deposited
 `challenges/pH-dependent EGFR binder/submission_challenge1_20261006.csv` is the authority on its own
 contents.
 
-Challenge 2 — the conditional TNF-α binder — has been submitted: **20 sequences, in two arms.**
-**17 are C1**, a single binder against the trimer. **3 are C3**, a *symmetric homotrimeric* binder
-for a homotrimeric target — one designed protomer, three copies, three equivalent sites.
+Challenge 2 — the conditional TNF-α binder — has been submitted: **20 sequences, in two arms,
+and all 20 passed the competition's novelty filter.** **17 are C1**, a single binder against the
+trimer. **3 are C3**, a *symmetric homotrimeric* binder for a homotrimeric target — one designed
+protomer, three copies, three equivalent sites. ⚠️ Novelty is a statement about resemblance to
+known proteins, **not** about whether anything binds.
 
 The result is negative and unvalidated, and we submitted it anyway. Our own predictor does not
 reproduce what the designs specify. For C1, **0 of 88** pass all five of the Baker *et al.* in

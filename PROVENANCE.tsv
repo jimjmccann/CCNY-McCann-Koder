@@ -5,7 +5,7 @@
 #	asserts hashes that no longer match, which is worse than shipping none.
 #archive_path	bytes	md5
 .gitignore	629	7143e7865eab08187ef795d5b004765a
-README.md	6626	27f9c948d529d771409c103a314b9ccf
+README.md	7250	43dc548feb0f8cf2a4aa87e3356d721a
 challenges/conditional TNF-alpha binder/README.md	17153	4cca0ac08bf94f937df4ac7ec30518ef
 challenges/conditional TNF-alpha binder/data/COHORTS.md	4185	ccaf20ecf9d8b8db4266ec62c853a708
 challenges/conditional TNF-alpha binder/data/backbone_gates_20261018/j490_continuity_c1core_v46_FULL_20261018.tsv	45966	205bf47816a7c83135b34eda213eb347
@@ -115,7 +115,7 @@ challenges/pH-dependent EGFR binder/DESIGN_CHOICES.md	21537	b9719da98b53e9dd989b
 challenges/pH-dependent EGFR binder/NOVELTY_20261006.md	12799	c9bb0ef32e643483055edaf156f8ca48
 challenges/pH-dependent EGFR binder/NOVELTY_CORRECTION_MONOMER_20261006.md	6736	c1c80881567d577466a5be032dfb8c40
 challenges/pH-dependent EGFR binder/NOVELTY_MEASURED_20261006.md	8762	0629bff1394f1ffc0c84aa21216438fa
-challenges/pH-dependent EGFR binder/README.md	9064	6982c22a4489fba6df52e65ac46ba37f
+challenges/pH-dependent EGFR binder/README.md	9511	e35b5a90dfabcaf034e08288597cec85
 challenges/pH-dependent EGFR binder/REPEAT_SCRAMBLING_LITERATURE_20261006.md	10007	a234d4c7613c905cbfd6dd4ddc4f6684
 challenges/pH-dependent EGFR binder/SEQUENCE_NOVELTY_SWISSPROT_20261006.md	36449	4d30ca892c0399c63949288a560df842
 challenges/pH-dependent EGFR binder/SEQUENCE_SET_CORRECTION_20261006.md	6243	6c1d9a18c10d036c56b78b38ee20d963

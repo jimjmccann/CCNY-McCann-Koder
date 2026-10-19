@@ -1,5 +1,11 @@
 # pH-dependent EGFR binder
 
+![The eleven novelty-passed designs, one per panel, each shown against the EGFR ectodomain in a shared orientation. Site A is marked in red and site B in blue.](structures/CCNY_challenge1_grid_20261007.png)
+
+*The eleven deposited designs, one per panel, each bound to the same EGFR ectodomain model in a
+shared camera orientation. Red marks the site-A footprint, blue the site-B footprint. ⛔ Every
+coordinate shown is predicted, not measured.*
+
 Anthropic × Adaptyv 2026, Challenge 1. Design work ran **2026-09-28 to 2026-10-06**; the
 competition's own submission window closed **2026-10-04**. ⭐ Both dates appear in this deposit on
 purpose and they are not the same thing — where a document gives a date range it is the **work**,
