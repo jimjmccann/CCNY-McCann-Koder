@@ -161,6 +161,10 @@ the saved file in a **fresh process**, which is also exactly what opening it els
 | `j498_pse_boltz_c1_20261018.py` | designed **and** predicted positions in one shared frame, for the scored folds. ⛔ The frame transform is applied in NumPy and written as **coordinates**, never handed to the viewer as a matrix (row-major vs column-major is a silent-wrong-answer risk), and each written file is **re-measured and asserted against the scorer's own placement number** before the viewer sees it. ⛔ Scene captions are asserted **ASCII** — a non-ASCII character corrupts the session and it segfaults on load. Scene calls are emitted inside a Python block because the viewer's own command parser treats a comma in a caption as the next argument, which silently loses scenes while still exiting 0. |
 | `j498_verify_pse_20261018.py` | loads the saved file cold, recalls every scene, counts atoms in all three populations and **re-measures every placement out of the loaded session**. ⛔ Writes its result to a **file**, not stdout: `pymol -cq` echoes the script source, so a stdout grep for a sentinel fires on the echoed source whether that branch ran or not. |
 
-⛔ **Neither session file (`.pse`) is deposited.** They are figures of the deposited coordinates and
-tables, and both exceed what is useful to ship here; the builders and verifiers are deposited so the
+⛔ **No session file (`.pse`) is deposited.** They are figures of the deposited coordinates and
+tables, and exceed what is useful to ship here; the builders and verifiers are deposited so the
 figures can be rebuilt and, more importantly, so the assertions they make are auditable.
+⭐ **Rendered images are deposited**, in `../figures/` — four panels plus one combined figure, each
+titled either **DESIGNED** (generator output) or **PREDICTED** (Boltz-2 output), because the two
+are easy to confuse and the distinction carries the whole result. They are renderings of coordinates
+already in this deposit and add no claim of their own.

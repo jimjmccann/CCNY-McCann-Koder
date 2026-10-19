@@ -57,7 +57,7 @@ challenges/conditional TNF-alpha binder/figures/c3_predicted_complexes_20261019.
 challenges/conditional TNF-alpha binder/methods/C3_ARM.md	10125	f681e6c555e799bbb067a3a2cf996c5e
 challenges/conditional TNF-alpha binder/methods/INPUTS.md	6423	7c519ef34bed2fb8a92a555bf3fd033d
 challenges/conditional TNF-alpha binder/methods/README.md	22005	b282f39b9b18924c097e483ec112d86e
-challenges/conditional TNF-alpha binder/methods/SCRIPTS.md	11329	586b1fad372bf101854ade34b1b4188c
+challenges/conditional TNF-alpha binder/methods/SCRIPTS.md	11675	cb2ec1d286a7ee8ac9ecb48020b86b7e
 challenges/conditional TNF-alpha binder/scripts/j168_mpnn_tnf.py	17418	83393c7dbf48b16d0510b9b548999245
 challenges/conditional TNF-alpha binder/scripts/j393_continuity_gate_20261015.py	14920	283a2b405f8a163b87bf7b5744bbec68
 challenges/conditional TNF-alpha binder/scripts/j409_path_or_fold_20261015.py	7551	b009c7b6759c9adced72e3ff8640e28d
