@@ -5,7 +5,35 @@
 #	asserts hashes that no longer match, which is worse than shipping none.
 #archive_path	bytes	md5
 .gitignore	629	7143e7865eab08187ef795d5b004765a
-README.md	7250	43dc548feb0f8cf2a4aa87e3356d721a
+README.md	9051	fe05ca1fac09924cbe78f0c06ec232a1
+challenges/GLP-1R binder/README.md	9701	43261f9ee51deded34b026e5a5f222f4
+challenges/GLP-1R binder/data/COHORTS.md	6711	23ae3a650ed3b51a30c4f49ac0a313ef
+challenges/GLP-1R binder/data/glp1r_fold_novelty_sel20_20261016.tsv	38101	e40d219741128b831ea47169c4984ca2
+challenges/GLP-1R binder/data/j557_topology_deep6_20261019.tsv	47882	94aa2cade526d92fc7ed8908ca49b785
+challenges/GLP-1R binder/data/j557_topology_shallow4_20261019.tsv	16069	aa56612859d6bed4d5ffbec1be13b4d6
+challenges/GLP-1R binder/data/j558_fold_biased_20261019.tsv	24246	34c292c53798d65484979bd265ce4f06
+challenges/GLP-1R binder/data/j558_fold_unbiased_20261019.tsv	24179	4dbd06b0b9272500351f0ea16d14bf03
+challenges/GLP-1R binder/data/j559_baker_reference_20261019.tsv	582	ac028b99d21f1e50249fa0c3d5ed729b
+challenges/GLP-1R binder/data/j637_baker_filter_c3_20261024_v2.tsv	102110	c5f422a0e5b931246784348a109ae88b
+challenges/GLP-1R binder/data/j639_msa_effect_20261024.tsv	3419	dd340db82b30442aae3479f58c57184d
+challenges/GLP-1R binder/data/submission_20261026/SELECTION.md	5919	a416668b5b6b6035ec86e87235c2bdd9
+challenges/GLP-1R binder/data/submission_20261026/scoring/conjunction_ranking_160.tsv	31305	8de9efc9d36aba4a7bb6931ed786bec8
+challenges/GLP-1R binder/data/submission_20261026/scoring/interface_geometry_160.tsv	26485	7979c2249222525c68ae2a8faa9b98bb
+challenges/GLP-1R binder/data/submission_20261026/scoring/site_engagement_screen_160.tsv	31925	b360dfc188d045064a4a0a8f9e06b6b2
+challenges/GLP-1R binder/data/submission_20261026/selected_20_with_scores.tsv	4710	e1c16c94359236555acf14446e902ac4
+challenges/GLP-1R binder/data/submission_20261026/submitted_20.fasta	2353	8c2920249995b1b52899a97f324c2069
+challenges/GLP-1R binder/figures/ccny_challenge3_submitted_designs_20261026.png	2420091	add272d88bf4e0df0331453e08ba7a14
+challenges/GLP-1R binder/methods/INPUTS.md	7505	bce7c5229f0d7bbd0f98963b8e754b93
+challenges/GLP-1R binder/methods/README.md	33624	733ce7f1124df793b47ed0fce851261f
+challenges/GLP-1R binder/methods/SCRIPTS.md	11244	28aa911f6185194a1610ba141a56d566
+challenges/GLP-1R binder/scripts/j559_baker_reference_20261019.py	8355	1226026a170a830ae0e27192b13f9012
+challenges/GLP-1R binder/scripts/j559_build_baker_pse_20261019.py	8874	7307a29e11aac95fa46a9d6cb4601cd2
+challenges/GLP-1R binder/scripts/j637_baker_filter_c3_20261024.py	13607	704f9770c01920e2f1370e90e9348d2b
+challenges/GLP-1R binder/scripts/j639_msa_effect_on_baker_channels_20261024.py	7853	38aa673dfb9d8a2df5f81af09faf416d
+challenges/GLP-1R binder/scripts/j641_build_baker_best_pse_20261024.py	8595	00e5763d92733f4fe2edd9113ec2d6ca
+challenges/GLP-1R binder/scripts/j641_verify_pse_20261024.py	1671	e7c4249361fd2c0748ce8ae6d5432649
+challenges/GLP-1R binder/structures/STRUCTURES.md	4686	1a78205e7e814d2565d33692102dfc6b
+challenges/GLP-1R binder/structures/ours_best_medcut51.pdb	305370	65e2351d9722a714d5890370e6f6036e
 challenges/conditional TNF-alpha binder/README.md	17153	4cca0ac08bf94f937df4ac7ec30518ef
 challenges/conditional TNF-alpha binder/data/COHORTS.md	4185	ccaf20ecf9d8b8db4266ec62c853a708
 challenges/conditional TNF-alpha binder/data/backbone_gates_20261018/j490_continuity_c1core_v46_FULL_20261018.tsv	45966	205bf47816a7c83135b34eda213eb347
@@ -65,6 +93,9 @@ challenges/conditional TNF-alpha binder/methods/C3_ARM.md	10125	f681e6c555e799bb
 challenges/conditional TNF-alpha binder/methods/INPUTS.md	6423	7c519ef34bed2fb8a92a555bf3fd033d
 challenges/conditional TNF-alpha binder/methods/README.md	22733	efbbb5503d6aec354982d7295a41a153
 challenges/conditional TNF-alpha binder/methods/SCRIPTS.md	13027	85c0a38f3bd9af9e1a4b25b67b0d59d1
+challenges/conditional TNF-alpha binder/scripts/__pycache__/j505_make_denovo_control_inputs_20261018.cpython-312.pyc	9865	6e6df7e370d3b8e364494a004d36ff10
+challenges/conditional TNF-alpha binder/scripts/__pycache__/j506_score_denovo_control_20261018.cpython-312.pyc	15949	d9fadb9733aef260669a14e8de1460b0
+challenges/conditional TNF-alpha binder/scripts/__pycache__/j534_select_submission_c1_c3_20261018.cpython-312.pyc	16662	2efbae9f10010af27598827fe1a71dd8
 challenges/conditional TNF-alpha binder/scripts/j168_mpnn_tnf.py	17418	83393c7dbf48b16d0510b9b548999245
 challenges/conditional TNF-alpha binder/scripts/j393_continuity_gate_20261015.py	14920	283a2b405f8a163b87bf7b5744bbec68
 challenges/conditional TNF-alpha binder/scripts/j409_path_or_fold_20261015.py	7551	b009c7b6759c9adced72e3ff8640e28d

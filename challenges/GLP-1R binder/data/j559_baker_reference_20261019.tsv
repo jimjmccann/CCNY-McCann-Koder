@@ -1,0 +1,4 @@
+# j559_baker_reference_20261019.py  published class-B1 de novo binders
+pdb	binder	binder_len	min_cut	med_cut	rg	rg_ratio	ca_i_i4	ca_i_i5	end2end	e2e_over_rg	n_contact_res_binder	frac_binder_res_in_contact	contact_span_resi	n_contact_res_receptor	receptor_contact_resi	interface_rmsd_to_line
+9MM5	De novo designed minibinder - dC2_049	65	13	32	11.2	1.0424	6.17	8.66	36.5	3.26	13	0.2	4-56	13	34,38,41,72,92,93,94,95,114,116,121,124,125	4.35
+9MNI	De novo designed minibinder - dC2_050	66	13	37	11.41	1.0554	6.16	8.58	38.2	3.35	10	0.152	5-56	10	41,72,92,94,114,124,125,128,129,131	4.91
