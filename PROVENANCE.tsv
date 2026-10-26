@@ -93,9 +93,6 @@ challenges/conditional TNF-alpha binder/methods/C3_ARM.md	10125	f681e6c555e799bb
 challenges/conditional TNF-alpha binder/methods/INPUTS.md	6423	7c519ef34bed2fb8a92a555bf3fd033d
 challenges/conditional TNF-alpha binder/methods/README.md	22733	efbbb5503d6aec354982d7295a41a153
 challenges/conditional TNF-alpha binder/methods/SCRIPTS.md	13027	85c0a38f3bd9af9e1a4b25b67b0d59d1
-challenges/conditional TNF-alpha binder/scripts/__pycache__/j505_make_denovo_control_inputs_20261018.cpython-312.pyc	9865	6e6df7e370d3b8e364494a004d36ff10
-challenges/conditional TNF-alpha binder/scripts/__pycache__/j506_score_denovo_control_20261018.cpython-312.pyc	15949	d9fadb9733aef260669a14e8de1460b0
-challenges/conditional TNF-alpha binder/scripts/__pycache__/j534_select_submission_c1_c3_20261018.cpython-312.pyc	16662	2efbae9f10010af27598827fe1a71dd8
 challenges/conditional TNF-alpha binder/scripts/j168_mpnn_tnf.py	17418	83393c7dbf48b16d0510b9b548999245
 challenges/conditional TNF-alpha binder/scripts/j393_continuity_gate_20261015.py	14920	283a2b405f8a163b87bf7b5744bbec68
 challenges/conditional TNF-alpha binder/scripts/j409_path_or_fold_20261015.py	7551	b009c7b6759c9adced72e3ff8640e28d
