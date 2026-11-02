@@ -53,10 +53,15 @@ human **transferrin receptor 1** (TfR1), the cell-surface receptor that imports 
    the directory: holding subsets of secondary-structure elements, rather than a whole chain, takes
    the collision with the receptor from **679** heavy atoms to **zero**, and the arms that hold one
    particular large helix are the top four with **no overlap** against those that do not
-   (`methods/core_scaffolded_design.md`). ⛔⛔ **It is still not a binding result.** 312 designed
-   sequences exist and **none has been folded against the receptor or scored** — which is exactly
-   the test the first round failed. ⚠️ And of the six functional groups the site specification
-   names, only **four** remain identity-constrained through that construct; see §4 of that document.
+   (`methods/core_scaffolded_design.md`). ⛔⛔ **It is still not a binding result**, and the reason
+   is **not** that the test was skipped. ⇒ ⭐ **CORRECTED 2026-11-02:** this item previously said
+   *"312 designed sequences exist and none has been folded against the receptor or scored."* That
+   was stale. The cohort **was** co-folded — **780** predictions, **156** designs × 5 draws, scored,
+   with known natural binders folded alongside as controls. ⛔ It still shows nothing about binding,
+   because the controls land **64–85 Å** from their own crystal poses, the same band as the designs,
+   so **the gate cannot discriminate** (see the Round 2 section). ⚠️ And of the six functional groups
+   the site specification names, only **four** remain identity-constrained through that construct;
+   see §4 of that document.
 
 7. ⛔ **A self-inflicted methodological error is corrected in place rather than removed.** An
    earlier conclusion that the six-group constellation is "unsatisfiable in nature, 0.00%" was an
