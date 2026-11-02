@@ -1,12 +1,13 @@
 # Structures
 
-Two molecular-viewer session files, one per line of work. ⛔ Neither holds coordinates of a
+Three molecular-viewer session files, one per line of work. ⛔ None holds coordinates of a
 designed binder in a deposited, reusable form — see the closing note.
 
 | file | what it holds |
 |---|---|
 | `j893_candidate_scaffolds_on_constellation.pse` | the four natural candidate scaffolds the mining line ended on, superimposed on the designed constellation |
 | `j901_screen_best_designs_20261101.pse` | six generated designs from the scaffolded-design screen, coloured by what was given and what was built |
+| `j956_nterm_top3_corrected_20261102.pse` | the extension arm's **corrected** top three, with the generated N-terminal segment coloured apart from the held protein |
 
 ---
 
@@ -125,6 +126,42 @@ text was read, but its binary has not been searched exhaustively.
 
 ---
 
-⛔ **No coordinates of our own designs are deposited in this directory in a reusable form.** Both
-files are viewer sessions. No predicted binder–receptor complex from either design round is
-deposited, and no designed sequence here has been co-folded at all.
+## `j956_nterm_top3_corrected_20261102.pse`
+
+Four scenes: one per design, plus an overview with all three binders against a single receptor
+surface. Colouring is the same convention as the screen session — **purple** the protein the
+generator was given and held sequence-fixed (143 residues), **grey** the 27 residues it built,
+**yellow** the held guidepost as sticks, **teal** the receptor.
+
+⭐⭐ **The program that built this session refuses to write it if the contact count it measures from
+the coordinates disagrees with the deposited ranked table.** All three matched exactly — 165, 150
+and 141 pairs. ⇒ the picture cannot claim a number the data does not carry.
+
+⭐ It was verified by **reloading the saved file in a fresh viewer process**: 36 checks, 0 failures —
+143 held and 27 built per design, those two sets disjoint, the receptor present at its full residue
+count in all three, no surviving generator pseudo-atoms, and every stored scene message pure ASCII
+as read back from the **saved bytes**.
+
+⚠️ Each scene's message states the design's **batch**, because ranks 1 and 3 share one: three
+designs here are **two** independent draws.
+
+⚠️ Every scene message also carries the sentence *"Engagement is NOT affinity"*, and that is not
+decoration — the quantity this session is ordered by is a contact count on an unrelaxed model.
+
+---
+
+⛔ **No coordinates of our own designs are deposited in *this* directory in a reusable form.** All
+three files are viewer sessions. ⛔ No **predicted** binder–receptor complex is deposited as
+coordinates from any of the three design rounds.
+
+⭐ **One exception, added 2026-11-02 and deliberately placed in `../data/` rather than here:** the
+three **generator-output** backbones behind the extension arm's figure and its ranking are deposited
+as gzipped mmCIF in `../data/nterm_top3_coordinates_20261102/`, with each design's specification
+record. ⇒ the published contact counts are recomputable from files, not only from a viewer session.
+⚠️ They are *design* coordinates, raw and unrelaxed — not predicted complexes.
+
+⚠️ **One sentence that used to stand here no longer does.** It read *"no designed sequence here has
+been co-folded at all"*. That was true when the first two rounds were deposited; it is **no longer
+true** — the extension arm's 20 sequences were co-folded against the whole receptor ectodomain, and
+the scores are in `../data/`. ⛔ What remains true is that the **coordinates** of those predicted
+complexes are not deposited here, only the scores derived from them.

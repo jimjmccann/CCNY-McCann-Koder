@@ -704,3 +704,114 @@ execution record that cannot answer "on what, and for how long" is a log, not pr
 ⚠️ **And the rate that *was* measured comes with a comparability warning**, which is the same shape
 as §13: an earlier rate from this project differs in **both** chain length and hardware, so the two
 numbers cannot be differenced. ⇒ quote them separately or not at all.
+
+---
+---
+
+# Appended 2026-11-02 — from the extension arm
+
+The work these come from is in `methods/nterm_extension_arm.md`: hold 143 of a 170-residue cleared
+scaffold fixed, generate a 25-residue N-terminal extension plus a linker, and measure whether that
+segment reaches the receptor. ⛔ It is not a binding result either. ⭐ But four of the five findings
+below were paid for in this round, and the first one invalidated a ranking **after** the round had
+already been written up once.
+
+## 19. ⛔⛔ A column that never varies is a question, not a fact
+
+The scorer printed a column giving the **size of the generated residue set**. It read the constant
+value **2** in all 96 rows, in every output, through a full write-up — and the construct it was
+describing generates **27** residues. The ranking the whole arm turned on was computed from a
+2-residue linker and labelled as describing a 27-residue extension.
+
+⇒ Nothing about the output looked wrong. The number was plausible on its face, it was printed where
+it could be seen, and it was read as unremarkable because it was *stable*.
+
+⇒ ⭐⭐ **Stability in a column that should vary is the cheapest defect signal available, and it is
+invisible unless you deliberately look for it.** A column that reports a count over a per-design
+quantity, across designs whose connector lengths are sampled independently, **cannot** be constant.
+⇒ Add the check that your own output is varying where it must: for every count column, report the
+number of distinct values alongside it, and treat `distinct == 1` as a failure to investigate rather
+than as a tidy result.
+
+⚠️ This is the same shape as a lesson this project already recorded about constant columns, and
+recording it did not prevent it. ⇒ ⛔ A lesson written down is not a check that runs.
+
+## 20. ⛔⛔ An index that enumerates one class of thing cannot be used to derive the other class
+
+The defect's mechanism, stated so it transfers: the generator emits a map from input tokens to
+output positions. **Only held positions have tokens** — a generated run has none, by construction.
+The scorer derived "which residues were generated" from that map, by taking the span of mapped
+positions on the chain and subtracting the held ones.
+
+⇒ Every mapped position is a held position, so the span's lower bound was **the first held residue**,
+and every generated residue below it was excluded *before* the subtraction ran. The generated set
+could not have been recovered from that map by any arithmetic. ⛔ The bug was not an off-by-one; the
+input was the wrong input.
+
+⇒ ⭐⭐ **When you derive set A by subtracting B from a container C, verify C actually contains A.**
+Here the fix is to take the container from the **structure** — the residues the chain actually has —
+which is the only object that holds both classes. ⇒ and the derivation now **raises** if the result
+is empty, because a silent empty set is how this failure stayed invisible.
+
+## 21. ⭐⭐ Ask whether each clause of your conjunction *can* bind — some are theorems, not tests
+
+The gate was a three-clause conjunction, reported as three tests. The third clause required the
+**generated segment** to clear the receptor by 2.0 Å; the second required the **whole binder** to.
+
+⇒ The generated segment is a subset of the binder, so the minimum distance over the subset is always
+at least the minimum over the whole chain. ⇒ clause 2 **entails** clause 3, identically, for any
+cohort that could ever be scored. `[M]` Verified: the invariant holds in 96/96, and **0 of 96**
+designs pass the first two clauses and fail the third.
+
+⇒ ⭐ This is why correcting finding 19 left the survivor count **identical at 66** while completely
+reordering the ranking: the only gate clause the broken columns fed was one that could not bind. The
+gate never depended on the defective measurement. The **ordering** depended on it entirely.
+
+⇒ ⛔⛔ **A redundant clause is not harmless.** It reads as three independent tests where there are
+two, so it inflates apparent stringency — and here it very nearly supplied a false reassurance, since
+"the gate survived the correction" sounds like evidence the correction was minor. It was not. ⇒ For
+every conjunction, ask of each clause: *is there any input on which this changes the outcome?* If
+not, say so where the clause is reported.
+
+## 22. ⛔⛔ A figure checker checks labels. It cannot check whether the picture shows what the caption says
+
+The panel figure for this arm passed every automated check it had: **0** overflowing labels across
+47 stamped strings, measured by re-opening each finished image and re-measuring every string with a
+real ink box rather than a font metric, and **0** images with ink touching an edge.
+
+⇒ The figure was still wrong. At the surface transparency it was rendered with, **the built segment —
+the entire subject of the figure — was the least visible thing in it**, reading as a few faint
+patches. A reader would have concluded *the extension does not engage*, while the measurement
+printed in the same panel said **141 to 165 contact pairs**. ⛔ A figure that contradicts its own
+caption, with every check green.
+
+⇒ ⭐⭐ **It was found by opening the image.** No label checker could have found it, because nothing in
+it is a label problem. ⇒ the check that was missing is not automatable in the same way: *look at the
+figure and ask whether its most prominent feature is the thing it is about.*
+
+⇒ ⭐ And raising the transparency exposed a second thing worth saying out loud: the built segment
+sits **inside** the receptor's solvent-excluded surface, which is what a 2.07–2.55 Å minimum
+separation looks like on raw, unrelaxed output gated at a 2.0 Å floor. ⇒ a caption line now states
+that **on the figure**, because a reader who can see interpenetration will otherwise read it as good
+packing.
+
+## 23. ⛔ A pipeline can deadlock for a reason that has nothing to do with the pipeline
+
+Running one input as a probe before committing a batch — which is itself a rule this project already
+had — caught a hard deadlock in the structure predictor: **12 minutes elapsed against 1 minute of
+CPU time, accelerator at 0%**, nothing produced.
+
+⇒ The cause was not the model, the input, or the hardware. A worker process tried to create a local
+socket inside the configured scratch directory, and **that directory's path was long enough that the
+socket name exceeded the operating system's limit for it**. The worker that would have fed the
+accelerator died; the parent waited forever.
+
+⇒ ⭐⭐ **Elapsed time versus consumed CPU time is the measurement that separates "slow" from
+"stuck"**, and it takes one command. A near-zero CPU figure over a long elapsed time means blocked,
+not working. ⛔ Neither a progress bar nor an exit status will tell you: the run had produced a
+plausible-looking progress line and the output file was empty.
+
+⇒ ⭐ Re-running with a short scratch path produced the expected result in **264 seconds** with the
+full complement of structures. ⇒ the rule that paid for itself here is the cheap one: **one input
+first, judged on output count**, before any batch — and the corollary, that an environment setting
+you never chose (an inherited scratch path) is as capable of stopping a run as a wrong parameter is.

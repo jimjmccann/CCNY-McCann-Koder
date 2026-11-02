@@ -367,3 +367,134 @@ The `arm` column carries a short run label: bare `opt05` / `opt01` / `opt04` in 
 produced the rows — the production run and the six-position-locked re-run — and the three arms are
 the same three core options throughout. ⛔ The prefix is a run label only; it carries no scoring or
 selection meaning, and rows join across files on `design` and `seq_id`.
+
+---
+
+# The extension arm
+
+## 9. `nterm_extension_arm_20261102/` — the arm, as actually built
+
+Three files, the same shape as the ten screen arms in §4: the generator **specification**, a
+**provenance sidecar**, and the **input coordinates** the specification names.
+
+The specification's one load-bearing field is the contig,
+`25-25,E1,2-2,H4-145,/0,A193-298,/0,A332-379`, which reads left to right as the output chain:
+**25** generated residues, then **1** held guidepost (chain `E`, its `NE,NH1,NH2` held by
+`select_fixed_atoms`), then **2** generated linker residues, then the source design's residues
+**4–145** held sequence-fixed, then two chain breaks and the receptor's two held segments.
+
+| provenance key | what it records |
+|---|---|
+| `design` | the source design's filename — one design from the screen's `opt01` arm |
+| `ext`, `gap` | the generated lengths: 25 and 2 |
+| `dropped_nterm` | the source design residues the extension replaces: 1, 2, 3 |
+| `held_binder_residues` | `[4, 145]`, the held span |
+| `total_length` | 170 |
+| `threaded_substitutions_vs_design_backbone` | 93 — ⚠️ the one place this construct is not simply a subset of its parent |
+| `measured.R1_guanidinium_to_target_A` | 3.03 Å, the held guidepost's distance to the receptor **before** any generation |
+| `measured.rank1_draw_worst_target_facing_pin_A` | 11.31 Å — ⛔ in the source draw, the designed contacts are **not** all maintained |
+
+## 10. `j948_nterm_score_CORRECTED_GENSET_20261102.tsv` — 96 designs, 26 columns
+
+⛔⛔ **Read `../methods/nterm_extension_arm.md` §5 before using any column named `new_*`.** An
+earlier scoring run measured those columns on a 2-residue linker instead of the 27-residue
+generated segment. The files here are the corrected ones; the superseded pair is kept beside them
+under `SUPERSEDED` names, with a banner in their own first lines.
+
+| column | what it is |
+|---|---|
+| `design`, `model` | the design, and which model of its batch |
+| ⚠️ `batch` | **the unit of independence.** 12 distinct values over 96 rows; designs sharing a batch are not independent draws |
+| `binder_chain`, `target_chains` | resolved from each design's **own** specification, never assumed |
+| `n_res_binder`, `n_gen_res` | 170 and 27 in every row. ⭐ `n_gen_res` read **2** in every row before the correction — the constant column that was the tell |
+| `n_pseudo_dropped` | generator pseudo-atoms removed before measuring, matched on element **and** name |
+| `max_step`, `median_step`, `n_break_4p5` | backbone continuity. `n_break_4p5 == 0` is gate clause 1 and holds in 96/96 |
+| `max_ca_dev` | largest alpha-carbon deviation of the held residues from their input positions |
+| `rg`, `rg_ratio` | radius of gyration, and that value relative to a length-matched expectation — ⭐ the ratio is the only compactness measure here that is length-safe |
+| `bb_min_to_target` | whole binder's closest approach to the receptor. `>= 2.0` is gate clause 2 |
+| `n_contact_4p5` | whole-binder contacts with the receptor under 4.5 Å |
+| `intra_min_nonadj` | closest approach between non-adjacent residues of the binder itself |
+| `new_min_dist` | ⛔ the **generated segment's** closest approach. Gate clause 3, which is **provably redundant**: the segment is a subset of the chain, so this value is always ≥ `bb_min_to_target`, and clause 2 entails it. Verified 96/96 |
+| ⭐ `new_contacts_4p5` | the arm's actual answer: contacts the **generated** segment makes with the receptor under 4.5 Å. ⚠️ a sum over an atom-pair distance matrix ⇒ it counts **pairs**, not distinct atoms |
+| `pin_min_to_target` | the held guidepost's closest approach |
+| `rfd3_*` | ⚠️ the **generator's own** reported statistics, carried for comparison only. Not independent of it |
+
+`…_RANKED.tsv` holds the 66 designs clearing the conjunction, ordered by `new_contacts_4p5`
+descending then `bb_min_to_target` descending. ⛔ There is **no verdict column and no binary cut**
+beyond the conjunction; the ordering is not a prediction of binding.
+
+## 11. `j949_diverse20_v2_20261102.tsv` — the 20 sequences that were folded
+
+| column | what it is |
+|---|---|
+| `design`, `seq_id` | the backbone and the sequence index on it |
+| `sequence`, `length` | the designed binder chain, 170 residues, cysteine-free by construction |
+| `overall_confidence`, `seq_rec` | ⚠️ the sequence-design model's own confidence, and its recovery of the input sequence at designed positions. ⛔ **Neither is a binding predictor** — a previous round measured that confidence does not even separate the design arms — so they were used for reporting and diversity, never as the selection rank |
+
+⛔⛔ **These 20 sit on 3 backbones chosen by the ranking §10's correction invalidated.** Under the
+corrected measurement those three rank **4th, 19th and 60th of 66**, with generated-segment contact
+counts of **136, 92 and 33**. ⇒ the folded set **spans** the corrected ordering rather than topping
+it. `../methods/nterm_extension_arm.md` §7 explains why that was left standing rather than reselected.
+
+## 12. ⭐ `nterm_top3_coordinates_20261102/` — the three structures the figure is built from
+
+The **corrected** top three backbones as the generator produced them, gzipped mmCIF plus each
+design's own specification record. ⇒ ⭐ the contact counts in `…_RANKED.tsv`, the panel figure and
+the viewer session can all be **recomputed from these three files**, which is the point of
+depositing them.
+
+⚠️ **These are raw generator output.** They carry the generator's own pseudo-atoms (named `V` plus
+digits, element `V`), which any measurement must remove **by element and name** — a text match on
+the name returns zero and reads as a false clean. No relaxation, no minimisation, no cleanup.
+
+Two reproducibility facts read out of the specification records themselves rather than assumed:
+
+- `[M]` **`seed` is `null` in all 96 designs.** ⇒ the generation really is unseeded, so re-running
+  this contig does not return these backbones. The coordinates are the record, not a recipe.
+- ⚠️ `[M]` **`ckpt_path` is `/weights/rfd3_latest.ckpt`** — a *moving* checkpoint, not a pinned
+  version. ⇒ even with a seed, a later run of "the same" generator would not be guaranteed to be
+  the same model. ⛔ Which version was in that file on the run date is not recorded anywhere, and
+  that is a gap, not a detail.
+
+## 13. `nterm_ecto_fold_inputs_20261102/` — the 20 co-fold inputs, verbatim
+
+The exact 20 input files the co-fold consumed, one per sequence. Each names two protein chains —
+`A`, the 170-residue designed binder, and `B`, the **640-residue receptor ectodomain** as one
+contiguous chain — plus three `NAG` ligands bonded `ND2 → C1` at the receptor's sequons.
+
+⚠️ Both chains carry `msa: empty`, i.e. **single-sequence mode**. For the de novo binder that is
+correct; for the receptor it is the conservative choice and not the best one.
+
+⭐ Every one of these files was machine-checked before it was folded: 2 protein blocks, 3 ligand
+blocks all `NAG`, 3 bond constraints, chain ids `A,B,C,D,E` unique and single-character, an
+identical 640-residue receptor across all 20, and — the check that matters most — **every bonded
+position confirmed to be an asparagine**, because a sugar bonded to the wrong residue folds happily
+and says nothing.
+
+## 14. ⭐ `j958_nterm_ecto_fold_scores_20261102.tsv` — the co-fold, 100 rows
+
+One row **per draw**: 20 sequences × 5 diffusion samples. ⛔ Read
+`../methods/nterm_extension_arm.md` §8 before using it; three of its columns are easy to misread.
+
+| column | what it is |
+|---|---|
+| `sequence`, `design`, `draw` | the sequence, its backbone, and which of the 5 draws |
+| ⛔ `draw` | **`0` is the BEST of the five, not a sample** — the predictor sorts its diffusion samples by its own confidence. Taking only `draw == 0` moves median interface confidence from 0.282 to 0.559 **by selection alone** |
+| ⭐ `pair_iptm_binder_target` | the **binder–receptor** interface confidence, the mean of the two directed values. ⭐ This is the number to read |
+| `pair_iptm_a_to_b`, `pair_iptm_b_to_a` | the two directed values, kept because they are not equal |
+| ⛔ `iptm_CONFOUNDED` | the **global** interface figure. Named to be awkward on purpose: it folds in the three NAG ligands, so it is not a binder–receptor score |
+| `binder_ptm`, `target_ptm`, `ptm`, `complex_plddt`, `confidence_score` | the predictor's other statements about its own prediction |
+| ⭐ `gen_contacts_4p5`, `gen_min_dist` | the **27 generated residues** `{1..25, 27, 28}` against the receptor. ⚠️ `gen_contacts_4p5` counts atom **pairs**. ⛔ Its spread **within one sequence across its own 5 draws** has median **130**, against a between-backbone difference in means of **6.3** ⇒ it cannot order anything at 5 draws |
+| `all_contacts_4p5`, `all_min_dist` | the whole 170-residue binder against the receptor |
+| `pin_contacts_4p5`, `pin_min_dist` | the held guidepost residue alone |
+| ⛔⛔ `held_rmsd_to_design`, `n_held_compared` | the **143 held residues** against the design backbone they were supposed to reproduce, within the binder chain so no cross-frame superposition is involved. `[M]` **6.7 to 16.2 Å, median 12.0** ⇒ the predictor rebuilt the protein the construct holds fixed. This caveat sits under every other column |
+| `design_frame_gen_contacts` | the same backbone's engagement in the **generator's** frame, carried on every row so the two can be compared without a join |
+
+⛔⛔ **There is no pose column, and that is deliberate.** Positive controls run earlier through this
+same instrument — including two natural, deposited complexes, one of whose folds the predictor
+reproduces to 0.59 Å — all land **64–85 Å** from their own crystal poses. ⇒ no pose threshold is
+admissible on this target, so none is offered.
+
+Built by `../scripts/j958_score_ecto_fold_20261102.py`, which refuses to write if any sequence is
+short of its 5 draws — ⛔ because this predictor exits **successfully** having written nothing when
+it runs out of memory, so the structure count is the only proof a run finished.

@@ -78,3 +78,43 @@ a bad crop would be visible rather than silent.
 `../scripts/j902_stamp_renders_20261101.py` crops and stamps. ⛔ The render program has no
 `__main__` guard on purpose: under that invocation the module is not `__main__`, so a guarded script
 exits successfully having written nothing.
+
+---
+
+# `nterm_top3_corrected_20261102.png` — the extension arm's corrected top three
+
+Three panels plus an overview, built from
+`../structures/j956_nterm_top3_corrected_20261102.pse` and documented in
+`../methods/nterm_extension_arm.md`. Colouring: **purple** the whole protein given to the generator
+and held sequence-fixed, **grey** the N-terminal extension the generator built, **yellow** the held
+guidepost shown as sticks, **teal** the receptor as a surface. The receptor is the same object, in
+the same frame, in every panel — asserted, not assumed.
+
+⚠️ **The figure states on its own face that ranks 1 and 3 come from the same generation batch**, so
+the three panels are **two** independent draws and not three.
+
+## ⛔⛔ A fourth render defect, and the only one no check could catch
+
+The three defects above were each found by a program. This one was found by **opening the image**.
+
+At the surface transparency the earlier figures used, the **grey built segment — the entire subject
+of the figure — was the least visible thing in it.** It read as a few faint patches behind the
+receptor surface, which a reader would reasonably take as *the extension does not engage*, while the
+measurement printed in the same panel says **141 to 165 contact pairs** under 4.5 Å. ⇒ a figure that
+contradicted its own caption, with **0 overflowing labels** and every automated check passing.
+
+⭐ Fix: the transparency is now raised through an **additive** override that leaves the program's
+default unchanged, and the segment is plainly visible threading into the receptor. The original
+renders are kept, not replaced.
+
+⭐⭐ **And raising it exposed something worth stating rather than hiding:** the built segment sits
+**inside** the receptor's solvent-excluded surface, which is what a **2.43–2.55 Å** minimum
+separation looks like (`[M]` over the three panels; the figure's own caption brackets it more
+loosely as 2.1–2.6 Å). These are raw generator backbones gated at a 2.0 Å floor with no relaxation.
+⇒ a third caption line now says so **on the figure itself**, so a reader cannot mistake
+interpenetration for good packing. Re-verified after the change: **0 overflowing labels of 47**, and
+**0** images with ink touching an edge.
+
+⚠️ ⇒ **The lesson generalises past this figure:** a label checker measures labels. It cannot measure
+whether the picture shows what the caption claims, and that is the failure mode that matters most in
+a published figure.

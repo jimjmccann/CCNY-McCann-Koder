@@ -1,0 +1,23 @@
+{
+ "note": "N-terminal extension arm; 'design' reduced to its filename for publication",
+ "design": "arm_shard00_tfr1_core_opt01_3_model_3.cif",
+ "gid": "744",
+ "ext": 25,
+ "gap": 2,
+ "dropped_nterm": [
+  1,
+  2,
+  3
+ ],
+ "held_binder_residues": [
+  4,
+  145
+ ],
+ "total_length": 170,
+ "threaded_substitutions_vs_design_backbone": 93,
+ "measured": {
+  "R1_guanidinium_to_target_A": 3.03,
+  "R1_CA_to_target_A": 3.46,
+  "rank1_draw_worst_target_facing_pin_A": 11.31
+ }
+}

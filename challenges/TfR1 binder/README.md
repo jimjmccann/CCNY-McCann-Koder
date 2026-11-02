@@ -1,7 +1,7 @@
-# TfR1 — a designed binder that binds the wrong site, a structural-mining line that closed, and a scaffolded redesign
+# TfR1 — a designed binder that binds the wrong site, a structural-mining line that closed, a scaffolded redesign, and a generated extension that does reach the receptor
 
 James McCann and the Koder Group, The City College of New York.
-Work dated 2026-10-19 .. 2026-11-01. Challenge 4 of the Anthropic × Adaptyv 2026 competition:
+Work dated 2026-10-19 .. 2026-11-02. Challenge 4 of the Anthropic × Adaptyv 2026 competition:
 human **transferrin receptor 1** (TfR1), the cell-surface receptor that imports iron.
 
 ---
@@ -11,8 +11,12 @@ human **transferrin receptor 1** (TfR1), the cell-surface receptor that imports 
 0. ⛔⛔ **Nothing from this challenge was submitted to the competition.** The deadline passed with
    the design chain unfinished — specifically, with the independent co-folding test still not run
    — and no TfR1 sequence was entered. This directory is published anyway because the negative
-   results in it are the part worth having. The deposited sequence cohort is what would have been
+   results in it are the part worth having. The deposited sequence cohorts are what would have been
    entered had the chain finished.
+   ⚠️ **The work did not stop at the deadline, and the dates say so.** The third round below,
+   including the co-folding test that was missing, was run **after** it. ⇒ nothing in this
+   directory was available to a submission, and the co-fold results here are a record of finishing
+   the method, not of a late entry.
 
 1. **Nothing here has been tested at the bench. No number in this directory is an affinity.**
    Every coordinate is a model or a database entry, and every confidence number is a structure
@@ -71,6 +75,37 @@ human **transferrin receptor 1** (TfR1), the cell-surface receptor that imports 
    binding TfR1. ⚠️ The sequence-design step reports composition, charge and isoelectric point,
    which are **predictions about** solubility and not measurements of it.
 
+10. ⭐ **A third round does clear the bar the second one stopped at: a generated 25-residue
+    N-terminal extension reaches the receptor, and it was predicted not to.** Holding 143 of 170
+    residues of a cleared scaffold and generating the rest produced **96/96** continuous backbones,
+    **66** clearing the clearance conjunction, and generated-segment contacts with the receptor
+    running **28 to 190** under 4.5 Å, median **69**. The arm was launched expecting the opposite —
+    an extension off the far side of the scaffold growing into solvent — so this is a prediction
+    that failed in the useful direction (`methods/nterm_extension_arm.md`).
+    ⭐ **And it survives an independent co-fold:** 20 sequences folded against the whole 640-residue
+    receptor ectodomain put the generated segment in contact with it in **77 of 100** draws.
+    ⛔⛔ **It is still not a binding result, and a contact count is not an affinity.**
+
+11. ⛔⛔ **The same co-fold disqualifies the measurement used to rank that result, and this is the
+    round's most useful output.** Three findings stack. ⑴ The design-frame contact count **does not
+    predict** the folded one: across backbones spanning **136 / 92 / 33** design-frame contacts the
+    fold means are **56.5 / 62.8 / 56.9** — flat across a 4× range. ⑵ The metric's draw-to-draw
+    spread **within a single sequence** has median **130**, against a between-backbone difference of
+    **6.3** ⇒ at five draws it is reading noise. ⑶ The predictor **does not reproduce the 143
+    residues the construct holds fixed**, returning them **6.7–16.2 Å** (median **12.0**) from the
+    design backbone ⇒ the engagement reported is a *different structure's* engagement.
+    ⇒ ⚠️ The positive result in item 10 is real. The ordering built on top of it is not supported.
+
+12. ⛔⛔ **A defect in our own scoring code is reported in that round rather than quietly fixed.**
+    The script that measured the extension's engagement derived "which residues are the generated
+    ones" from the generator's token index map, which names only *held* positions — so the entire
+    25-residue extension was excluded and both engagement columns described a **2-residue linker**
+    instead. The tell was a column that read the constant value **2** in all 96 rows, printed every
+    time and read as unremarkable. Correcting it **left the gate's 66 survivors identical** and
+    **completely reordered the ranking**: the previous first and second place fall to **19th and
+    60th of 66**. ⛔ The 20 sequences folded in this round were selected on the superseded ranking,
+    which is stated in §7 of that document rather than repaired after the fact.
+
 ---
 
 ## The target, and the site
@@ -126,6 +161,40 @@ That last step is the test, and limitation 2 above is its result.
 
 ⇒ ⛔ **Round 2 stops one step short of its own test.** Everything in it is a statement about
 backbone geometry or amino-acid composition.
+
+### Round 3 — give the cleared scaffold something to reach with
+
+Round 2 measured **clearance** and never **engagement**: a design that no longer collides with the
+receptor can simply be one that no longer reaches it. So one design from the ten-way screen was
+held almost entirely fixed and the generator was asked for a 25-residue N-terminal extension whose
+only job is to span the remaining distance.
+
+| step | what it does | outcome |
+|---|---|---|
+| construct build | drop the design's first 3 residues, hold residues 4–145 sequence-fixed, hold one arginine guidepost by its three guanidinium atoms, generate 25 + 2 residues | binder **170** residues, **143** held, **27** generated |
+| backbone generation | 4 shards × 3 batches × 8, receptor present as two held segments | **96** designs; ⚠️ effective n is **12 batches** |
+| continuity gate, **first** | no alpha-carbon step over 4.5 Å | ⭐ **96 / 96** |
+| clearance conjunction | continuity **and** whole binder ≥ 2.0 Å from the receptor **and** generated segment ≥ 2.0 Å | **66 / 96**; ⛔ the third clause is **provably redundant** — it cannot bind for any cohort |
+| engagement, the arm's actual question | contacts the **generated** segment makes with the receptor under 4.5 Å | ⭐ **28 to 190**, median **69** ⇒ the extension **does** reach |
+| ⛔ scoring defect found and corrected | the generated-residue set was derived from a token map that names only held positions | ⛔ survivors **unchanged**, ranking **completely reordered** |
+| sequence design (SolubleMPNN) | cysteine omitted, guidepost identity fixed, diversity subselection | **20** sequences on **3** backbones |
+| independent co-folding (Boltz-2) | the 20 sequences against the **whole 640-residue ectodomain** with its three N-linked sugars bonded, 5 draws each | **100 / 100** predicted complexes, 0 failures |
+| ⭐ does the generated segment engage in the fold? | contacts under 4.5 Å, measured inside each predicted structure | ⭐ **yes in 77 / 100 draws**, median **38.5** pairs; ⛔ **zero in 23 / 100** |
+| ⛔ does the design-frame ranking transfer? | three backbones spanning **136 / 92 / 33** design-frame contacts | ⛔⛔ **no** — fold means **56.5 / 62.8 / 56.9**, flat across a 4× range |
+| ⛔ does the predictor reproduce the 143 held residues? | RMSD to the design backbone, within the binder chain | ⛔⛔ **no — 6.7 to 16.2 Å, median 12.0** |
+
+⇒ ⭐⭐ **This is the one round that reaches its own test, and the test returns a split answer.** The
+extension really does reach the receptor — an independent predictor, never told where the binder was
+meant to sit, puts the generated segment in contact in 77 of 100 draws. ⛔⛔ **And the same run shows
+the instrument cannot rank:** the contact count's spread *within a single sequence across its own
+five draws* has median **130**, while the entire difference between backbones is **6.3** — noise
+about twenty times the effect. ⛔⛔ **Worse, the predictor rebuilt the protein the construct holds
+fixed**, so the engagement it reports is a different structure's engagement.
+
+⇒ ⛔ The pose readout was already known to be unusable here, from natural deposited controls: a
+binder whose fold the predictor reproduces to **0.59 Å** is still placed **64.68 Å** from its own
+crystal pose. So no pose threshold is set, and no design in this round is selected by any of it.
+`methods/nterm_extension_arm.md` §8 sets out the whole result.
 
 ---
 
@@ -284,6 +353,17 @@ clash figures are **raw** generator output, which clashes normally. The next rea
    helix itself by any measurement here.
 9. ⛔ **Nothing about the hardware requirement of the generative step is known.** The runs captured
    no memory figure, so whether these arms would fit a smaller accelerator is unmeasured.
+10. ⛔ **Whether the extension's engagement means anything for binding.** Round 3 measures contacts
+    in the generator's own frame, on backbones with **no relaxation of any kind**, gated at a floor
+    of 2.0 Å. ⚠️ The top-ranked designs sit **inside** the receptor's solvent-excluded surface at
+    **2.43–2.55 Å**, which is what that floor looks like and not evidence of good packing. ⚠️ And
+    over the 66 survivors the closest approach runs down to **2.07 Å**, i.e. right onto the floor.
+11. ⛔ **Whether the corrected ranking predicts anything.** It has never been used to select
+    anything: the folded 20 were chosen on the ranking it replaced
+    (`methods/nterm_extension_arm.md` §7).
+12. ⚠️ **Whether folding the receptor without an alignment profile cost accuracy.** Both chains in
+    the round-3 co-fold are single-sequence. For a de novo binder that is correct; for a real
+    640-residue receptor it is conservative rather than best, and the difference was not measured.
 
 ---
 
@@ -296,10 +376,11 @@ clash figures are **raw** generator output, which clashes normally. The next rea
 | `methods/structural_mining.md` | ⭐ the complete, self-contained account of the mining method: the constellation, the matching criterion, the tolerance algebra, both databases, the accessibility gate, the superposition and clash test |
 | `methods/mining_negative_results.md` | the three measurements that were run, controlled, and returned nothing — the Cα search, the clash filter, the density map |
 | `methods/core_scaffolded_design.md` | ⭐ the scaffolded redesign in full: the decomposition, the construct and its three decisions, the ten-arm screen, and the sequence-design step with its composition refit |
-| `data/` | 16 result tables, 3 cohort lists, and the ten arms' complete input specifications and input coordinates, with `data/README.md` explaining every column and key |
-| `scripts/` | the 24 programs behind every number here, with `scripts/README.md` saying what each does and the phase it belongs to |
-| `structures/` | two viewer sessions: the four natural candidates on the constellation, and six generated designs from the screen |
-| `figures/` | seven renders of the screen designs, with `figures/README.md` on the colouring and the three render defects that were fixed rather than shipped |
+| `methods/nterm_extension_arm.md` | ⭐ round 3 in full: the construct, the gate chain and why continuity is gated first, ⛔ **the scoring defect and exactly what it changed**, the sequence selection made on the superseded ranking, and what the co-fold can and cannot tell you |
+| `data/` | 24 result tables, 3 cohort lists, and the complete input specifications and input coordinates for the ten screen arms, the extension arm, and the 20 co-fold inputs — with `data/README.md` explaining every column and key |
+| `scripts/` | the 33 programs behind every number here, with `scripts/README.md` saying what each does and the phase it belongs to |
+| `structures/` | three viewer sessions: the four natural candidates on the constellation, six generated designs from the screen, and the extension arm's corrected top three |
+| `figures/` | eight renders, with `figures/README.md` on the colouring and the render defects that were fixed rather than shipped |
 
 ---
 

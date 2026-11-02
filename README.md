@@ -27,7 +27,8 @@ sequence cohort is what would have gone in.
 *Six designs from the ten-arm core-scaffolded screen, against one copy of the receptor surface, each
 in its own colour in a common orientation. ⛔ Every coordinate shown is a model.*
 
-Two lines were run, and the honest reading of each is the negative one:
+Three lines were run. The honest reading of the first two is the negative one; the third is the only
+one that reached its own test:
 
 - **Structural mining — net yield of usable scaffolds: zero.** The site was defined as six typed
   side-chain functional groups at fixed relative positions, and two structure databases were
@@ -35,10 +36,40 @@ Two lines were run, and the honest reading of each is the negative one:
   RMSD bar; only **31 rows (30 distinct chains)** present all six groups on a reachable face; and
   all four survivors that were actually superimposed put their own body where the receptor is. The
   tight head of the match list is buried, so **fit and accessibility are opposed** in this problem.
-- **Core-scaffolded redesign — the binding test was never run.** Ten held-element options were
-  built and screened, **400** designs generated, **39** passed continuity, clearance and fold
-  integrity as a conjunction, and **312** sequences were designed on those 39 backbones.
-  ⛔ **Independent co-folding — the actual test of whether any of this binds — was not done.**
+- **Core-scaffolded redesign — the binding test was never run on this cohort.** Ten held-element
+  options were built and screened, **400** designs generated, **39** passed continuity, clearance
+  and fold integrity as a conjunction, and **312** sequences were designed on those 39 backbones.
+  ⛔ **Independent co-folding of those 312 — the actual test of whether any of them binds — was not
+  done.** It measured whether the construct *clears* the receptor, never whether it *reaches* one.
+- ⭐ **A generated N-terminal extension does reach the receptor — and it was predicted not to.**
+  One cleared design was held almost entirely fixed (**143** of **170** residues) and the generator
+  was asked for a 25-residue extension to span the remaining distance. **96/96** backbones came
+  back continuous, **66** cleared the clearance conjunction, and the generated segment makes
+  **28 to 190** contacts with the receptor under 4.5 Å, median **69**. The arm was launched
+  expecting an extension that grew into solvent, so the prediction failed in the useful direction.
+  ⭐ **And it survives the independent test the other two lines never reached**: the 20 sequences
+  were co-folded against the whole 640-residue ectodomain, **100/100** predicted complexes, and the
+  generated segment is in contact with the receptor in **77 of 100** draws.
+  ⛔⛔ **A contact count on an unrelaxed model is not an affinity**, and ⛔ a defect in our own
+  scoring code — which measured a 2-residue linker while claiming to measure the 27-residue
+  extension — is reported in full in `challenges/TfR1 binder/methods/nterm_extension_arm.md`,
+  because correcting it reordered the ranking completely while leaving the gate untouched.
+- ⛔⛔ **And the same co-fold disqualifies the measurement used to rank that result — which is the
+  most useful thing this challenge produced.** The design-frame contact count **does not predict**
+  the folded one (backbones spanning **136 / 92 / 33** design-frame contacts give flat fold means of
+  **56.5 / 62.8 / 56.9**); the metric's spread **within a single sequence across its own five
+  draws** has median **130** against a between-backbone difference of **6.3**, so at five draws it
+  is reading noise; and the predictor **does not reproduce the 143 residues the construct holds
+  fixed**, returning them **6.7–16.2 Å** from the design backbone. ⇒ the reach is real, the ranking
+  is not supported, and the honest version of both is deposited.
+
+![Three generated TfR1 binder designs, each with its N-terminal extension in grey against the receptor surface in teal, in a shared orientation.](challenges/TfR1%20binder/figures/nterm_top3_corrected_20261102.png)
+
+*The extension arm's corrected top three. Purple is the protein the generator was given and held
+sequence-fixed; **grey is the N-terminal segment it built**; yellow is the one held guidepost; teal
+is the receptor surface. ⚠️ Ranks 1 and 3 come from the same generation batch, so these are two
+independent draws and not three. ⛔ Raw generator output, gated at a 2.0 Å minimum separation and
+not relaxed — which is why the grey threads inside the receptor's surface envelope.*
 
 ⛔⛔ **One construct defect is reported in full rather than quietly fixed**, because it is the most
 transferable thing in the deposit: four of the six specified functional groups were identity-fixed

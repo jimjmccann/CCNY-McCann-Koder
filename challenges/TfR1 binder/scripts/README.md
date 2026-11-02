@@ -1,6 +1,6 @@
 # The programs
 
-Twenty-three files. Every number in `../methods/` and `../data/` came from one of them.
+Thirty-three files. Every number in `../methods/` and `../data/` came from one of them.
 
 ⚠️ **How these differ from the prose.** The documents in `../methods/` were written for a reader
 from outside the group. These programs were written to be run, and their headers are working notes:
@@ -8,15 +8,24 @@ they argue with earlier versions of themselves, name defects they deliberately d
 why a check exists. That is on purpose — a threshold with its reasoning stripped reads as an
 arbitrary constant — and it is why the headers are worth reading alongside the methods documents.
 
-⚠️ **Prepared for release 2026-11-01.** Comments and docstrings were edited: machine-specific paths,
-internal cross-references and personal attributions are gone. **Executable code was not touched**,
-with **four declared exceptions**, each flagged in the file where it occurs: three sets of input-path
-defaults replaced with paths relative to this directory or with marked placeholders, and one printed
-column label. Every other program's parsed syntax tree is **identical** before and after, which is
-what makes that claim checkable rather than asserted.
+⚠️ **Prepared for release 2026-11-01, extended 2026-11-02.** Comments and docstrings were edited:
+machine-specific paths, internal cross-references and personal attributions are gone. **Executable
+code was not touched**, with **nine declared exceptions**, each flagged in the file where it occurs:
 
-⚠️ **What that verification does and does not prove.** It proves no executable statement changed. It
-does **not** prove the programs still run, because they were not re-executed after editing.
+- three sets of input-path defaults replaced with paths relative to this directory or with marked
+  placeholders, and one printed column label (the 2026-11-01 pass);
+- ⭐ five **message strings** in the phase-5 programs (the 2026-11-02 pass): in (25) a refusal
+  message, a check label and one `print`; in (27) an argument's help text and a refusal message.
+  ⚠️ Each carried an internal reference that had to go. **Only the text inside those messages
+  changed** — no control flow, no threshold, no number, no comparison.
+
+Every other program's parsed syntax tree is **identical** before and after, and for the two
+exceptions above the trees differ **only** in those five string constants. That is what makes the
+claim checkable rather than asserted.
+
+⚠️ **What that verification does and does not prove.** It proves no executable statement changed
+other than the nine declared. It does **not** prove the programs still run, because they were not
+re-executed after editing.
 
 ⛔ **Two programs have usage lines naming inputs that are not distributed here** — the guidepost
 constellation file, the receptor coordinates, and the unpacked generator output. They are flagged in
@@ -26,9 +35,10 @@ the file where they occur and in `../methods/README.md`, "Reproducibility".
 
 ## Phases
 
-The work splits into four phases. Phases 1 and 2 produced negative results and their instruments are
+The work splits into five phases. Phases 1 and 2 produced negative results and their instruments are
 retired. Phase 3 is the mining method that closed the line. Phase 4 is the scaffolded-design line
-that followed from it.
+that followed from it, and phase 5 is the extension arm that tests whether what phase 4 built can
+reach the receptor as well as clear it.
 
 ### Phase 1 — the Cα era (retired: no selectivity)
 
@@ -82,6 +92,22 @@ its output.
 **unmodified** for this cohort, and it is shared with other targets in the group's work, so it is not
 part of this challenge directory. What it was run with is stated in
 `../methods/core_scaffolded_design.md` §7.
+
+### Phase 5 — the extension arm: hold almost all of it, generate the reach
+
+These are the programs behind `../methods/nterm_extension_arm.md`.
+
+| # | file | what it does |
+|---|---|---|
+| 25 | `j945_build_nterm_extension_arm_20261102.py` | Builds the input coordinates and specification for the extension construct: drops three N-terminal residues, holds 4–145 sequence-fixed, re-places the guidepost arginine and writes the contig. ⛔ Writes no design and runs no model. ⭐ Asserts the finished construct rather than trusting the edit — total length, the held span, the guidepost's atom set, and that the held protein's sequence is **not** released to the sequence-design step. |
+| 26 | `j948_nterm_design_score_20261102.py` | ⭐⭐ The arm's scorer, and the one program here whose own defect is documented in the method text. It gates continuity **before** any clash metric, resolves chain roles from each design's **own** specification, drops generator pseudo-atoms by element **and** name, and measures the generated segment's engagement separately from the whole chain's. ⛔ Its header records why the standard gate-chain driver **refused** this arm — that driver assigns chain roles by fixed-sequence fraction, and under partial diffusion every chain reads as fully fixed — and ⭐ the **corrected** derivation of the generated set: the binder chain's own residues minus the residues the specification holds, taken from the **structure**, never from the generator's token map, which names only held positions. It raises rather than continuing if that set comes back empty. |
+| 27 | `j949_select_diverse20_20261102.py` | Picks the 20 sequences for the co-fold by **farthest-point diversity** rather than by model confidence. ⛔ Its header records why: a previous round measured that this model's confidence does not even separate the design arms, so ranking on it would be ranking on a quantity already shown not to carry the signal. ⛔ Also records the FASTA counting trap — those files carry no trailing newline — and parses each file on its own. |
+| 28 | `j956_nterm_top3_pse_20261102.py` | Builds the corrected top-three viewer session in `../structures/`. ⭐⭐ **It refuses to write the session if the contact count it measures from the coordinates disagrees with the ranked table** — a figure must not claim a number it cannot reproduce. Also asserts the shared receptor frame across designs, drops pseudo-atoms by element and name, and asserts every stored scene message is pure ASCII. |
+| 29 | `j956_verify_pse_20261102.py` | ⭐ Verifies that session by **reloading the saved file in a fresh viewer process** — 36 checks, 0 failures: 143 held and 27 built per design, the two sets disjoint, the receptor present at its full residue count, no surviving pseudo-atoms. The ASCII sweep walks the **saved bytes**, not strings still held in memory, because a non-ASCII mark in stored scene text is only dangerous once it has been written. |
+| 30 | `j957_probe_pse_20261102.py` | Reads the session and reports what is in it before anything is rendered, so the render step is configured from measurement rather than from assumption. |
+| 31 | `j957_render_top3_pse_20261102.py` | Ray-traces the panels. ⚠️ Carries an **additive** surface-transparency override, left at its default and raised only for the shipped figure; the defect that forced it is recorded in `../figures/README.md`. |
+| 32 | `j957_stamp_panels_20261102.py` | Assembles and labels the panel figure, including the caption line that states the structures are raw and unrelaxed. |
+| 33 | `j957_verify_labels_20261102.py` | ⭐ Re-opens each **finished** PNG and re-measures every stamped string with a real ink box rather than a font advance width, then reports overflowing labels and images with ink touching an edge. ⚠️ It passed on the first figure, which is the point of the note in `../figures/README.md`: the defect that figure had was one no label check can see. |
 
 ---
 
