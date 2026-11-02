@@ -157,10 +157,26 @@ That last step is the test, and limitation 2 above is its result.
 | backbone generation, all ten arms | the receptor present; everything between held elements generated from scratch | **400** designs, 40 per arm, 400/400 resolved |
 | backbone gates | continuity **first**, then raw clearance, then fold integrity — as a conjunction | **39** designs pass all three; the arms separate |
 | sequence design | write sequences for those 39 backbones, with a composition bias **refitted on this cohort** | **312** sequences; ⛔ the first cohort held 4 of the 6 specified groups, the corrected cohort holds 6 of 6 (§ below) |
-| independent co-folding | — | ⛔ **NOT RUN.** This is the test, and it has not been done |
+| independent co-folding | the corrected cohort folded against the receptor, 5 draws per design, with **known natural binders folded alongside as controls** under identical settings | **780** predictions (**156** designs × 5 draws), 0 skipped — and the result is a **negative about the instrument**, below |
 
-⇒ ⛔ **Round 2 stops one step short of its own test.** Everything in it is a statement about
-backbone geometry or amino-acid composition.
+⇒ ⭐⭐ **CORRECTED 2026-11-02 — this table previously read "NOT RUN" for the co-folding row, and
+that was wrong.** The co-fold was run, and the row above is what it returned. The claim was stale
+rather than invented: it was written while the test was genuinely outstanding, the test was then
+run, and this table was never updated. ⛔ Nothing else in this section changed, and the superseded
+wording is preserved in this repository's history rather than deleted.
+
+⇒ ⛔⛔ **AND THE RESULT MATTERS MORE THAN THE DESIGNS DO: the co-fold gate CANNOT DISCRIMINATE,
+and we know that from controls rather than from opinion.** Real, natural, **deposited** binder
+complexes — folded under the same settings, scored with the same instrument, in the same frame —
+come back **64–85 Å from their own crystal poses**, which is the same band as our designs. One
+natural deposited complex reproduces its own *fold* at 0.59 Å while landing **64.68 Å** from its
+own *pose*. ⇒ A design scoring badly on this gate is therefore **not evidence that the design is
+bad**; the measurement cannot tell. The criterion was fixed in advance and the negative is reported
+as the pre-registration required.
+
+⇒ ⚠️ So Round 2 did not stop short of its own test — it ran the test and **the test failed to be
+informative.** Everything else in this section remains a statement about backbone geometry or
+amino-acid composition.
 
 ### Round 3 — give the cleared scaffold something to reach with
 
@@ -318,10 +334,18 @@ Two further findings from the cohort:
   adjustment while alanine moves 1.71 under a smaller one ⇒ **the glycine demand is structural**, and
   a composition knob cannot argue these backbones out of it.
 
-⛔⛔ **What none of this is.** No sequence has been co-folded against the receptor and none has been
-scored for interface quality, so nothing above bears on whether any of these designs binds. The
-clash figures are **raw** generator output, which clashes normally. The next real test is the co-fold
-— the same test the first round failed.
+⛔⛔ **What none of this is.** Nothing above bears on whether any of these designs binds. The
+clash figures are **raw** generator output, which clashes normally.
+
+⇒ ⭐ **CORRECTED 2026-11-02.** This paragraph previously said *"No sequence has been co-folded
+against the receptor and none has been scored for interface quality"*, and that the co-fold was
+*"the next real test"*. Both were stale. The cohort **was** co-folded — 780 predictions, 156
+designs × 5 draws — and scored. ⛔ The correction does **not** rescue the designs: the co-fold
+returned a **negative about the instrument**, because natural deposited binder complexes scored
+alongside as controls land 64–85 Å from their own crystal poses, in the same band as the designs.
+⇒ So the conclusion of this paragraph is unchanged and if anything stronger — nothing here shows
+these designs bind — but the stated *reason* was wrong. The test was not skipped; it was run and
+could not discriminate.
 
 ---
 

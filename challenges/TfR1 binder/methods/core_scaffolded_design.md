@@ -586,12 +586,24 @@ a passing check.**
 
 ## 8. ⛔ What this whole line is NOT, and what the next real test is
 
-1. ⛔⛔ **Not a binding result.** 312 sequences exist. **None has been folded against the receptor or
-   scored.** Every number in §5 and §7 is about backbone geometry or amino-acid composition.
-2. ⛔ **The next real test is a co-fold of each sequence against the receptor, asking whether the
-   designed contacts are reproduced** — which is the test the previous design round failed, with
-   2,135 of 2,160 predictions reproducing **zero** of four designed contacts
-   (`../README.md`, item 2 of its limitations list). Nothing in this document predicts that outcome.
+1. ⛔⛔ **Not a binding result.** 312 sequences exist. Every number in §5 and §7 is about backbone
+   geometry or amino-acid composition.
+   ⇒ ⭐ **CORRECTED 2026-11-02:** this item previously added *"None has been folded against the
+   receptor or scored."* That was stale and is now wrong — see item 2. The rest of the item stands,
+   and **"not a binding result" stands**.
+2. ⭐⭐ **CORRECTED 2026-11-02 — the co-fold was run, and it returned a negative about the
+   instrument rather than about the designs.** This item previously called the co-fold *"the next
+   real test"*; it has since been done. **780** predictions (**156** designs × 5 draws) of the
+   corrected cohort were folded against the receptor and scored, with **known natural binders
+   folded alongside as controls** under identical settings and in the same frame.
+   ⛔ **The controls settle it: real, deposited, natural binder complexes come back 64–85 Å from
+   their own crystal poses** — the same band as the designs — with one reproducing its own fold at
+   **0.59 Å** while landing **64.68 Å** from its own pose. ⇒ **This gate cannot discriminate**, so a
+   design scoring badly on it is not thereby shown to be bad. The criterion was fixed in advance of
+   any fold of this cohort, and the negative is reported as that pre-registration required.
+   ⚠️ For contrast, the **previous** design round's co-fold *was* informative in the other
+   direction: 2,135 of 2,160 predictions reproduced **zero** of four designed contacts
+   (`../README.md`, item 2 of its limitations list).
 3. ⛔ **The arm choice is measured; the depth is not.** §5 says which core option to take further. It
    does not say that any of them produces a binder.
 4. ⚠️ **Two of the six specified functional groups are not identity-constrained downstream** (§4) and
