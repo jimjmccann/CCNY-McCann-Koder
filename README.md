@@ -16,6 +16,44 @@ measured.*
 
 ## Status
 
+**Challenge 4 — the transferrin receptor (TfR1) — was worked but ⛔ nothing was submitted.** The
+deadline passed with the design chain unfinished, and the deposit is published anyway because the
+negative results in it are the useful part. ⛔ **No Challenge-4 sequence was entered into the
+competition, and none of this was tested at the bench.** If it had been submitted, the deposited
+sequence cohort is what would have gone in.
+
+![Six generated TfR1 binder designs against one copy of the receptor surface, each design in its own colour in a shared orientation.](challenges/TfR1%20binder/figures/00_overview.png)
+
+*Six designs from the ten-arm core-scaffolded screen, against one copy of the receptor surface, each
+in its own colour in a common orientation. ⛔ Every coordinate shown is a model.*
+
+Two lines were run, and the honest reading of each is the negative one:
+
+- **Structural mining — net yield of usable scaffolds: zero.** The site was defined as six typed
+  side-chain functional groups at fixed relative positions, and two structure databases were
+  searched for chains that already present that arrangement. **1,314** chains matched inside the
+  RMSD bar; only **31 rows (30 distinct chains)** present all six groups on a reachable face; and
+  all four survivors that were actually superimposed put their own body where the receptor is. The
+  tight head of the match list is buried, so **fit and accessibility are opposed** in this problem.
+- **Core-scaffolded redesign — the binding test was never run.** Ten held-element options were
+  built and screened, **400** designs generated, **39** passed continuity, clearance and fold
+  integrity as a conjunction, and **312** sequences were designed on those 39 backbones.
+  ⛔ **Independent co-folding — the actual test of whether any of this binds — was not done.**
+
+⛔⛔ **One construct defect is reported in full rather than quietly fixed**, because it is the most
+transferable thing in the deposit: four of the six specified functional groups were identity-fixed
+during sequence design, but two sat inside a held element whose *sequence* was released to the
+designer. Those two were redesigned. At the position where an imidazole was specified, the first
+cohort came back with an imidazole in **0 of 312** sequences, and **190 of 312** of those positions
+became an acid — while the quality-control column, which checks only the four fixed positions, read
+"held" for every sequence. A corrected cohort with all six identity-locked holds **312 of 312** at
+both positions; both cohorts are deposited, with the per-sequence measurement that distinguishes
+them. See `challenges/TfR1 binder/methods/core_scaffolded_design.md` §7.5.
+
+The transferable lessons from both lines, written to be useful without the target, are in
+`challenges/TfR1 binder/FINDINGS.md`. Start at `challenges/TfR1 binder/README.md`, which states the
+limitations first.
+
 **Challenge 3 — the GLP-1 receptor — has been submitted: 20 sequences, and all 20 passed the
 competition's novelty filter.** They come from 20 distinct backbones across 11 generation arms, are
 63–77 residues, and contain no cysteines.
@@ -116,6 +154,7 @@ challenges/
   pH-dependent EGFR binder/     designs, methods and notes for challenge 1
   conditional TNF-alpha binder/ designs, methods and notes for challenge 2
   GLP-1R binder/                designs, methods and notes for challenge 3
+  TfR1 binder/                  designs, methods and notes for challenge 4 (⛔ not submitted)
 ```
 
 The directory name is the challenge title as the organizers published it, so it contains spaces: in a

@@ -1,0 +1,20 @@
+{
+ "tfr1_core_opt08": {
+  "dialect": 2,
+  "input": "j895_opt08_input.pdb",
+  "contig": "H23-30,8-11,E1,5-8,H33-40,22-25,H69-74,4-7,H78-83,11-14,F1,15-18,B1,17-20,G1,5-8,H213-216,6-9,H229-232,/0,A193-298,/0,A332-379",
+  "is_non_loopy": true,
+  "select_fixed_atoms": {
+   "E1": "NE,NH1,NH2",
+   "F1": "ND1,NE2,CG",
+   "B1": "NE,NH1,NH2",
+   "G1": "NE,NH1,NH2"
+  },
+  "select_unfixed_sequence": "H23-30,H33-40,H69-74,H78-83,H213-216,H229-232",
+  "ori_token": [
+   86.93,
+   135.81,
+   102.5
+  ]
+ }
+}

@@ -1,0 +1,94 @@
+{
+ "option": 9,
+ "elements": [
+  3,
+  8,
+  13
+ ],
+ "contained_pins": [
+  34,
+  38
+ ],
+ "element_ranges": {
+  "3": [
+   33,
+   40
+  ],
+  "8": [
+   94,
+   116
+  ],
+  "13": [
+   202,
+   204
+  ]
+ },
+ "element_lengths": {
+  "3": 8,
+  "8": 23,
+  "13": 3
+ },
+ "bare_guideposts": [
+  "E1",
+  "F1",
+  "B1",
+  "G1"
+ ],
+ "scaffold_identity_at_contained_pins": {
+  "34": "HIS",
+  "38": "LYS"
+ },
+ "design_identity_at_those_positions": {
+  "34": "HIS",
+  "38": "ARG"
+ },
+ "placement_mode": "sweep130",
+ "pin_rmsd": 0.9187,
+ "clash_atoms_vs_target": 0,
+ "len_min": 121,
+ "len_max": 139,
+ "gaps": [
+  {
+   "d": 6.42,
+   "lo": 5,
+   "hi": 8,
+   "floor": 2
+  },
+  {
+   "d": 32.64,
+   "lo": 22,
+   "hi": 25,
+   "floor": 10
+  },
+  {
+   "d": 22.57,
+   "lo": 16,
+   "hi": 19,
+   "floor": 7
+  },
+  {
+   "d": 21.67,
+   "lo": 15,
+   "hi": 18,
+   "floor": 7
+  },
+  {
+   "d": 15.22,
+   "lo": 11,
+   "hi": 14,
+   "floor": 5
+  },
+  {
+   "d": 20.46,
+   "lo": 14,
+   "hi": 17,
+   "floor": 7
+  }
+ ],
+ "rise_helix": 1.5,
+ "rise_ext": 3.3,
+ "slack": 3,
+ "n_segments": 7,
+ "j894_total": 121,
+ "control": false
+}
