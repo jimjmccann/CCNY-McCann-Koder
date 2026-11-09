@@ -1,0 +1,8 @@
+row	name	design	arm	mpnn_round	mpnn_rank	mpnn_confidence	binder_len	seeds_cleared	seeds_total	tier	best_margin
+1	kras-mhc-mb-2-m3-r1	arm_shard03_MB_nomotif_broad_2_model_3	MB_nomotif_broad	c5_2x2_mpnn_v1_20261108	1	0.4835	82	4	4	VALIDATED	+7.2
+2	kras-mhc-mb-11-m1-r2	arm_shard01_MB_nomotif_broad_11_model_1	MB_nomotif_broad	c5_mb_depth_mpnn_20261108	2	0.5440	75	4	4	VALIDATED	+5.8
+3	kras-mhc-mn-8-m2-r5	arm_shard02_M_nomotif_narrow_8_model_2	M_nomotif_narrow	c5_2x2_mpnn_v1_20261108	5	0.4807	81	4	4	VALIDATED	+4.4
+4	kras-mhc-mb-6-m3-r4	arm_shard01_MB_nomotif_broad_6_model_3	MB_nomotif_broad	c5_mb_depth_mpnn_20261108	4	0.4449	82	4	4	VALIDATED	+1.8
+5	kras-mhc-mb-11-m2-r3	arm_shard00_MB_nomotif_broad_11_model_2	MB_nomotif_broad	c5_mb_depth_mpnn_20261108	3	0.4656	66	3	4	INSIDE_NOISE_NOT_PROMOTED	+7.4
+6	kras-mhc-mb-19-m0-r2	arm_shard03_MB_nomotif_broad_19_model_0	MB_nomotif_broad	c5_2x2_mpnn_v1_20261108	2	0.4557	76	3	4	INSIDE_NOISE_NOT_PROMOTED	+3.4
+7	kras-mhc-mb-4-m0-r1	arm_shard03_MB_nomotif_broad_4_model_0	MB_nomotif_broad	c5_2x2_mpnn_v1_20261108	1	0.4600	72	3	4	INSIDE_NOISE_NOT_PROMOTED	+1.8

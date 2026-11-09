@@ -1,0 +1,295 @@
+{
+ "_what": "Challenge 5 submission set: 7 designs against KRAS G12D / HLA-A*11:01. Input to j1063_build / j1063_render.",
+ "_scope": "James McCann 2026-11-09 put all SEVEN in the submission set. That is a SCOPE decision and it does NOT change the tier of any design. The tier word on every panel is read from THIS file.",
+ "_numbers": "margin_mean / iptm_mean / sd_pep_contacts are CARRIED from the J1062 cohort reading. NOTHING here is re-measured. The per-seed lists ARE the rows of the scored tables and j1063_build asserts them cell-by-cell against those files.",
+ "_structure_rule": "fold shard01 of each design's own round, model_0. model_0 of a 5-draw Boltz run is that run's OWN TOP-RANKED model, not a random draw -- stamped on every panel.",
+ "_tier_vocabulary": "VALIDATED = clears the pre-registered conjunction at 4 of 4 seeds over 20 draws. NOISE = 3 of 4 seeds, which is the INSIDE NOISE / NOT PROMOTED tier of the J1058 section 6 tiering. The word CANDIDATE is deliberately NOT used: in that pre-registered scheme it means a 5-draw-only design, which none of these are.",
+ "roots": {
+  "seqdepth": "<SCRATCH>/c5_seqdepth_out_20261108",
+  "mb_depth": "<SCRATCH>/c5_mb_depth_out_20261108",
+  "mb_redraw": "<SCRATCH>/c5_mb_redraw_out_20261109"
+ },
+ "tables": {
+  "seqdepth": "<WORKDIR>/tables/t152_seqdepth_20261108_per_design.tsv",
+  "mb_depth": "<WORKDIR>/tables/t154_mb_depth_20261109_per_design.tsv",
+  "mb_redraw": "<WORKDIR>/tables/t155_mb_redraw_20261109_per_design.tsv"
+ },
+ "designs": [
+  {
+   "slot": 1,
+   "design": "arm_shard03_MB_nomotif_broad_2_model_3",
+   "tag": "REDRAW_s03_MB_nomotif_broad_2_model_3",
+   "root": "seqdepth",
+   "shard": "01",
+   "rank": 1,
+   "arm": "MB no-motif broad",
+   "tier": "VALIDATED",
+   "seeds_clear": 4,
+   "seeds_total": 4,
+   "margin_mean": "+6.0",
+   "iptm_mean": "0.958",
+   "sd_pep_contacts": "0.38",
+   "failed_limb": "",
+   "per_seed_margin": [
+    6.0,
+    4.6,
+    6.2,
+    7.2
+   ],
+   "per_seed_iptm": [
+    0.9593625426292419,
+    0.9545467615127563,
+    0.9604063034057617,
+    0.9582388758659363
+   ],
+   "per_seed_conj": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "color_name": "c5_blue",
+   "color_hex": "0072B2",
+   "sub_name": "kras-mhc-mb-2-m3-r1",
+   "origin_round": "2x2 round",
+   "expect_binder_len": 82
+  },
+  {
+   "slot": 2,
+   "design": "arm_shard01_MB_nomotif_broad_11_model_1",
+   "tag": "REDRAW_R2_s01_MB_nomotif_broad_11_model_1",
+   "root": "mb_redraw",
+   "shard": "01",
+   "rank": 2,
+   "arm": "MB no-motif broad",
+   "tier": "VALIDATED",
+   "seeds_clear": 4,
+   "seeds_total": 4,
+   "margin_mean": "+5.2",
+   "iptm_mean": "0.937",
+   "sd_pep_contacts": "0.59",
+   "failed_limb": "",
+   "per_seed_margin": [
+    5.8,
+    5.0,
+    4.6,
+    5.6
+   ],
+   "per_seed_iptm": [
+    0.9369113802909851,
+    0.9342061042785644,
+    0.9421921372413635,
+    0.933422327041626
+   ],
+   "per_seed_conj": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "color_name": "c5_green",
+   "color_hex": "009E73",
+   "sub_name": "kras-mhc-mb-11-m1-r2",
+   "origin_round": "MB-depth round",
+   "expect_binder_len": 75
+  },
+  {
+   "slot": 3,
+   "design": "arm_shard02_M_nomotif_narrow_8_model_2",
+   "tag": "REDRAW_R5_s02_M_nomotif_narrow_8_model_2",
+   "root": "mb_depth",
+   "shard": "01",
+   "rank": 5,
+   "arm": "M no-motif narrow",
+   "tier": "VALIDATED",
+   "seeds_clear": 4,
+   "seeds_total": 4,
+   "margin_mean": "+3.4",
+   "iptm_mean": "0.931",
+   "sd_pep_contacts": "0.16",
+   "failed_limb": "",
+   "per_seed_margin": [
+    3.2,
+    4.4,
+    2.4,
+    3.6
+   ],
+   "per_seed_iptm": [
+    0.9317427039146423,
+    0.9272946000099183,
+    0.9298510074615478,
+    0.9356679439544677
+   ],
+   "per_seed_conj": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "color_name": "c5_orange",
+   "color_hex": "E69F00",
+   "sub_name": "kras-mhc-mn-8-m2-r5",
+   "origin_round": "2x2 round",
+   "expect_binder_len": 81
+  },
+  {
+   "slot": 4,
+   "design": "arm_shard01_MB_nomotif_broad_6_model_3",
+   "tag": "REDRAW_R4_s01_MB_nomotif_broad_6_model_3",
+   "root": "mb_redraw",
+   "shard": "01",
+   "rank": 4,
+   "arm": "MB no-motif broad",
+   "tier": "VALIDATED",
+   "seeds_clear": 4,
+   "seeds_total": 4,
+   "margin_mean": "+1.1",
+   "iptm_mean": "0.931",
+   "sd_pep_contacts": "0.57",
+   "failed_limb": "",
+   "per_seed_margin": [
+    1.8,
+    1.4,
+    0.2,
+    1.0
+   ],
+   "per_seed_iptm": [
+    0.9286643505096436,
+    0.9290482759475708,
+    0.9334289073944092,
+    0.9327510833740235
+   ],
+   "per_seed_conj": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "color_name": "c5_sky",
+   "color_hex": "56B4E9",
+   "sub_name": "kras-mhc-mb-6-m3-r4",
+   "origin_round": "MB-depth round",
+   "expect_binder_len": 82
+  },
+  {
+   "slot": 5,
+   "design": "arm_shard00_MB_nomotif_broad_11_model_2",
+   "tag": "REDRAW_R3_s00_MB_nomotif_broad_11_model_2",
+   "root": "mb_redraw",
+   "shard": "01",
+   "rank": 3,
+   "arm": "MB no-motif broad",
+   "tier": "NOISE",
+   "seeds_clear": 3,
+   "seeds_total": 4,
+   "margin_mean": "+6.4",
+   "iptm_mean": "0.894",
+   "sd_pep_contacts": "",
+   "failed_limb": "ipTM",
+   "per_seed_margin": [
+    6.4,
+    7.4,
+    6.6,
+    5.2
+   ],
+   "per_seed_iptm": [
+    0.8918408751487732,
+    0.8959997773170472,
+    0.8909871220588684,
+    0.8986706376075745
+   ],
+   "per_seed_conj": [
+    true,
+    true,
+    false,
+    true
+   ],
+   "color_name": "c5_vermillion",
+   "color_hex": "D55E00",
+   "sub_name": "kras-mhc-mb-11-m2-r3",
+   "origin_round": "MB-depth round",
+   "expect_binder_len": 66
+  },
+  {
+   "slot": 6,
+   "design": "arm_shard03_MB_nomotif_broad_19_model_0",
+   "tag": "REDRAW_R2_s03_MB_nomotif_broad_19_model_0",
+   "root": "mb_depth",
+   "shard": "01",
+   "rank": 2,
+   "arm": "MB no-motif broad",
+   "tier": "NOISE",
+   "seeds_clear": 3,
+   "seeds_total": 4,
+   "margin_mean": "+2.7",
+   "iptm_mean": "0.907",
+   "sd_pep_contacts": "",
+   "failed_limb": "ipTM",
+   "per_seed_margin": [
+    2.6,
+    3.2,
+    1.6,
+    3.4
+   ],
+   "per_seed_iptm": [
+    0.9261438965797424,
+    0.9131903171539306,
+    0.8859613180160523,
+    0.9014348268508912
+   ],
+   "per_seed_conj": [
+    true,
+    true,
+    false,
+    true
+   ],
+   "color_name": "c5_rose",
+   "color_hex": "CC79A7",
+   "sub_name": "kras-mhc-mb-19-m0-r2",
+   "origin_round": "2x2 round",
+   "expect_binder_len": 76
+  },
+  {
+   "slot": 7,
+   "design": "arm_shard03_MB_nomotif_broad_4_model_0",
+   "tag": "REDRAW_s03_MB_nomotif_broad_4_model_0",
+   "root": "seqdepth",
+   "shard": "01",
+   "rank": 1,
+   "arm": "MB no-motif broad",
+   "tier": "NOISE",
+   "seeds_clear": 3,
+   "seeds_total": 4,
+   "margin_mean": "+0.9",
+   "iptm_mean": "0.916",
+   "sd_pep_contacts": "",
+   "failed_limb": "peptide-contact",
+   "per_seed_margin": [
+    1.0,
+    -0.4,
+    1.4,
+    1.8
+   ],
+   "per_seed_iptm": [
+    0.9085238456726075,
+    0.9326025009155273,
+    0.915310800075531,
+    0.9093917965888977
+   ],
+   "per_seed_conj": [
+    true,
+    false,
+    true,
+    true
+   ],
+   "color_name": "c5_black",
+   "color_hex": "000000",
+   "sub_name": "kras-mhc-mb-4-m0-r1",
+   "origin_round": "2x2 round",
+   "expect_binder_len": 72
+  }
+ ],
+ "_submission_names": "Public submission names assigned 2026-11-09, in submission row order.",
+ "_origin_round": "DERIVED from each design's own arm_shardNN prefix: shard02/shard03 are the 2x2 generation round, shard00/shard01 the MB-depth round. \u26d4 This is the GENERATION round and is NOT the co-fold tree in `roots`, which is where that design's 20-draw re-draw was folded.",
+ "_name_collision": "\u26d4\u26d4 DESIGN BASENAMES ARE NOT UNIQUE ACROSS ROUNDS: MB_nomotif_broad_11_model_1 exists under BOTH arm_shard03_ and arm_shard01_, different backbones with the same stem. Match the FULL name including the arm_shardNN_ prefix; a stem match can silently return the wrong molecule."
+}

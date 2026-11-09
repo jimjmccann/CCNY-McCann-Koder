@@ -5,7 +5,8 @@
 #	asserts hashes that no longer match, which is worse than shipping none.
 #archive_path	bytes	md5
 .gitignore	629	7143e7865eab08187ef795d5b004765a
-README.md	14948	a13da3a6608014acc0ec1161655c58d9
+LICENSE	1119	2b13e013760db4c581408aad65541906
+README.md	22037	5a6f53b819b5a5be6b1e45edbc06578d
 challenges/GLP-1R binder/README.md	9701	43261f9ee51deded34b026e5a5f222f4
 challenges/GLP-1R binder/data/COHORTS.md	6711	23ae3a650ed3b51a30c4f49ac0a313ef
 challenges/GLP-1R binder/data/glp1r_fold_novelty_sel20_20261016.tsv	38101	e40d219741128b831ea47169c4984ca2
@@ -34,8 +35,67 @@ challenges/GLP-1R binder/scripts/j641_build_baker_best_pse_20261024.py	8595	00e5
 challenges/GLP-1R binder/scripts/j641_verify_pse_20261024.py	1671	e7c4249361fd2c0748ce8ae6d5432649
 challenges/GLP-1R binder/structures/STRUCTURES.md	4686	1a78205e7e814d2565d33692102dfc6b
 challenges/GLP-1R binder/structures/ours_best_medcut51.pdb	305370	65e2351d9722a714d5890370e6f6036e
+challenges/MHC-KRAS binder/README.md	7319	eb9548bf1710ce9e29f4e43f0a04e510
+challenges/MHC-KRAS binder/data/README.md	4615	4f4390a9c128cce679f5485c7cac735c
+challenges/MHC-KRAS binder/data/j1063_c5_submission_7designs_20261109_build.json	6067	0b7f44e2d330071f470b709da5efed3b
+challenges/MHC-KRAS binder/data/j1063_labels_20261109.json	33241	95e8c9e7bb28de3c4b89b699420cf14b
+challenges/MHC-KRAS binder/data/j1063_picks_20261109.json	7785	6a37fa4d1f2fe8da3f0d145df52403b1
+challenges/MHC-KRAS binder/data/j1064_submission_provenance_20261109.tsv	1110	c58c2e6a3c9ee404e180d1e215c2f317
+challenges/MHC-KRAS binder/data/t151_2x2_refold_conjunction_20261108.md	4253	f1842f5d4f2a6217a487750179945c73
+challenges/MHC-KRAS binder/data/t151_2x2_refold_conjunction_20261108_per_design.tsv	12351	e39889fef8907da771dc034362cbc26c
+challenges/MHC-KRAS binder/data/t152_seqdepth_20261108.md	3678	e77ba6ebbab140efef8d3c5266b5fd3d
+challenges/MHC-KRAS binder/data/t152_seqdepth_20261108_per_design.tsv	33431	c006fd339f120a98fc17138b06e1b8b0
+challenges/MHC-KRAS binder/data/t153_mb_depth_raw_20261108.tsv	24682	8d40bd44d1cdcee7059a0155b8c4aa4b
+challenges/MHC-KRAS binder/data/t154_mb_depth_20261109.md	4087	899e633dc7e109597e6773d8121a2459
+challenges/MHC-KRAS binder/data/t154_mb_depth_20261109_per_design.tsv	41276	9948f4fe4c5f29aa095e46d9ec3c040b
+challenges/MHC-KRAS binder/data/t155_mb_redraw_20261109.md	5532	9fa288fdbbe99a05a4e10c35bfe87786
+challenges/MHC-KRAS binder/data/t155_mb_redraw_20261109_per_design.tsv	5547	ba2a266bfdec2f34880fd4a4f781c0b8
+challenges/MHC-KRAS binder/figures/00_overview.png	1234562	79095508162d480d03a8722ffa30dcd8
+challenges/MHC-KRAS binder/figures/01_arm_shard03_MB_nomotif_broad_2_model_3.png	990729	4d3d5dfaba0c09c984a99a33498decf5
+challenges/MHC-KRAS binder/figures/02_arm_shard01_MB_nomotif_broad_11_model_1.png	963729	54740ce3e4ff4e86b1e521272e7b1027
+challenges/MHC-KRAS binder/figures/03_arm_shard02_M_nomotif_narrow_8_model_2.png	1005854	8b1ba2625524d3f6ad125bb5accc54a2
+challenges/MHC-KRAS binder/figures/04_arm_shard01_MB_nomotif_broad_6_model_3.png	1033945	0b97fff79d76646cf39ea32fdf9d1628
+challenges/MHC-KRAS binder/figures/05_arm_shard00_MB_nomotif_broad_11_model_2.png	949371	f2fc27c2c537f8dfd8dcb12cfeeca034
+challenges/MHC-KRAS binder/figures/06_arm_shard03_MB_nomotif_broad_19_model_0.png	999370	0c694e2e1bf3c9f032257ddd4db13396
+challenges/MHC-KRAS binder/figures/07_arm_shard03_MB_nomotif_broad_4_model_0.png	881751	4ceb38039c617506ef6fd54d5b9f471c
+challenges/MHC-KRAS binder/figures/README.md	16282	f4f984c58b4b8e66462dfef8ceb390f4
+challenges/MHC-KRAS binder/figures/j1063_c5_submission_7designs_combined_20261109.png	5310285	68de7fe94dcb539105b2ec43d4b85503
+challenges/MHC-KRAS binder/methods/README.md	5237	b89d44e5565abdddf487e06973bb5d27
+challenges/MHC-KRAS binder/methods/design_and_scoring.md	5251	560fef99c943f3610df2c42cfcd79b30
+challenges/MHC-KRAS binder/methods/robustness_and_tiering.md	5538	d9dd7f7cfa664417483aa4b945f4538f
+challenges/MHC-KRAS binder/scripts/README.md	4283	6b6abccbdd250fea13355b1743dfd401
+challenges/MHC-KRAS binder/scripts/j1063_build_submission_pse_20261109.py	25652	0fb44b04d374522bb1de4ff63b376d6a
+challenges/MHC-KRAS binder/scripts/j1063_combine_panels_20261109.py	7523	50751b0588bfb77841c67be248611af4
+challenges/MHC-KRAS binder/scripts/j1063_render_submission_panels_20261109.py	13480	5724db81cc34ff04967a8ea28913f139
+challenges/MHC-KRAS binder/scripts/j1063_stamp_panels_20261109.py	22461	b232977efb7c03a2ce4261d867b8ee42
+challenges/MHC-KRAS binder/scripts/j1064_build_submission_csv.py	13474	748c49b2b614951e6186adb3ee69932d
+challenges/MHC-KRAS binder/scripts/s112_build_designability_2x2_bundle.py	9335	d2a1765d45d17a58785818fb3388e0f4
+challenges/MHC-KRAS binder/scripts/s113_upload_designability_2x2_bundle.sh	7744	02e941767ade6d35b9a9eb856f4b1574
+challenges/MHC-KRAS binder/scripts/s114_designability_2x2.py	16750	7bcc4d5788e2a08ed5ba33042b92ab01
+challenges/MHC-KRAS binder/scripts/s115_select_refold_cohort.py	4087	914626b29f02cdcd9c1ef5d648cd991c
+challenges/MHC-KRAS binder/scripts/s116_make_2x2_cofold_inputs.py	12229	89d7b1f9b6eef1f7392342de91f239eb
+challenges/MHC-KRAS binder/scripts/s117_shard_2x2_cofold.py	4857	bb697afd599cac35c98c136b211b2044
+challenges/MHC-KRAS binder/scripts/s118_score_2x2_cofold_per_shard.py	14970	412543b72d04641d9454495c4a7d6503
+challenges/MHC-KRAS binder/scripts/s119_make_seqdepth_cofold_inputs.py	10345	c11375931da138460bfd91c374ba969e
+challenges/MHC-KRAS binder/scripts/s120_score_seqdepth.py	14151	af49cec9ecd80e73212f0beaa9df2b04
+challenges/MHC-KRAS binder/scripts/s121_build_mb_depth_bundle.py	7859	562273b4002a797b885c1eae180c6db9
+challenges/MHC-KRAS binder/scripts/s122_upload_mb_depth_bundle.sh	8165	6412c8a6b8a1f9034c29aa4d4621421f
+challenges/MHC-KRAS binder/scripts/s123_make_mb_depth_cofold_inputs.py	13970	713c4b8180ac93e9cb451a6a2ec447ef
+challenges/MHC-KRAS binder/scripts/s124_score_mb_depth.py	14977	b0f1460f1a2e36a17c5fc9dd70861ae3
+challenges/MHC-KRAS binder/scripts/s125_build_mb_depth_pse.py	12741	7a0e67763845ea5f940cadf1b302474e
+challenges/MHC-KRAS binder/scripts/s59_make_r4_cofold_inputs.py	10867	1b07a78288699107484c559ac832afd6
+challenges/MHC-KRAS binder/scripts/s60_score_r4_cofold.py	13625	67dee13c060d5d6bf251a081d3ed72be
+challenges/MHC-KRAS binder/scripts/s71_make_5b_cofold_inputs.py	9984	a2d31f754042f2a1eac7009578f608d5
+challenges/MHC-KRAS binder/scripts/s75_score_scaffolded_arm.py	17487	1fe44f530c6b8d2419a5a495aaa54da9
+challenges/MHC-KRAS binder/scripts/s88_cont_pep_excluding_pins.py	16907	6527738ecaf5b16cc26ef3c41e0c204a
+challenges/MHC-KRAS binder/scripts/s89_pool_gate_plus_prod.py	7755	ef2667e35e071fa1419acfcdcfc2e894
+challenges/MHC-KRAS binder/structures/README.md	2409	02c9ef387f16e3ac88afb63a94d00407
+challenges/MHC-KRAS binder/structures/j1058_mb_depth_cohort.pse	12288444	802cf4c0b4eb74845bd1f6f70b40e400
+challenges/MHC-KRAS binder/structures/j1062_validated_cohort.pse	8725444	8fcdc9d753b0a4afd2dc9e2e92471d4c
+challenges/MHC-KRAS binder/structures/j1063_c5_submission_7designs_20261109.pse	2659426	466bfabbdf97210405b94cb0aff6a30f
+challenges/MHC-KRAS binder/submission_challenge5_20261109.csv	812	709b396d2153c7692e1af036e89b8e60
 challenges/TfR1 binder/FINDINGS.md	52527	81ec2dee938988466b7a826abbab3dc1
-challenges/TfR1 binder/README.md	29271	69da500e13e3de104c24caa12926d552
+challenges/TfR1 binder/README.md	31841	10666aed0865134cb16e8edfe01c86fa
 challenges/TfR1 binder/data/README.md	37578	a1504b72d5df7ef6519856695574487a
 challenges/TfR1 binder/data/core_arm_specs_20261101/j895_opt01_input.pdb	129643	8aa561788e5e5347137b7b9231aebe3b
 challenges/TfR1 binder/data/core_arm_specs_20261101/j895_opt02_input.pdb	126009	b7950baeb451353a5c1797b07e8abcc9
@@ -131,7 +191,7 @@ challenges/TfR1 binder/figures/opt05_b0_m0.png	914091	17744615b7f2e625b49366a23a
 challenges/TfR1 binder/figures/opt05_b2_m6.png	696862	a440c0039ca81d05cf1253aeca44a073
 challenges/TfR1 binder/figures/opt05_b3_m4.png	970160	d8a40c2d8351f771637ceb2ee99e9802
 challenges/TfR1 binder/methods/README.md	8671	40657a26c2ee1a4c6c05b4342e75eaa4
-challenges/TfR1 binder/methods/core_scaffolded_design.md	39603	0e40d78c1f88614e3ab6a746aedd7b5d
+challenges/TfR1 binder/methods/core_scaffolded_design.md	40614	cc49689a5ade9bda99282a3cd000940e
 challenges/TfR1 binder/methods/mining_negative_results.md	17121	ab2ae92f13580f063d5753a281738394
 challenges/TfR1 binder/methods/nterm_extension_arm.md	23149	19081c95a1aba9eb74ab957623640cbd
 challenges/TfR1 binder/methods/structural_mining.md	34669	2469c345c6582bdadd1dc8fb31a5908a
